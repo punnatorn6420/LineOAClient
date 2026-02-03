@@ -134,14 +134,12 @@
   </div>
 </section>
 
-<div class="fixed bottom-0 left-0 right-0 z-20 border-t border-border bg-white/95 shadow-[0_-2px_8px_rgba(0,0,0,0.1)] backdrop-blur">
+<div
+  class="fixed bottom-0 left-0 right-0 z-20 border-t border-border bg-white/95 shadow-[0_-2px_8px_rgba(0,0,0,0.1)] backdrop-blur"
+>
   <div class="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 py-4">
-    <label class="flex items-start gap-3 text-[22px] text-foreground">
-      <hlm-checkbox
-        class="mt-1 h-7 w-7"
-        [checked]="accepted()"
-        (checkedChange)="toggleAcceptance($event)"
-      />
+    <label class="flex items-center gap-3 text-[22px] text-foreground">
+      <hlm-checkbox [checked]="accepted()" (checkedChange)="toggleAcceptance($event)" />
       <span>{{ 'PDPA_ACCEPT_TEXT' | translate }}</span>
     </label>
     <button
@@ -149,11 +147,9 @@
       type="button"
       size="lg"
       variant="outline"
-      class="mx-auto w-full max-w-[500px] border border-[#222] text-[22px] font-bold"
+      class="mx-auto w-full max-w-[500px] text-[22px] font-bold"
       [ngClass]="
-        accepted()
-          ? '!bg-[#FFD600] !text-[#222] hover:!bg-[#f2c200]'
-          : '!bg-[#e0e0e0] !text-[#888]'
+        accepted() ? '!bg-yellow-300 !text-black hover:!bg-yellow-400' : '!bg-gray-300 border-0'
       "
       [disabled]="!accepted()"
       (click)="confirmConsent()"
