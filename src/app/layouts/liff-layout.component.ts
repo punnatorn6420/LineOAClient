@@ -8,18 +8,23 @@ import { TranslatePipe } from '../core/pipes/translate.pipe';
   standalone: true,
   imports: [RouterOutlet, TranslatePipe, LanguageSwitcherComponent],
   template: `
-    <div class="layout-page layout-page--liff">
-      <header class="layout-header">
-        <div>
-          <div class="layout-brand">{{ 'layout.liff.title' | translate }}</div>
-          <p class="layout-subtitle">{{ 'layout.liff.subtitle' | translate }}</p>
+    <div class="min-h-screen bg-[#f5f5f5] text-foreground">
+      <header class="flex h-16 items-center bg-[#FCCD01] px-4">
+        <div class="ml-1 mr-4 h-12 w-12 overflow-hidden rounded-full bg-white">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Nokair_logo.jpg"
+            alt="Nok Air logo"
+            class="h-full w-full object-cover"
+          />
         </div>
-        <div class="flex items-center gap-3">
+        <div class="text-2xl font-bold text-black">
+          {{ 'layout.liff.title' | translate }}
+        </div>
+        <div class="ml-auto">
           <app-language-switcher />
-          <div class="layout-badge">{{ 'layout.liff.badge' | translate }}</div>
         </div>
       </header>
-      <main class="layout-content">
+      <main class="mx-auto w-full max-w-3xl px-4 py-8 pb-44">
         <router-outlet />
       </main>
     </div>

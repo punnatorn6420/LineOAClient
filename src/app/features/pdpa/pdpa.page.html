@@ -1,59 +1,164 @@
-<section class="card space-y-6">
-  <div class="space-y-2">
-    <p class="text-sm text-muted-foreground">{{ 'pdpa.privacyNotice' | translate }}</p>
-    <h1 class="text-2xl font-semibold text-foreground">
-      {{ 'pdpa.title' | translate }}
-    </h1>
-    <p class="text-sm text-muted-foreground">{{ 'pdpa.subtitle' | translate }}</p>
-  </div>
+<section class="space-y-6 text-[22px] leading-relaxed text-foreground">
+  <div class="space-y-4">
+    <h1 class="text-[22px] font-bold">{{ 'PDPA_TITLE' | translate }}</h1>
+    <p>{{ 'PDPA_INTRO' | translate }}</p>
 
-  <div class="space-y-5">
-    @for (section of sections; track section.titleKey) {
-      <div class="space-y-3">
-        <h2 class="text-lg font-semibold text-foreground">
-          {{ section.titleKey | translate }}
-        </h2>
-        @if (section.paragraphs?.length) {
-          <div class="space-y-2 text-sm text-muted-foreground">
-            @for (paragraph of section.paragraphs; track paragraph) {
-              <p>{{ paragraph | translate }}</p>
-            }
-          </div>
-        }
-        @if (section.bullets?.length) {
-          <ul class="list-disc space-y-2 pl-5 text-sm text-muted-foreground">
-            @for (bullet of section.bullets; track bullet) {
-              <li>{{ bullet | translate }}</li>
-            }
-          </ul>
-        }
-      </div>
-    }
-  </div>
+    <h2 class="text-[22px] font-bold">{{ 'PDPA_PERSONAL_DATA_TITLE' | translate }}</h2>
+    <p>{{ 'PDPA_PERSONAL_DATA_DEF' | translate }}</p>
+    <p>{{ 'PDPA_SENSITIVE_DATA_DEF' | translate }}</p>
 
-  <div class="space-y-4 rounded-xl border border-border bg-secondary/40 p-4">
-    <label class="flex items-start gap-3 text-sm text-foreground">
-      <input
-        type="checkbox"
-        class="mt-1 h-4 w-4 rounded border-border text-primary focus:ring-primary"
+    <h2 class="text-[22px] font-bold">{{ 'PDPA_COLLECTION_TITLE' | translate }}</h2>
+    <p>{{ 'PDPA_COLLECTION_INTRO' | translate }}</p>
+    <ul class="list-disc space-y-3 pl-6">
+      <li>{{ 'PDPA_COLLECTION_LIST_1' | translate }}</li>
+      <li>{{ 'PDPA_COLLECTION_LIST_2' | translate }}</li>
+      <li>{{ 'PDPA_COLLECTION_LIST_3' | translate }}</li>
+      <li>{{ 'PDPA_COLLECTION_LIST_4' | translate }}</li>
+      <li>{{ 'PDPA_COLLECTION_LIST_5' | translate }}</li>
+      <li>{{ 'PDPA_COLLECTION_LIST_6' | translate }}</li>
+      <li>{{ 'PDPA_COLLECTION_LIST_7' | translate }}</li>
+      <li>{{ 'PDPA_COLLECTION_LIST_8' | translate }}</li>
+    </ul>
+
+    <p>{{ 'PDPA_CONSENT_INTRO' | translate }}</p>
+    <ul class="list-disc space-y-3 pl-6">
+      <li>{{ 'PDPA_CONSENT_LIST_1' | translate }}</li>
+      <li>{{ 'PDPA_CONSENT_LIST_2' | translate }}</li>
+      <li>{{ 'PDPA_CONSENT_LIST_3' | translate }}</li>
+      <li>{{ 'PDPA_CONSENT_LIST_4' | translate }}</li>
+      <li>{{ 'PDPA_CONSENT_LIST_5' | translate }}</li>
+      <li>{{ 'PDPA_CONSENT_LIST_6' | translate }}</li>
+    </ul>
+
+    <h2 class="text-[22px] font-bold">{{ 'PDPA_SENSITIVE_TITLE' | translate }}</h2>
+    <p>{{ 'PDPA_SENSITIVE_CONTENT' | translate }}</p>
+    <ul class="list-disc space-y-3 pl-6">
+      <li>{{ 'PDPA_SENSITIVE_LIST_1' | translate }}</li>
+      <li>{{ 'PDPA_SENSITIVE_LIST_2' | translate }}</li>
+      <li>{{ 'PDPA_SENSITIVE_LIST_3' | translate }}</li>
+      <li>{{ 'PDPA_SENSITIVE_LIST_4' | translate }}</li>
+      <li>{{ 'PDPA_SENSITIVE_LIST_5' | translate }}</li>
+    </ul>
+
+    <h2 class="text-[22px] font-bold">{{ 'PDPA_SOURCE_TITLE' | translate }}</h2>
+    <ul class="list-disc space-y-3 pl-6">
+      <li>{{ 'PDPA_SOURCE_LIST_1' | translate }}</li>
+      <li>{{ 'PDPA_SOURCE_LIST_2' | translate }}</li>
+      <li>{{ 'PDPA_SOURCE_LIST_3' | translate }}</li>
+      <li>{{ 'PDPA_SOURCE_LIST_4' | translate }}</li>
+    </ul>
+
+    <h2 class="text-[22px] font-bold">{{ 'PDPA_PURPOSES_TITLE' | translate }}</h2>
+    <p>{{ 'PDPA_PURPOSES_INTRO' | translate }}</p>
+    <ul class="list-disc space-y-3 pl-6">
+      <li>{{ 'PDPA_PURPOSES_LIST_1' | translate }}</li>
+      <li>{{ 'PDPA_PURPOSES_LIST_2' | translate }}</li>
+      <li>{{ 'PDPA_PURPOSES_LIST_3' | translate }}</li>
+      <li>{{ 'PDPA_PURPOSES_LIST_4' | translate }}</li>
+      <li>{{ 'PDPA_PURPOSES_LIST_5' | translate }}</li>
+      <li>{{ 'PDPA_PURPOSES_LIST_6' | translate }}</li>
+      <li>{{ 'PDPA_PURPOSES_LIST_7' | translate }}</li>
+      <li>{{ 'PDPA_PURPOSES_LIST_8' | translate }}</li>
+      <li>{{ 'PDPA_PURPOSES_LIST_9' | translate }}</li>
+      <li>{{ 'PDPA_PURPOSES_LIST_10' | translate }}</li>
+      <li>{{ 'PDPA_PURPOSES_LIST_11' | translate }}</li>
+      <li>{{ 'PDPA_PURPOSES_LIST_12' | translate }}</li>
+      <li>{{ 'PDPA_PURPOSES_LIST_13' | translate }}</li>
+      <li>{{ 'PDPA_PURPOSES_LIST_14' | translate }}</li>
+      <li>{{ 'PDPA_PURPOSES_LIST_15' | translate }}</li>
+    </ul>
+
+    <h2 class="text-[22px] font-bold">{{ 'PDPA_TRANSFER_TITLE' | translate }}</h2>
+    <p>{{ 'PDPA_TRANSFER_INTRO' | translate }}</p>
+    <ul class="list-disc space-y-3 pl-6">
+      <li>{{ 'PDPA_TRANSFER_LIST_1' | translate }}</li>
+      <li>{{ 'PDPA_TRANSFER_LIST_2' | translate }}</li>
+      <li>{{ 'PDPA_TRANSFER_LIST_3' | translate }}</li>
+    </ul>
+
+    <h2 class="text-[22px] font-bold">{{ 'PDPA_INTERNATIONAL_TITLE' | translate }}</h2>
+    <p>{{ 'PDPA_INTERNATIONAL_INTRO' | translate }}</p>
+    <ul class="list-disc space-y-3 pl-6">
+      <li>{{ 'PDPA_INTERNATIONAL_LIST_1' | translate }}</li>
+      <li>{{ 'PDPA_INTERNATIONAL_LIST_2' | translate }}</li>
+      <li>{{ 'PDPA_INTERNATIONAL_LIST_3' | translate }}</li>
+      <li>{{ 'PDPA_INTERNATIONAL_LIST_4' | translate }}</li>
+      <li>{{ 'PDPA_INTERNATIONAL_LIST_5' | translate }}</li>
+      <li>{{ 'PDPA_INTERNATIONAL_LIST_6' | translate }}</li>
+      <li>{{ 'PDPA_INTERNATIONAL_LIST_7' | translate }}</li>
+      <li>{{ 'PDPA_INTERNATIONAL_LIST_8' | translate }}</li>
+      <li>{{ 'PDPA_INTERNATIONAL_LIST_9' | translate }}</li>
+    </ul>
+
+    <h2 class="text-[22px] font-bold">{{ 'PDPA_PROTECTION_TITLE' | translate }}</h2>
+    <p>{{ 'PDPA_PROTECTION_CONTENT' | translate }}</p>
+
+    <h2 class="text-[22px] font-bold">{{ 'PDPA_RETENTION_TITLE' | translate }}</h2>
+    <p>{{ 'PDPA_RETENTION_CONTENT' | translate }}</p>
+
+    <h2 class="text-[22px] font-bold">{{ 'PDPA_CHANGES_TITLE' | translate }}</h2>
+    <p>{{ 'PDPA_CHANGES_CONTENT' | translate }}</p>
+
+    <h2 class="text-[22px] font-bold">{{ 'PDPA_RIGHTS_TITLE' | translate }}</h2>
+    <p>{{ 'PDPA_RIGHTS_INTRO' | translate }}</p>
+    <ul class="list-disc space-y-3 pl-6">
+      <li>{{ 'PDPA_RIGHTS_LIST_1' | translate }}</li>
+      <li>{{ 'PDPA_RIGHTS_LIST_2' | translate }}</li>
+      <li>{{ 'PDPA_RIGHTS_LIST_3' | translate }}</li>
+      <li>{{ 'PDPA_RIGHTS_LIST_4' | translate }}</li>
+      <li>{{ 'PDPA_RIGHTS_LIST_5' | translate }}</li>
+      <li>{{ 'PDPA_RIGHTS_LIST_6' | translate }}</li>
+      <li>{{ 'PDPA_RIGHTS_LIST_7' | translate }}</li>
+    </ul>
+
+    <p>{{ 'PDPA_RIGHT_FOOTER' | translate }}</p>
+
+    <h2 class="text-[22px] font-bold">{{ 'PDPA_CONTACT_TITLE' | translate }}</h2>
+    <p>
+      {{ 'PDPA_CONTACT_COMPANY' | translate }}<br />
+      {{ 'PDPA_CONTACT_ADDRESS' | translate }}<br />
+      {{ 'PDPA_CONTACT_DISTRICT' | translate }}<br />
+      {{ 'PDPA_CONTACT_PHONE_TH' | translate }}<br />
+      {{ 'PDPA_CONTACT_PHONE_INT' | translate }}<br />
+      {{ 'PDPA_CONTACT_EMAIL' | translate }}
+    </p>
+
+    <p>{{ 'PDPA_CONTACT_REQUIRED' | translate }}</p>
+    <ul class="list-disc space-y-3 pl-6">
+      <li>{{ 'PDPA_CONTACT_REQUIRED_LIST_1' | translate }}</li>
+      <li>{{ 'PDPA_CONTACT_REQUIRED_LIST_2' | translate }}</li>
+      <li>{{ 'PDPA_CONTACT_REQUIRED_LIST_3' | translate }}</li>
+    </ul>
+
+    <p>{{ 'PDPA_ANNOUNCEMENT_DATE' | translate }}</p>
+  </div>
+</section>
+
+<div class="fixed bottom-0 left-0 right-0 z-20 border-t border-border bg-white/95 shadow-[0_-2px_8px_rgba(0,0,0,0.1)] backdrop-blur">
+  <div class="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 py-4">
+    <label class="flex items-start gap-3 text-[22px] text-foreground">
+      <hlm-checkbox
+        class="mt-1 h-7 w-7"
         [checked]="accepted()"
-        (change)="toggleAcceptance($any($event.target).checked)"
+        (checkedChange)="toggleAcceptance($event)"
       />
-      <span>{{ 'pdpa.consentLabel' | translate }}</span>
+      <span>{{ 'PDPA_ACCEPT_TEXT' | translate }}</span>
     </label>
     <button
+      hlmBtn
       type="button"
-      class="btn-primary w-full"
+      size="lg"
+      variant="outline"
+      class="mx-auto w-full max-w-[500px] border border-[#222] text-[22px] font-bold"
+      [ngClass]="
+        accepted()
+          ? '!bg-[#FFD600] !text-[#222] hover:!bg-[#f2c200]'
+          : '!bg-[#e0e0e0] !text-[#888]'
+      "
       [disabled]="!accepted()"
       (click)="confirmConsent()"
     >
-      {{ 'pdpa.confirm' | translate }}
+      {{ 'PDPA_CONFIRM_BUTTON' | translate }}
     </button>
-    <p class="text-xs text-muted-foreground">{{ 'pdpa.announcementDate' | translate }}</p>
   </div>
-
-  <div class="flex justify-between text-xs text-muted-foreground">
-    <a class="underline" routerLink="/web">{{ 'navigation.backToWebsite' | translate }}</a>
-    <a class="underline" routerLink="/liff">{{ 'navigation.lineMode' | translate }}</a>
-  </div>
-</section>
+</div>
