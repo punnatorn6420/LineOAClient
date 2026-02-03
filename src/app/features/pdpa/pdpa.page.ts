@@ -1,58 +1,20 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { NgClass } from '@angular/common';
+import { Router } from '@angular/router';
+import { HlmButton } from '@ui/button';
+import { HlmCheckbox } from '@ui/checkbox';
 import { PlatformService } from '../../core/services/platform.service';
 import { PdpaConsentService } from '../../core/services/pdpa-consent.service';
 import { TranslatePipe } from '../../core/pipes/translate.pipe';
 
-interface PdpaSection {
-  titleKey: string;
-  paragraphs?: string[];
-  bullets?: string[];
-}
-
 @Component({
   selector: 'app-pdpa-page',
   standalone: true,
-  imports: [RouterLink, TranslatePipe],
+  imports: [NgClass, TranslatePipe, HlmButton, HlmCheckbox],
   templateUrl: './pdpa.page.html',
 })
 export class PdpaPage implements OnInit {
   protected readonly accepted = signal(false);
-  protected readonly sections: PdpaSection[] = [
-    {
-      titleKey: 'pdpa.sections.purpose.title',
-      paragraphs: [
-        'pdpa.sections.purpose.paragraphs.0',
-      ],
-      bullets: [
-        'pdpa.sections.purpose.bullets.0',
-        'pdpa.sections.purpose.bullets.1',
-        'pdpa.sections.purpose.bullets.2',
-      ],
-    },
-    {
-      titleKey: 'pdpa.sections.sensitive.title',
-      paragraphs: [
-        'pdpa.sections.sensitive.paragraphs.0',
-      ],
-    },
-    {
-      titleKey: 'pdpa.sections.disclosure.title',
-      paragraphs: [
-        'pdpa.sections.disclosure.paragraphs.0',
-      ],
-      bullets: [
-        'pdpa.sections.disclosure.bullets.0',
-        'pdpa.sections.disclosure.bullets.1',
-      ],
-    },
-    {
-      titleKey: 'pdpa.sections.rights.title',
-      paragraphs: [
-        'pdpa.sections.rights.paragraphs.0',
-      ],
-    },
-  ];
 
   constructor(
     private readonly router: Router,
