@@ -1,0 +1,61 @@
+<section class="card space-y-6">
+  <div class="space-y-2">
+    <p class="text-sm text-muted-foreground">ประกาศความเป็นส่วนตัว</p>
+    <h1 class="text-2xl font-semibold text-foreground">นโยบายคุ้มครองข้อมูลส่วนบุคคล (PDPA)</h1>
+    <p class="text-sm text-muted-foreground">
+      โปรดอ่านและทำความเข้าใจเพื่อยืนยันความยินยอมก่อนใช้งานระบบจอง
+    </p>
+  </div>
+
+  <div class="space-y-5">
+    @for (section of sections; track section.title) {
+      <div class="space-y-3">
+        <h2 class="text-lg font-semibold text-foreground">{{ section.title }}</h2>
+        @if (section.paragraphs?.length) {
+          <div class="space-y-2 text-sm text-muted-foreground">
+            @for (paragraph of section.paragraphs; track paragraph) {
+              <p>{{ paragraph }}</p>
+            }
+          </div>
+        }
+        @if (section.bullets?.length) {
+          <ul class="list-disc space-y-2 pl-5 text-sm text-muted-foreground">
+            @for (bullet of section.bullets; track bullet) {
+              <li>{{ bullet }}</li>
+            }
+          </ul>
+        }
+      </div>
+    }
+  </div>
+
+  <div class="space-y-4 rounded-xl border border-border bg-secondary/40 p-4">
+    <label class="flex items-start gap-3 text-sm text-foreground">
+      <input
+        type="checkbox"
+        class="mt-1 h-4 w-4 rounded border-border text-primary focus:ring-primary"
+        [checked]="accepted()"
+        (change)="toggleAcceptance($any($event.target).checked)"
+      />
+      <span>
+        ฉันได้อ่านและยอมรับเงื่อนไขการเก็บ ใช้ และเปิดเผยข้อมูลส่วนบุคคลตามประกาศนี้
+      </span>
+    </label>
+    <button
+      type="button"
+      class="btn-primary w-full"
+      [disabled]="!accepted()"
+      (click)="confirmConsent()"
+    >
+      ยืนยันการยินยอม
+    </button>
+    <p class="text-xs text-muted-foreground">
+      ประกาศ ณ วันที่ 25 พฤษภาคม 2022
+    </p>
+  </div>
+
+  <div class="flex justify-between text-xs text-muted-foreground">
+    <a class="underline" routerLink="/web">กลับหน้าเว็บไซต์</a>
+    <a class="underline" routerLink="/liff">โหมด LINE</a>
+  </div>
+</section>

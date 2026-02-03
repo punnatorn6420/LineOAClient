@@ -1,7 +1,6 @@
-@layer theme, base, components, utilities;
-@import 'tailwindcss/theme.css' layer(theme);
-@import 'tailwindcss/preflight.css' layer(base);
-@import 'tailwindcss/utilities.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @import '@angular/cdk/overlay-prebuilt.css';
 
@@ -66,4 +65,84 @@
   --sidebar-accent-foreground: 0, 0%, 98%;
   --sidebar-border: 0, 0%, 10%;
   --sidebar-ring: 240, 3%, 65%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  a {
+    @apply text-foreground;
+  }
+}
+
+@layer components {
+  .layout-page {
+    @apply min-h-screen bg-gradient-to-b from-background to-muted/40 px-4 pb-10 pt-6;
+  }
+
+  .layout-page--liff {
+    @apply bg-gradient-to-b from-background via-muted/20 to-muted/40;
+  }
+
+  .layout-header {
+    @apply mx-auto flex w-full max-w-4xl items-center justify-between rounded-2xl border border-border bg-card px-6 py-4 shadow-soft;
+  }
+
+  .layout-brand {
+    @apply text-lg font-semibold text-foreground;
+  }
+
+  .layout-subtitle {
+    @apply text-xs text-muted-foreground;
+  }
+
+  .layout-badge {
+    @apply rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground;
+  }
+
+  .layout-content {
+    @apply mx-auto mt-6 w-full max-w-4xl;
+  }
+
+  .card {
+    @apply rounded-2xl border border-border bg-card p-6 shadow-soft;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-lg border border-border bg-secondary px-4 py-2 text-sm font-semibold text-secondary-foreground transition hover:bg-secondary/80;
+  }
+
+  .form-field {
+    @apply space-y-2;
+  }
+
+  .form-label {
+    @apply text-sm font-medium text-foreground;
+  }
+
+  .form-input {
+    @apply w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground shadow-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30;
+  }
+
+  .dialog-backdrop {
+    @apply fixed inset-0 bg-black/40;
+  }
+
+  .dialog-panel {
+    @apply mx-auto w-full max-w-lg rounded-2xl border border-border bg-card p-6 shadow-soft;
+  }
+
+  .skeleton {
+    @apply animate-pulse rounded-lg bg-muted;
+  }
 }
