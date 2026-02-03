@@ -2,9 +2,10 @@ import { Component, OnInit, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { PlatformService } from '../../core/services/platform.service';
 import { PdpaConsentService } from '../../core/services/pdpa-consent.service';
+import { TranslatePipe } from '../../core/pipes/translate.pipe';
 
 interface PdpaSection {
-  title: string;
+  titleKey: string;
   paragraphs?: string[];
   bullets?: string[];
 }
@@ -12,43 +13,43 @@ interface PdpaSection {
 @Component({
   selector: 'app-pdpa-page',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, TranslatePipe],
   templateUrl: './pdpa.page.html',
 })
 export class PdpaPage implements OnInit {
   protected readonly accepted = signal(false);
   protected readonly sections: PdpaSection[] = [
     {
-      title: 'วัตถุประสงค์การเก็บรวบรวมข้อมูลส่วนบุคคล',
+      titleKey: 'pdpa.sections.purpose.title',
       paragraphs: [
-        'เราเก็บข้อมูลเพื่อยืนยันตัวตน ให้บริการ และปรับปรุงประสบการณ์ของผู้ใช้งาน',
+        'pdpa.sections.purpose.paragraphs.0',
       ],
       bullets: [
-        'การให้บริการและการทำธุรกรรมที่เกี่ยวข้องกับการจอง',
-        'การสื่อสารเพื่อการบริการและการแจ้งเตือน',
-        'การปฏิบัติตามกฎหมายและข้อกำหนดที่เกี่ยวข้อง',
+        'pdpa.sections.purpose.bullets.0',
+        'pdpa.sections.purpose.bullets.1',
+        'pdpa.sections.purpose.bullets.2',
       ],
     },
     {
-      title: 'ข้อมูลอ่อนไหวและการขอความยินยอม',
+      titleKey: 'pdpa.sections.sensitive.title',
       paragraphs: [
-        'หากจำเป็นต้องใช้ข้อมูลอ่อนไหว เราจะขอความยินยอมเพิ่มเติมและใช้อย่างจำกัด',
+        'pdpa.sections.sensitive.paragraphs.0',
       ],
     },
     {
-      title: 'การเปิดเผยข้อมูลต่อบุคคลที่สาม',
+      titleKey: 'pdpa.sections.disclosure.title',
       paragraphs: [
-        'ข้อมูลจะถูกเปิดเผยเท่าที่จำเป็นต่อการให้บริการ หรือเมื่อได้รับความยินยอม',
+        'pdpa.sections.disclosure.paragraphs.0',
       ],
       bullets: [
-        'ผู้ให้บริการด้านระบบและการชำระเงิน',
-        'หน่วยงานกำกับดูแลตามกฎหมาย',
+        'pdpa.sections.disclosure.bullets.0',
+        'pdpa.sections.disclosure.bullets.1',
       ],
     },
     {
-      title: 'สิทธิของเจ้าของข้อมูล',
+      titleKey: 'pdpa.sections.rights.title',
       paragraphs: [
-        'คุณสามารถเข้าถึง แก้ไข ถอนความยินยอม หรือร้องขอลบข้อมูลได้',
+        'pdpa.sections.rights.paragraphs.0',
       ],
     },
   ];

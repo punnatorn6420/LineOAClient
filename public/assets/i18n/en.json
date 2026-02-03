@@ -1,0 +1,73 @@
+{
+  "layout": {
+    "language": "Language",
+    "redirecting": "Redirecting to the appropriate page...",
+    "web": {
+      "title": "LineOA Web",
+      "subtitle": "Web experience",
+      "badge": "Website"
+    },
+    "liff": {
+      "title": "LineOA",
+      "subtitle": "LIFF Experience",
+      "badge": "LINE"
+    }
+  },
+  "language": {
+    "th": "ไทย",
+    "en": "English"
+  },
+  "navigation": {
+    "backToWebsite": "Back to website",
+    "lineMode": "LINE mode"
+  },
+  "form": {
+    "title": "Booking form",
+    "description": "This page will be migrated from the legacy project in the next phase. For now it supports the post-consent PDPA flow.",
+    "backToPdpa": "Back to PDPA",
+    "lineMode": "LINE mode"
+  },
+  "pdpa": {
+    "privacyNotice": "Privacy notice",
+    "title": "Personal Data Protection Policy (PDPA)",
+    "subtitle": "Please read and confirm your consent before using the booking system.",
+    "consentLabel": "I have read and agreed to the collection, use, and disclosure of personal data according to this notice.",
+    "confirm": "Confirm consent",
+    "announcementDate": "Announced on May 25, 2022",
+    "sections": {
+      "purpose": {
+        "title": "Purpose of collecting personal data",
+        "paragraphs": [
+          "We collect data to verify identity, provide services, and improve the user experience."
+        ],
+        "bullets": [
+          "Providing services and booking-related transactions",
+          "Service communications and notifications",
+          "Compliance with applicable laws and regulations"
+        ]
+      },
+      "sensitive": {
+        "title": "Sensitive data and consent",
+        "paragraphs": [
+          "If sensitive data is required, we will request additional consent and use it in a limited manner."
+        ]
+      },
+      "disclosure": {
+        "title": "Disclosure to third parties",
+        "paragraphs": [
+          "Data will be disclosed only as necessary to provide services or when consent is provided."
+        ],
+        "bullets": [
+          "System and payment service providers",
+          "Regulatory authorities as required by law"
+        ]
+      },
+      "rights": {
+        "title": "Data subject rights",
+        "paragraphs": [
+          "You can access, update, withdraw consent, or request deletion of your data."
+        ]
+      }
+    }
+  }
+}
