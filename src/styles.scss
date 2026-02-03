@@ -5,12 +5,44 @@
 
 @import '@angular/cdk/overlay-prebuilt.css';
 
+@font-face {
+  font-family: "DB Ozone X";
+  src: url("/assets/fonts/DB Ozone X.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DB Ozone X";
+  src: url("/assets/fonts/DB Ozone X Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DB Ozone X";
+  src: url("/assets/fonts/DB Ozone X Med.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DB Ozone X";
+  src: url("/assets/fonts/DB Ozone X Bd.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+html {
+  font-size: 20px;
+}
+
 :root {
   color-scheme: light;
-
-  --font-sans:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
   --background: 0deg 0% 100%;
   --foreground: 344.97deg 13.46% 3.85%;
@@ -37,6 +69,7 @@
   --sidebar-accent-foreground: 240, 5%, 22%;
   --sidebar-border: 240, 4%, 88%;
   --sidebar-ring: 240, 3%, 70%;
+  font-family: "DB Ozone X", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 :root.dark {
@@ -66,4 +99,5 @@
   --sidebar-accent-foreground: 0, 0%, 98%;
   --sidebar-border: 0, 0%, 10%;
   --sidebar-ring: 240, 3%, 65%;
+  font-family: "DB Ozone X", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
