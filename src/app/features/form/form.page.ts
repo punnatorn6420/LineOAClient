@@ -1,20 +1,22 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslatePipe } from '../../core/pipes/translate.pipe';
 
 @Component({
   selector: 'app-form-page',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, TranslatePipe],
   template: `
     <section class="card space-y-4">
-      <h1 class="text-xl font-semibold text-foreground">ฟอร์มการจอง</h1>
-      <p class="text-sm text-muted-foreground">
-        หน้านี้จะถูกย้ายจากโปรเจ็คเดิมในขั้นถัดไป ตอนนี้ใช้เพื่อรองรับ flow หลังการยินยอม
-        PDPA.
-      </p>
+      <h1 class="text-xl font-semibold text-foreground">{{ 'form.title' | translate }}</h1>
+      <p class="text-sm text-muted-foreground">{{ 'form.description' | translate }}</p>
       <div class="flex flex-wrap gap-3">
-        <a class="btn-primary" routerLink="/web/pdpa">กลับไปหน้า PDPA</a>
-        <a class="btn-secondary" routerLink="/liff/pdpa">โหมด LINE</a>
+        <a class="btn-primary" routerLink="/web/pdpa">
+          {{ 'form.backToPdpa' | translate }}
+        </a>
+        <a class="btn-secondary" routerLink="/liff/pdpa">
+          {{ 'form.lineMode' | translate }}
+        </a>
       </div>
     </section>
   `,
