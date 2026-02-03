@@ -1,0 +1,465 @@
+<div class="review-page-container">
+    <app-header [currentStep]="3"></app-header>
+    <div class="review-page-content">
+        <p class="review-page-title">{{ 'REVIEW_PAGE_TITLE' | translate }}</p>
+        <!-- Accordion: Passenger 1 -->
+        <div class="accordion passenger" *ngFor="let passenger of passengers; let i = index">
+            <div class="accordion-header active">
+                <svg (click)="togglePassengerInfo(i)" width="17" height="16" viewBox="0 0 17 16" fill="none"
+                    xmlns="http://www.w3.org/2000/svg" *ngIf="!isPassengerInfoOpen[i]">
+                    <path d="M3.5 10L8.5 5L13.5 10" stroke="#262626" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                <svg (click)="togglePassengerInfo(i)" width="17" height="16" viewBox="0 0 17 16" fill="none"
+                    xmlns="http://www.w3.org/2000/svg" *ngIf="isPassengerInfoOpen[i]">
+                    <path d="M13.5 6L8.5 11L3.5 6" stroke="#262626" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                <span class="title-header-passenger" (click)="togglePassengerInfo(i)" *ngIf="passenger == passengers[0]">{{ 'REVIEW_PAGE_PASSENGER_1' |
+                    translate }}</span>
+                <span class="title-header-passenger" (click)="togglePassengerInfo(i)" *ngIf="passenger != passengers[0]">{{ 'REVIEW_PAGE_PASSENGER' |
+                    translate }} {{i+1}}</span>
+            </div>
+            <div class="accordion-body" *ngIf="!isPassengerInfoOpen[i]">
+                <div class="passenger-info">
+                    <div class="info-section">
+                        <div class="header-info-passenger">
+                            <div class="info-title">{{ 'REVIEW_PAGE_TITLE_DATA_PASSENGER' | translate }}</div>
+                            <div class="edit-info-passenger" (click)="editInfoPassenger(i)">
+                                <svg width="16" height="17" viewBox="0 0 16 17" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M9.99935 4.50045L11.9993 6.50045M8.66602 13.8338H13.9993M3.33268 11.1671L2.66602 13.8338L5.33268 13.1671L13.0567 5.44312C13.3066 5.19308 13.4471 4.854 13.4471 4.50045C13.4471 4.1469 13.3066 3.80782 13.0567 3.55778L12.942 3.44312C12.692 3.19315 12.3529 3.05273 11.9993 3.05273C11.6458 3.05273 11.3067 3.19315 11.0567 3.44312L3.33268 11.1671Z"
+                                        stroke="#DE3024" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                <p>{{ 'REVIEW_PAGE_EDIT' | translate }}</p>
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">{{ 'REVIEW_PAGE_TITLE_PASSNEGER' | translate }}</div>
+                            <div class="info-value">{{passenger.selectedPrefix}}</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">{{ 'REVIEW_PAGE_FIRST_NAME' | translate }}</div>
+                            <div class="info-value">{{passenger.firstName}}</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">{{ 'REVIEW_PAGE_MIDDLE_NAME' | translate }}</div>
+                            <div class="info-value" *ngIf="passenger.middleName">{{passenger.middleName}}</div>
+                            <div class="info-value" *ngIf="!passenger.middleName">-</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">{{ 'REVIEW_PAGE_LAST_NAME' | translate }}</div>
+                            <div class="info-value">{{passenger.lastName}}</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">{{ 'REVIEW_PAGE_BIRTH_DATE' | translate }}</div>
+                            <div class="info-value">{{passenger.birthDate | date:'dd/MM/yyyy'}}</div>
+                        </div>
+                    </div>
+                    <div class="info-divider" *ngIf="isInternationalTrip()"></div>
+                    <div class="info-section" *ngIf="isInternationalTrip()">
+                        <div class="info-title">{{ 'REVIEW_PAGE_PASSPORT_TITLE' | translate }}</div>
+                        <div class="info-row">
+                            <div class="info-label">{{ 'REVIEW_PAGE_NATIONALITY' | translate }}</div>
+                            <div class="info-value">{{passenger.nationality}}</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">{{ 'REVIEW_PAGE_COUNTRY_OF_RESIDENCE' | translate }}</div>
+                            <div class="info-value">{{passenger.country}}</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">{{ 'REVIEW_PAGE_PASSPORT_NUMBER' | translate }}</div>
+                            <div class="info-value">{{passenger.passportNumber}}</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">{{ 'REVIEW_PAGE_ISSUED_BY' | translate }}</div>
+                            <div class="info-value">{{passenger.issuedBy}}</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">{{ 'REVIEW_PAGE_PASSPORT_EXPIRY_DATE' | translate }}</div>
+                            <div class="info-value">{{passenger.expireDate | date:'dd/MM/yyyy'}}</div>
+                        </div>
+                    </div>
+                    <div class="info-divider" *ngIf="passenger == passengers[0]"></div>
+                    <div class="info-section" *ngIf="passenger == passengers[0]">
+                        <div class="info-title">{{ 'REVIEW_PAGE_CONTACT_INFORMATION' | translate }}</div>
+                        <div class="info-row">
+                            <div class="info-label">{{ 'REVIEW_PAGE_CONTACT_Mobile_Number' | translate }}</div>
+                            <div class="info-value">({{passenger.dialCode}}) {{passenger.phoneNumber}}</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">{{ 'REVIEW_PAGE_CONTACT_Email' | translate }}</div>
+                            <div class="info-value">{{passenger.email}}</div>
+                        </div>
+                    </div>
+                    <div class="info-divider" *ngIf="passenger.needsSpecialAssistance"></div>
+                    <div class="special-assistance-container" *ngIf="passenger.needsSpecialAssistance">
+                        <p class="special-assistance-title">ผู้โดยสารต้องการความช่วยเหลือพิเศษ</p>
+                        <p class="special-assistance-sub">({{ getSpecialAssistanceList(passenger) }})</p>
+                    </div>
+                    <u class="more-info-btn" (click)="togglePassengerInfo(i)">{{ 'REVIEW_PAGE_CLOSE_DATA_PASSENGER' |
+                        translate }}</u>
+                </div>
+            </div>
+            <div class="accordion-body" *ngIf="isPassengerInfoOpen[i]">
+                <u style="font-size: 18px; font-weight: 400; color: #858585;" (click)="togglePassengerInfo(i)">{{
+                    'REVIEW_PAGE_OPEN_DATA_PASSENGER' | translate }}</u>
+            </div>
+        </div>
+        <!-- Flight Info -->
+
+        <div class="container-flight-card" [ngClass]="{ 'single-direction': (hasOutboundDirection() && !hasInboundDirection()) || (hasInboundDirection() && !hasOutboundDirection()) }">
+            <p class="info-title">{{ 'REVIEW_PAGE_TRAVEL_INFORMATION' | translate }}</p>
+            
+            <!-- ขาไป (Outbound) -->
+            <div class="flight-section" *ngIf="outboundFlightData.length > 0">
+                <div class="flight-card-stack">
+                    <div class="flight-card-tab">
+                        <div class="flight-card-content"
+                            style="display: flex; align-items: center; justify-content: center;">
+                            <div class="flight-card-tab-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M8 21H10L15 13H20.5C21.33 13 22 12.33 22 11.5C22 10.67 21.33 10 20.5 10H15L10 2H8L10.5 10H5L3.5 8H2L3 11.5L2 15H3.5L5 13H10.5L8 21Z"
+                                        fill="black" />
+                                </svg>
+                            </div>
+                            <div class="flight-card-tab-title">{{ 'REVIEW_PAGE_OUTBOUND' | translate }}</div>
+                        </div>
+                    </div>
+
+                    <div class="flight-card">
+                        <div class="flight-card-header">
+                            <span class="flight-date">{{ getFlightDate(outboundFlightData[0].departureDateTime) }}</span>
+                            <span class="flight-duration">{{ getTotalDuration(outboundFlightData) }}</span>
+                            <span class="flight-code">{{ getFlightNumbers(outboundFlightData) }}</span>
+                        </div>
+                        <div class="flight-time-row">
+                            <span class="flight-time flight-time-depart">{{ getFlightTime(outboundFlightData[0].departureDateTime) }}</span>
+                            <span class="flight-dash"><span></span></span>
+                            <span class="flight-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M8 21H10L15 13H20.5C21.33 13 22 12.33 22 11.5C22 10.67 21.33 10 20.5 10H15L10 2H8L10.5 10H5L3.5 8H2L3 11.5L2 15H3.5L5 13H10.5L8 21Z"
+                                        fill="#FCCD01" />
+                                </svg>
+                            </span>
+                            <span class="flight-dash"><span></span></span>
+                            <span class="flight-time flight-time-arrive">{{ getFlightTime(outboundFlightData[outboundFlightData.length - 1].arrivalDateTime) }}</span>
+                        </div>
+                        <div class="flight-detail-row">
+                            <span class="flight-place">{{ outboundFlightData[0].originAirportName }} ({{ outboundFlightData[0].originAirportCode }})</span>
+                            <span class="flight-stop" *ngIf="outboundFlightData.length > 1">{{ outboundFlightData.length - 1 }} Stop</span>
+                            <span class="flight-place">{{ outboundFlightData[outboundFlightData.length - 1].destinationAirportName }} ({{ outboundFlightData[outboundFlightData.length - 1].destinationAirportCode }})</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ขากลับ (Inbound) - ถ้ามีข้อมูล -->
+            <div class="flight-section" *ngIf="inboundFlightData && inboundFlightData.length > 0">
+                <div class="flight-card-stack">
+                    <div class="flight-card-tab">
+                        <div class="flight-card-content"
+                            style="display: flex; align-items: center; justify-content: center;">
+                            <div class="flight-card-tab-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M16 3H14L9 11H3.5C2.67 11 2 11.67 2 12.5C2 13.33 2.67 14 3.5 14H9L14 22H16L13.5 14H19L20.5 16H22L21 12.5L22 9H20.5L19 11H13.5L16 3Z"
+                                        fill="black" />
+                                </svg>
+                            </div>
+                            <div class="flight-card-tab-title">{{ 'REVIEW_PAGE_INBOUND' | translate }}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flight-card">
+                        <div class="flight-card-header">
+                            <span class="flight-date">{{ getFlightDate(inboundFlightData[0].departureDateTime) }}</span>
+                            <span class="flight-duration">{{ getTotalDuration(inboundFlightData) }}</span>
+                            <span class="flight-code">{{ getFlightNumbers(inboundFlightData) }}</span>
+                        </div>
+                        <div class="flight-time-row">
+                            <span class="flight-time flight-time-depart">{{ getFlightTime(inboundFlightData[0].departureDateTime) }}</span>
+                            <span class="flight-dash"><span></span></span>
+                            <span class="flight-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M8 21H10L15 13H20.5C21.33 13 22 12.33 22 11.5C22 10.67 21.33 10 20.5 10H15L10 2H8L10.5 10H5L3.5 8H2L3 11.5L2 15H3.5L5 13H10.5L8 21Z"
+                                        fill="#FCCD01" />
+                                </svg>
+                            </span>
+                            <span class="flight-dash"><span></span></span>
+                            <span class="flight-time flight-time-arrive">{{ getFlightTime(inboundFlightData[inboundFlightData.length - 1].arrivalDateTime) }}</span>
+                        </div>
+                        <div class="flight-detail-row">
+                            <span class="flight-place">{{ inboundFlightData[0].originAirportName }} ({{ inboundFlightData[0].originAirportCode }})</span>
+                            <span class="flight-stop" *ngIf="inboundFlightData.length > 1">{{ inboundFlightData.length - 1 }} Stop</span>
+                            <span class="flight-place">{{ inboundFlightData[inboundFlightData.length - 1].destinationAirportName }} ({{ inboundFlightData[inboundFlightData.length - 1].destinationAirportCode }})</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <ng-container>
+            <div class="container-Seat-flight">
+                <div class="info-title">{{ 'REVIEW_PAGE_ADDITIONAL_SERVICES' | translate }}</div>
+                <div class="passenger-list">
+                    <div class="passenger-seat-title" *ngIf="hasOutboundSeats() || hasOutbound2Seats() || hasInboundSeats() || hasInbound2Seats()">
+                        <p>{{ 'REVIEW_PAGE_SEAT_SELECTION' | translate }}</p>
+                        <div class="edit-info-seat" (click)="editInfoSelectSeat()">
+                            <svg width="16" height="17" viewBox="0 0 16 17" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M9.99935 4.50045L11.9993 6.50045M8.66602 13.8338H13.9993M3.33268 11.1671L2.66602 13.8338L5.33268 13.1671L13.0567 5.44312C13.3066 5.19308 13.4471 4.854 13.4471 4.50045C13.4471 4.1469 13.3066 3.80782 13.0567 3.55778L12.942 3.44312C12.692 3.19315 12.3529 3.05273 11.9993 3.05273C11.6458 3.05273 11.3067 3.19315 11.0567 3.44312L3.33268 11.1671Z"
+                                    stroke="#DE3024" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <p>{{ 'REVIEW_PAGE_EDIT' | translate }}</p>
+                        </div>
+                    </div>
+
+                    <div *ngIf="hasOutboundSeats()">
+                        <p class="title-type-seat" *ngIf="hasInboundDirection()">{{ 'REVIEW_PAGE_OUTBOUND' | translate }}</p>
+                        <!-- แสดงตาม seat ที่ถูกเลือกจริง พร้อมชื่อผู้โดยสารที่เลือก -->
+                        <ng-container *ngFor="let s of getSelectedSeatsForSegment('outbound1')">
+                          <div class="list-item">
+                            {{ (getPassengerIndexBySeat('outbound1', s.label) + 1) }}. {{ getPassengerNameByIndex(getPassengerIndexBySeat('outbound1', s.label)) }}
+                            <div class="seat-info">
+                              <span>{{ s.label }}</span>
+                            </div>
+                          </div>
+                        </ng-container>
+                    </div>
+
+                    <div *ngIf="hasOutbound2Seats()">
+                        <p class="title-type-seat" *ngIf="hasInboundDirection()">{{ 'REVIEW_PAGE_OUTBOUND_CONNECTING' | translate }}</p>
+                        <p class="title-type-seat" *ngIf="!hasInboundDirection() && hasOutboundDirection()">{{ 'CONNECT_FLIGHT' | translate }}</p>
+                        <!-- แสดงตาม seat ที่ถูกเลือกจริง พร้อมชื่อผู้โดยสารที่เลือก -->
+                        <ng-container *ngFor="let s of getSelectedSeatsForSegment('outbound2')">
+                          <div class="list-item">
+                            {{ (getPassengerIndexBySeat('outbound2', s.label) + 1) }}. {{ getPassengerNameByIndex(getPassengerIndexBySeat('outbound2', s.label)) }}
+                            <div class="seat-info">
+                              <span>{{ s.label }}</span>
+                            </div>
+                          </div>
+                        </ng-container>
+                    </div>
+
+                    
+                    <div *ngIf="hasInboundSeats()">
+                        <p class="title-type-seat" *ngIf="hasInboundDirection()">{{ 'REVIEW_PAGE_INBOUND' | translate }}</p>
+                        <!-- แสดงตาม seat ที่ถูกเลือกจริง พร้อมชื่อผู้โดยสารที่เลือก -->
+                        <ng-container *ngFor="let s of getSelectedSeatsForSegment('inbound1')">
+                          <div class="list-item">
+                            {{ (getPassengerIndexBySeat('inbound1', s.label) + 1) }}. {{ getPassengerNameByIndex(getPassengerIndexBySeat('inbound1', s.label)) }}
+                            <div class="seat-info">
+                              <span>{{ s.label }}</span>
+                            </div>
+                          </div>
+                        </ng-container>
+                    </div>
+
+                    <div *ngIf="hasInbound2Seats()">
+                        <p class="title-type-seat" *ngIf="hasInboundDirection()">{{ 'REVIEW_PAGE_INBOUND_CONNECTING' | translate }}</p>
+                        <p class="title-type-seat" *ngIf="!hasInboundDirection() && hasOutboundDirection()">{{ 'CONNECT_FLIGHT' | translate }}</p>
+                        <!-- แสดงตาม seat ที่ถูกเลือกจริง พร้อมชื่อผู้โดยสารที่เลือก -->
+                        <ng-container *ngFor="let s of getSelectedSeatsForSegment('inbound2')">
+                          <div class="list-item">
+                            {{ (getPassengerIndexBySeat('inbound2', s.label) + 1) }}. {{ getPassengerNameByIndex(getPassengerIndexBySeat('inbound2', s.label)) }}
+                            <div class="seat-info">
+                              <span>{{ s.label }}</span>
+                            </div>
+                          </div>
+                        </ng-container>
+                    </div>
+
+                    <div class="no-seat-info" *ngIf="!hasOutboundSeats() && !hasOutbound2Seats() && !hasInboundSeats() && !hasInbound2Seats()">
+                        <div class="no-seat-info-text">{{ 'REVIEW_PAGE_NO_ADDITIONAL_SERVICES' | translate }}</div>
+                    </div>
+
+                </div>
+            </div>
+        </ng-container>
+
+        <!-- Service Bundle -->
+        <div class="bundle-title">{{ 'REVIEW_PAGE_SERVICE_BUNDLE' | translate }}</div>
+        
+        <!-- Outbound: แสดงเมื่อมีทิศทางขาไป -->
+        <div *ngIf="hasOutboundDirection()">
+            <div class="bundle-subtitle" *ngIf="hasInboundDirection()">{{ 'REVIEW_PAGE_OUTBOUND' | translate }}</div>
+            <!-- Outbound Service Bundle -->
+            <div class="service-bundle-section" *ngIf="hasOutboundServiceBundle() || hasOutboundPassengerBundle()">
+            <!-- กรณีมี bundle จาก API (แสดงการ์ดหลัก) -->
+            <div class="bundle-card" *ngIf="(hasOutboundServiceBundle() && outboundBundleDisplay) as obd">
+                <div class="bundle-icon">
+                    <img [src]="(obd.imageUrl || 'assets/imgs/service_bundle.png')" alt="Bundle Image">
+                </div>
+                <div class="bundle-body">
+                    <div class="bundle-name">{{ (obd.serviceName || 'Bundle') }}</div>
+                </div>
+                <div class="bundle-price">
+                    <div class="price">{{ (obd.amountIncludingVat || obd.amount) | number:'1.2-2' }} {{ obd.currency || 'THB' }}</div>
+                    <div class="price-discount" *ngIf="hasOutboundOriginalPrice()">
+                        <div class="old-price">{{ obd.originalAmount | number:'1.2-2' }} {{ obd.currency }}</div>
+                        <span class="discount-pill" *ngIf="hasOutboundDiscount()">-{{ obd.discountPercentage }}%</span>
+                    </div>
+                </div>
+                <div class="bundle-divider"></div>
+                <ul class="bundle-features">
+                    <li *ngFor="let f of getOutboundBundleFeatures()">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 11C8.76142 11 11 8.76142 11 6C11 3.23858 8.76142 1 6 1C3.23858 1 1 3.23858 1 6C1 8.76142 3.23858 11 6 11Z" stroke="#4F4F4F" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3.2 6.2L5.1 8L8.8 4.4" stroke="#4F4F4F" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        {{ f }}
+                    </li>
+                    <li *ngIf="hasOutboundPromotionalText()">{{ obd.promotionalText }}</li>
+                </ul>
+            </div>
+
+            <!-- กรณี bundle จากผู้โดยสารหลายรายการ: แสดงต่อกลุ่ม title ไม่ซ้ำ -->
+            <ng-container *ngIf="outboundBundleGroups && outboundBundleGroups.length > 0">
+                <div class="bundle-passenger" *ngFor="let g of outboundBundleGroups">
+                    <div class="bundle-passenger-list">
+                        <div class="bundle-passenger-header">
+                            <span>{{ g.passengers.length }} {{ 'REVIEW_PAGE_PASSENGERS_BUY_THIS_BUNDLE' | translate }}</span>
+                            <u (click)="toggleOutboundGroup(g.title)">{{ (outboundBundleGroupOpen[g.title] !== false) ? ( 'REVIEW_PAGE_HIDE_DETAILS' | translate ) : ( 'REVIEW_PAGE_SHOW_DETAILS' | translate ) }}</u>
+                        </div>
+                        <ng-container *ngIf="outboundBundleGroupOpen[g.title] !== false">
+                            <div class="bundle-passenger-list-item" *ngFor="let p of g.passengers; let idx = index">{{ idx+1 }} {{ p.firstName }} {{ p.lastName }}</div>
+                        </ng-container>
+                    </div>
+                    <div class="bundle-card">
+                        <div class="bundle-icon">
+                            <img [src]="(g.sample?.imageUrl || 'assets/imgs/service_bundle.png')" alt="Bundle Image">
+                        </div>
+                        <div class="bundle-body">
+                            <div class="bundle-name">{{ g.sample?.serviceName || g.title }}</div>
+                        </div>
+                        <div class="bundle-price">
+                            <div class="price">{{ (g.sample?.amountIncludingVat || g.sample?.amount) | number:'1.2-2' }} {{ g.sample?.currency || 'THB' }}</div>
+                            <div class="price-discount" *ngIf="g.sample && (g.sample.originalAmount !== g.sample.amount || g.sample.discountPercentage > 0)">
+                                <div class="old-price" *ngIf="g.sample && g.sample.originalAmount !== g.sample.amount">{{ g.sample.originalAmount | number:'1.2-2' }} {{ g.sample.currency }}</div>
+                                <span class="discount-pill" *ngIf="g.sample && g.sample.discountPercentage > 0">-{{ g.sample.discountPercentage }}%</span>
+                            </div>
+                        </div>
+                        <div class="bundle-divider"></div>
+                        <ul class="bundle-features">
+                            <li *ngFor="let f of (g.sample ? (g.sample.includedServices || []) : [])">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6 11C8.76142 11 11 8.76142 11 6C11 3.23858 8.76142 1 6 1C3.23858 1 1 3.23858 1 6C1 8.76142 3.23858 11 6 11Z" stroke="#4F4F4F" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M3.2 6.2L5.1 8L8.8 4.4" stroke="#4F4F4F" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                {{ (f.description || f.serviceName) }}
+                            </li>
+                            <li *ngIf="g.sample && g.sample.promotionalText">{{ g.sample.promotionalText }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </ng-container>
+            </div>
+            <!-- ไม่มีการเลือก bundle สำหรับขาไป -->
+            <div class="no-bundle-info" *ngIf="!hasOutboundServiceBundle() && !hasOutboundPassengerBundle()">{{ 'REVIEW_PAGE_NO_SERVICE_BUNDLE' | translate }}</div>
+        </div>
+
+        <!-- Inbound - Not selected state -->
+        <!-- <div class="no-bundle-group" *ngIf="!hasInboundServiceBundle() && !hasInboundPassengerBundle()">
+            <div class="bundle-subtitle">ขากลับ</div>
+            <div class="no-bundle-info">ไม่ได้เลือก service bundle</div>
+        </div> -->
+
+        <!-- Inbound: แสดงเมื่อมีทิศทางขากลับ -->
+        <div *ngIf="hasInboundDirection()">
+            <div class="bundle-subtitle" *ngIf="hasInboundDirection()">{{ 'REVIEW_PAGE_INBOUND' | translate }}</div>
+            <!-- Inbound Service Bundle -->
+            <div class="service-bundle-section" *ngIf="hasInboundServiceBundle() || hasInboundPassengerBundle()">
+            <!-- การ์ดหลักจาก API ถ้ามี -->
+            <div class="bundle-card" *ngIf="(hasInboundServiceBundle() && inboundBundleDisplay) as ibd">
+                <div class="bundle-icon">
+                    <img [src]="(ibd.imageUrl || 'assets/imgs/service_bundle.png')" alt="Bundle Image">
+                </div>
+                <div class="bundle-body">
+                    <div class="bundle-name">{{ (ibd.serviceName || 'Bundle') }}</div>
+                </div>
+                <div class="bundle-price">
+                    <div class="price">{{ (ibd.amountIncludingVat || ibd.amount) | number:'1.2-2' }} {{ ibd.currency || 'THB' }}</div>
+                    <div class="price-discount" *ngIf="hasInboundOriginalPrice()">{{ ibd.originalAmount | number:'1.2-2' }} {{ ibd.currency }}  <span class="discount-pill" *ngIf="hasInboundDiscount()">-{{ ibd.discountPercentage }}%</span></div>
+                </div>
+                <div class="bundle-divider"></div>
+                <ul class="bundle-features">
+                    <li *ngFor="let f of getInboundBundleFeatures()">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 11C8.76142 11 11 8.76142 11 6C11 3.23858 8.76142 1 6 1C3.23858 1 1 3.23858 1 6C1 8.76142 3.23858 11 6 11Z" stroke="#4F4F4F" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3.2 6.2L5.1 8L8.8 4.4" stroke="#4F4F4F" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        {{ f }}
+                    </li>
+                    <li *ngIf="hasInboundPromotionalText()">{{ ibd.promotionalText }}</li>
+                </ul>
+            </div>
+
+            <!-- กลุ่มจากผู้โดยสาร ไม่ซ้ำตาม title -->
+            <ng-container *ngIf="inboundBundleGroups && inboundBundleGroups.length > 0">
+                <div class="bundle-passenger" *ngFor="let g of inboundBundleGroups">
+                    <div class="bundle-passenger-list">
+                        <div class="bundle-passenger-header">
+                            <span>{{ g.passengers.length }} {{ 'REVIEW_PAGE_PASSENGERS_BUY_THIS_BUNDLE' | translate }}</span>
+                            <u (click)="toggleInboundGroup(g.title)">{{ (inboundBundleGroupOpen[g.title] !== false) ? ( 'REVIEW_PAGE_HIDE_DETAILS' | translate ) : ( 'REVIEW_PAGE_SHOW_DETAILS' | translate ) }}</u>
+                        </div>
+                        <ng-container *ngIf="inboundBundleGroupOpen[g.title] !== false">
+                            <div class="bundle-passenger-list-item" *ngFor="let p of g.passengers; let idx = index">{{ idx+1 }} {{ p.firstName }} {{ p.lastName }}</div>
+                        </ng-container>
+                    </div>
+                    <div class="bundle-card">
+                        <div class="bundle-icon">
+                            <img [src]="(g.sample?.imageUrl || 'assets/imgs/service_bundle.png')" alt="Bundle Image">
+                        </div>
+                        <div class="bundle-body">
+                            <div class="bundle-name">{{ g.sample?.serviceName || g.title }}</div>
+                        </div>
+                        <div class="bundle-price">
+                            <div class="price">{{ (g.sample?.amountIncludingVat || g.sample?.amount) | number:'1.2-2' }} {{ g.sample?.currency || 'THB' }}</div>
+                            <div class="price-discount" *ngIf="g.sample && (g.sample.originalAmount !== g.sample.amount || g.sample.discountPercentage > 0)">
+                                <div class="old-price" *ngIf="g.sample && g.sample.originalAmount !== g.sample.amount">{{ g.sample.originalAmount | number:'1.2-2' }} {{ g.sample.currency }}</div>
+                                <span class="discount-pill" *ngIf="g.sample && g.sample.discountPercentage > 0">-{{ g.sample.discountPercentage }}%</span>
+                            </div>
+                        </div>
+                        <div class="bundle-divider"></div>
+                        <ul class="bundle-features">
+                            <li *ngFor="let f of (g.sample ? (g.sample.includedServices || []) : [])">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6 11C8.76142 11 11 8.76142 11 6C11 3.23858 8.76142 1 6 1C3.23858 1 1 3.23858 1 6C1 8.76142 3.23858 11 6 11Z" stroke="#4F4F4F" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M3.2 6.2L5.1 8L8.8 4.4" stroke="#4F4F4F" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                {{ (f.description || f.serviceName) }}
+                            </li>
+                            <li *ngIf="g.sample && g.sample.promotionalText">{{ g.sample.promotionalText }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </ng-container>
+            </div>
+            <!-- ไม่มีการเลือก bundle สำหรับขากลับ -->
+            <div class="no-bundle-info" *ngIf="!hasInboundServiceBundle() && !hasInboundPassengerBundle()">{{ 'REVIEW_PAGE_NO_SERVICE_BUNDLE' | translate }}</div>
+        </div>
+
+        <div class="review-page-actions-space"></div>
+        <!-- Actions -->
+        <div class="action-container">
+            <div class="review-page-actions">
+                <button class="back-btn" (click)="goBack()"> {{ 'REVIEW_PAGE_GOBACK' | translate }}</button>
+                <button class="confirm-btn" (click)="goNext()"> {{ 'REVIEW_PAGE_CONFIRM' | translate }}</button>
+            </div>
+        </div>
+    </div>
+</div>
