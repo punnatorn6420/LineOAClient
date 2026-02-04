@@ -60,6 +60,9 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "allowedHosts": ["ad5d22d2541e.ngrok-free.app"]
+          },
           "configurations": {
             "production": {
               "buildTarget": "LineOAClient:build:production"
