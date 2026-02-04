@@ -24,11 +24,18 @@ export class LiffService {
   private profile: LiffProfile | null = null;
   private accessToken: string | null = null;
   private idToken: string | null = null;
+  private initError: string | null = null;
+  private initPromise: Promise<void> | null = null;
 
   constructor(private readonly platform: PlatformService) {}
 
   async init(): Promise<void> {
     if (!this.platform.isBrowser || this.initialized) {
+      return;
+    }
+
+    if (this.initPromise) {
+      await this.initPromise;
       return;
     }
 
@@ -38,8 +45,19 @@ export class LiffService {
       return;
     }
 
+    this.initPromise = this.runInit(liffId);
+    await this.initPromise;
+  }
+
+  getInitError(): string | null {
+    return this.initError;
+  }
+
+  private async runInit(liffId: string): Promise<void> {
+    this.initError = null;
+
     try {
-      await liff.init({ liffId });
+      await liff.init({ liffId, withLoginOnExternalBrowser: true });
       this.initialized = true;
 
       this.loggedIn = liff.isLoggedIn();
@@ -50,9 +68,19 @@ export class LiffService {
 
       this.accessToken = liff.getAccessToken();
       this.idToken = liff.getIDToken();
+
+      if (!this.accessToken) {
+        this.loggedIn = false;
+        liff.login({ redirectUri: window.location.href });
+        return;
+      }
+
       this.profile = await liff.getProfile();
     } catch (error) {
+      this.initError = error instanceof Error ? error.message : String(error);
       console.error('[LIFF] init failed', error);
+    } finally {
+      this.initPromise = null;
     }
   }
 
