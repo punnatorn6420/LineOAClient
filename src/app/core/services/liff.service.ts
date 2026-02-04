@@ -20,6 +20,7 @@ declare global {
 })
 export class LiffService {
   private initialized = false;
+  private loggedIn = false;
   private profile: LiffProfile | null = null;
   private accessToken: string | null = null;
   private idToken: string | null = null;
@@ -41,7 +42,8 @@ export class LiffService {
       await liff.init({ liffId });
       this.initialized = true;
 
-      if (!liff.isLoggedIn()) {
+      this.loggedIn = liff.isLoggedIn();
+      if (!this.loggedIn) {
         liff.login({ redirectUri: window.location.href });
         return;
       }
@@ -52,6 +54,14 @@ export class LiffService {
     } catch (error) {
       console.error('[LIFF] init failed', error);
     }
+  }
+
+  isInitialized(): boolean {
+    return this.initialized;
+  }
+
+  isLoggedIn(): boolean {
+    return this.loggedIn;
   }
 
   getProfile(): LiffProfile | null {
