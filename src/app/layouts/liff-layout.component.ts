@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
+import { NgIf } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { LanguageSwitcherComponent } from '../core/components/language-switcher.component';
-import { TranslatePipe } from '../core/pipes/translate.pipe';
+import { LiffService } from '../core/services/liff.service';
+import { PlatformService } from '../core/services/platform.service';
 
 @Component({
   selector: 'app-liff-layout',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [NgIf, RouterOutlet],
   template: `
     <div class="min-h-screen bg-[#f5f5f5] text-foreground">
       <header class="flex h-16 items-center bg-[#FCCD01] px-4">
@@ -25,9 +26,61 @@ import { TranslatePipe } from '../core/pipes/translate.pipe';
         </div> -->
       </header>
       <main class="mx-auto w-full max-w-3xl px-4 py-8 pb-44">
-        <router-outlet />
+        <section
+          *ngIf="!isLiffEnvironment()"
+          class="rounded-xl border border-border bg-white/90 p-4 text-[18px] text-foreground shadow-sm"
+        >
+          <p class="font-semibold">LINE LIFF status</p>
+          <p class="text-muted-foreground">
+            กรุณาเปิดผ่านแอป LINE ด้วยลิงก์ LIFF เท่านั้น (https://liff.line.me/&lt;LIFF_ID&gt;)
+          </p>
+        </section>
+
+        <section
+          *ngIf="isLiffEnvironment() && initError()"
+          class="rounded-xl border border-border bg-white/90 p-4 text-[18px] text-foreground shadow-sm"
+        >
+          <p class="font-semibold">LINE LIFF status</p>
+          <p class="text-red-600">LIFF init error: {{ initError() }}</p>
+          <p class="text-muted-foreground">
+            ตรวจสอบว่าได้ตั้งค่า LIFF URL และ LIFF ID ใน LINE Developers ให้ตรงกับโดเมนนี้แล้ว
+          </p>
+        </section>
+
+        <section
+          *ngIf="isLiffEnvironment() && !initError() && !liffLoggedIn()"
+          class="rounded-xl border border-border bg-white/90 p-4 text-[18px] text-foreground shadow-sm"
+        >
+          <p class="font-semibold">LINE LIFF status</p>
+          <p class="text-muted-foreground">
+            ระบบกำลังพาไปล็อกอิน LINE LIFF หากยังไม่ล็อกอิน โปรดเปิดผ่านลิงก์ LIFF ในแอป LINE
+            อีกครั้ง
+          </p>
+        </section>
+
+        <router-outlet *ngIf="liffLoggedIn()" />
       </main>
     </div>
   `,
 })
-export class LiffLayoutComponent {}
+export class LiffLayoutComponent implements OnInit {
+  protected readonly liffLoggedIn = signal(false);
+  protected readonly initError = signal<string | null>(null);
+  protected readonly isLiffEnvironment = signal(false);
+
+  constructor(
+    private readonly liffService: LiffService,
+    private readonly platform: PlatformService,
+  ) {}
+
+  ngOnInit(): void {
+    this.isLiffEnvironment.set(this.platform.isLiffEnvironment);
+    void this.loadLiffStatus();
+  }
+
+  private async loadLiffStatus(): Promise<void> {
+    await this.liffService.init();
+    this.liffLoggedIn.set(this.liffService.isLoggedIn());
+    this.initError.set(this.liffService.getInitError());
+  }
+}
