@@ -12,6 +12,22 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
+## LINE LIFF setup
+
+The app uses the `@line/liff` package. Set your LIFF ID in the HTML meta tag so the app can initialize and log in users.
+
+```html
+<meta name="liff-id" content="YOUR_LIFF_ID" />
+```
+
+If you prefer runtime configuration, you can also set a global:
+
+```html
+<script>
+  window.LIFF_ID = 'YOUR_LIFF_ID';
+</script>
+```
+
 ## Code scaffolding
 
 Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
