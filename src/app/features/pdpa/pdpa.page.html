@@ -1,6 +1,27 @@
 <section class="space-y-6 text-[22px] leading-relaxed text-foreground">
   <div class="space-y-4">
     <h1 class="text-[22px] font-bold">{{ 'PDPA_TITLE' | translate }}</h1>
+    <div class="rounded-xl border border-border bg-white/90 p-4 text-[18px] text-foreground shadow-sm">
+      <p class="font-semibold">LINE LIFF status</p>
+      <p>
+        Initialized:
+        <span class="font-medium" [class.text-green-600]="liffInitialized()">
+          {{ liffInitialized() ? 'Yes' : 'No' }}
+        </span>
+      </p>
+      <p>
+        Logged in:
+        <span class="font-medium" [class.text-green-600]="liffLoggedIn()">
+          {{ liffLoggedIn() ? 'Yes' : 'No' }}
+        </span>
+      </p>
+      <p *ngIf="liffLoggedIn() && liffDisplayName()">
+        Display name: <span class="font-medium">{{ liffDisplayName() }}</span>
+      </p>
+      <p *ngIf="!liffLoggedIn()" class="text-muted-foreground">
+        เปิดผ่านลิงก์ LIFF (https://liff.line.me/&lt;LIFF_ID&gt;) ใน LINE เพื่อให้ระบบล็อกอินอัตโนมัติ
+      </p>
+    </div>
     <p>{{ 'PDPA_INTRO' | translate }}</p>
 
     <h2 class="text-[22px] font-bold">{{ 'PDPA_PERSONAL_DATA_TITLE' | translate }}</h2>
