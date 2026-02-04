@@ -25,12 +25,13 @@ export class LiffService {
   private accessToken: string | null = null;
   private idToken: string | null = null;
   private initError: string | null = null;
+  private inClient = false;
   private initPromise: Promise<void> | null = null;
 
   constructor(private readonly platform: PlatformService) {}
 
   async init(): Promise<void> {
-    if (!this.platform.isBrowser || this.initialized) {
+    if (!this.platform.isBrowser || this.initialized || !this.platform.isLiffEnvironment) {
       return;
     }
 
@@ -57,12 +58,18 @@ export class LiffService {
     this.initError = null;
 
     try {
-      await liff.init({ liffId, withLoginOnExternalBrowser: true });
+      await liff.init({ liffId, withLoginOnExternalBrowser: false });
       this.initialized = true;
+      this.inClient = liff.isInClient();
+
+      if (!this.inClient) {
+        this.initError = 'LIFF must be opened inside the LINE app.';
+        return;
+      }
 
       this.loggedIn = liff.isLoggedIn();
       if (!this.loggedIn) {
-        liff.login({ redirectUri: window.location.href });
+        liff.login({ redirectUri: this.getRedirectUri() });
         return;
       }
 
@@ -71,7 +78,7 @@ export class LiffService {
 
       if (!this.accessToken) {
         this.loggedIn = false;
-        liff.login({ redirectUri: window.location.href });
+        liff.login({ redirectUri: this.getRedirectUri() });
         return;
       }
 
@@ -104,6 +111,10 @@ export class LiffService {
     return this.idToken;
   }
 
+  isInClient(): boolean {
+    return this.inClient;
+  }
+
   private getLiffId(): string | null {
     if (!this.platform.isBrowser) {
       return null;
@@ -117,5 +128,10 @@ export class LiffService {
 
     const windowValue = (window as { LIFF_ID?: string }).LIFF_ID?.trim();
     return windowValue && windowValue.length > 0 ? windowValue : null;
+  }
+
+  private getRedirectUri(): string {
+    const { origin, pathname } = window.location;
+    return `${origin}${pathname}`;
   }
 }
