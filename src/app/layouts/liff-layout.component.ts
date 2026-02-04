@@ -18,12 +18,6 @@ import { PlatformService } from '../core/services/platform.service';
             class="h-full w-full object-cover"
           />
         </div>
-        <!-- <div class="text-2xl font-bold text-black">
-          {{ 'layout.liff.title' | translate }}
-        </div> -->
-        <!-- <div class="ml-auto">
-          <app-language-switcher />
-        </div> -->
       </header>
       <main class="mx-auto w-full max-w-3xl px-4 py-8 pb-44">
         <section
@@ -44,6 +38,10 @@ import { PlatformService } from '../core/services/platform.service';
           <p class="text-red-600">LIFF init error: {{ initError() }}</p>
           <p class="text-muted-foreground">
             ตรวจสอบว่าได้ตั้งค่า LIFF URL และ LIFF ID ใน LINE Developers ให้ตรงกับโดเมนนี้แล้ว
+          </p>
+          <p *ngIf="isDeveloperRoleError()" class="text-muted-foreground">
+            ช่อง LINE OA นี้ยังอยู่สถานะ Developing ต้องเพิ่มผู้ใช้เป็น Developer/Tester หรือเปลี่ยน
+            Channel status เป็น Published เพื่อให้ผู้ใช้ทั่วไปเข้าได้
           </p>
         </section>
 
@@ -82,5 +80,10 @@ export class LiffLayoutComponent implements OnInit {
     await this.liffService.init();
     this.liffLoggedIn.set(this.liffService.isLoggedIn());
     this.initError.set(this.liffService.getInitError());
+  }
+
+  protected isDeveloperRoleError(): boolean {
+    const message = this.initError();
+    return message ? /developing status|developer role/i.test(message) : false;
   }
 }
