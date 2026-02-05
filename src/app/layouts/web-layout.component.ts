@@ -1,27 +1,28 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { LanguageSwitcherComponent } from '../core/components/language-switcher.component';
-import { TranslatePipe } from '../core/pipes/translate.pipe';
 
 @Component({
   selector: 'app-web-layout',
   standalone: true,
-  imports: [RouterOutlet, TranslatePipe, LanguageSwitcherComponent],
+  imports: [RouterOutlet],
   template: `
-    <div class="layout-page">
-      <header class="layout-header">
-        <div>
-          <div class="layout-brand">{{ 'layout.web.title' | translate }}</div>
-          <p class="layout-subtitle">{{ 'layout.web.subtitle' | translate }}</p>
+    <div class="min-h-screen bg-[#232323] md:px-4 md:py-6">
+      <div class="mx-auto min-h-screen w-full max-w-[390px] bg-white md:min-h-[780px] md:rounded-sm md:shadow-2xl">
+        <header class="border-b border-[#e7e7e7] px-4 py-2.5">
+          <div class="text-center leading-tight">
+            <p class="text-[20px] font-bold">Nokair Booking Flight</p>
+            <p class="text-[17px] text-[#666]">bookingflight.nokair.com</p>
+          </div>
+        </header>
+
+        <div class="h-16 bg-[#ffcd00] px-4 py-3">
+          <img src="/assets/images/nokair-logo.png" alt="Nok Air logo" class="h-10 w-auto" />
         </div>
-        <div class="flex items-center gap-3">
-          <app-language-switcher />
-          <div class="layout-badge">{{ 'layout.web.badge' | translate }}</div>
-        </div>
-      </header>
-      <main class="layout-content">
-        <router-outlet />
-      </main>
+
+        <main class="px-4 pb-44 pt-5">
+          <router-outlet />
+        </main>
+      </div>
     </div>
   `,
 })

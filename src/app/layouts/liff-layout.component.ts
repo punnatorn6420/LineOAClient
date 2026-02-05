@@ -8,62 +8,31 @@ import { PlatformService } from '../core/services/platform.service';
   standalone: true,
   imports: [RouterOutlet],
   template: `
-    <div class="min-h-screen bg-[#f5f5f5] text-foreground">
-      <header class="flex h-16 items-center bg-[#FCCD01] px-4">
-        <div class="w-24">
-          <img
-            src="/assets/images/nokair-logo.png"
-            alt="Nok Air logo"
-            class="h-full w-full object-cover"
-          />
+    <div class="min-h-screen bg-[#232323] md:px-4 md:py-6">
+      <div class="mx-auto min-h-screen w-full max-w-[390px] bg-white md:min-h-[780px] md:rounded-sm md:shadow-2xl">
+        <header class="border-b border-[#e7e7e7] px-4 py-2.5">
+          <div class="text-center leading-tight">
+            <p class="text-[20px] font-bold">Nokair Booking Flight</p>
+            <p class="text-[17px] text-[#666]">bookingflight.nokair.com</p>
+          </div>
+        </header>
+
+        <div class="h-16 bg-[#ffcd00] px-4 py-3">
+          <img src="/assets/images/nokair-logo.png" alt="Nok Air logo" class="h-10 w-auto" />
         </div>
-      </header>
-      <main class="mx-auto w-full max-w-3xl px-4 py-8 pb-44">
-        @if (!isLiffEnvironment()) {
-          <section
-            class="rounded-xl border border-border bg-white/90 p-4 text-[18px] text-foreground shadow-sm"
-          >
-            <p class="font-semibold">LINE LIFF status</p>
-            <p class="text-muted-foreground">
-              กรุณาเปิดผ่านแอป LINE ด้วยลิงก์ LIFF เท่านั้น (https://liff.line.me/&lt;LIFF_ID&gt;)
-            </p>
-          </section>
-        }
 
-        @if (isLiffEnvironment() && initError()) {
-          <section
-            class="rounded-xl border border-border bg-white/90 p-4 text-[18px] text-foreground shadow-sm"
-          >
-            <p class="font-semibold">LINE LIFF status</p>
-            <p class="text-red-600">LIFF init error: {{ initError() }}</p>
-            <p class="text-muted-foreground">
-              ตรวจสอบว่าได้ตั้งค่า LIFF URL และ LIFF ID ใน LINE Developers ให้ตรงกับโดเมนนี้แล้ว
-            </p>
-            @if (isDeveloperRoleError()) {
-              <p class="text-muted-foreground">
-                ช่อง LINE OA นี้ยังอยู่สถานะ Developing ต้องเพิ่มผู้ใช้เป็น Developer/Tester
-                หรือเปลี่ยน Channel status เป็น Published เพื่อให้ผู้ใช้ทั่วไปเข้าได้
-              </p>
-            }
-          </section>
-        }
-
-        @if (isLiffEnvironment() && !initError() && !liffLoggedIn()) {
-          <section
-            class="rounded-xl border border-border bg-white/90 p-4 text-[18px] text-foreground shadow-sm"
-          >
-            <p class="font-semibold">LINE LIFF status</p>
-            <p class="text-muted-foreground">
-              ระบบกำลังพาไปล็อกอิน LINE LIFF หากยังไม่ล็อกอิน โปรดเปิดผ่านลิงก์ LIFF ในแอป LINE
-              อีกครั้ง
-            </p>
-          </section>
-        }
-
-        @if (liffLoggedIn()) {
-          <router-outlet />
-        }
-      </main>
+        <main class="px-4 pb-44 pt-5">
+          @if (!isLiffEnvironment()) {
+            <p class="text-[18px] text-red-600">กรุณาเปิดผ่านแอป LINE เพื่อใช้งาน LIFF</p>
+          } @else if (initError()) {
+            <p class="text-[18px] text-red-600">LIFF init error: {{ initError() }}</p>
+          } @else if (!liffLoggedIn()) {
+            <p class="text-[18px] text-[#444]">กำลังตรวจสอบการล็อกอิน LINE...</p>
+          } @else {
+            <router-outlet />
+          }
+        </main>
+      </div>
     </div>
   `,
 })
@@ -86,10 +55,5 @@ export class LiffLayoutComponent implements OnInit {
     await this.liffService.init();
     this.liffLoggedIn.set(this.liffService.isLoggedIn());
     this.initError.set(this.liffService.getInitError());
-  }
-
-  protected isDeveloperRoleError(): boolean {
-    const message = this.initError();
-    return message ? /developing status|developer role/i.test(message) : false;
   }
 }
