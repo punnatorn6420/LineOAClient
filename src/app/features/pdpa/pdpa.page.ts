@@ -1,6 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { NgClass, NgIf } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HlmButton } from '@ui/button';
 import { HlmCheckbox } from '@ui/checkbox';
 import { LiffService } from '../../core/services/liff.service';
@@ -22,6 +22,7 @@ export class PdpaPage implements OnInit {
 
   constructor(
     private readonly router: Router,
+    private readonly route: ActivatedRoute,
     private readonly platform: PlatformService,
     private readonly consentService: PdpaConsentService,
     private readonly liffService: LiffService,
@@ -46,7 +47,7 @@ export class PdpaPage implements OnInit {
     this.consentService.setConsent(accepted);
 
     if (accepted) {
-      void this.router.navigate(['/form']);
+      void this.router.navigate(['../booking'], { relativeTo: this.route });
     }
   }
 
