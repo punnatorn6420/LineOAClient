@@ -1,66 +1,45 @@
-@layer theme, base, components, utilities;
-
 @import "@angular/cdk/overlay-prebuilt.css";
 
-@import "tailwindcss/theme.css" layer(theme);
-@import "tailwindcss/preflight.css" layer(base);
-@import "tailwindcss/utilities.css" layer(utilities);
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @font-face {
-  font-family: "DB Ozone X";
-  src: url("/assets/fonts/DB Ozone X.ttf") format("truetype");
+  font-family: 'DB Ozone X';
+  src: url('/assets/fonts/DB Ozone X.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "DB Ozone X";
-  src: url("/assets/fonts/DB Ozone X Italic.ttf") format("truetype");
+  font-family: 'DB Ozone X';
+  src: url('/assets/fonts/DB Ozone X Italic.ttf') format('truetype');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
-  font-family: "DB Ozone X";
-  src: url("/assets/fonts/DB Ozone X Med.ttf") format("truetype");
+  font-family: 'DB Ozone X';
+  src: url('/assets/fonts/DB Ozone X Med.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "DB Ozone X";
-  src: url("/assets/fonts/DB Ozone X Bd.ttf") format("truetype");
+  font-family: 'DB Ozone X';
+  src: url('/assets/fonts/DB Ozone X Bd.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
-html { font-size: 20px; }
+html {
+  font-size: 20px;
+}
 
 :root {
   color-scheme: light;
-  --font-family: "DB Ozone X", "Noto Sans Thai", system-ui, sans-serif;
-  --color-yellow-50: #fffae6;
-  --color-yellow-100: #fffeb2;
-  --color-yellow-200: #ffef8d;
-  --color-yellow-300: #ffdc5a;
-  --color-yellow-400: #ffcf39;
-  --color-yellow-500: #ffcb05; 
-  --color-yellow-600: #ebb907;
-  --color-yellow-700: #b59006;
-  --color-yellow-800: #8c7004;
-  --color-yellow-900: #6b5503;
-  --color-grey-50: #f8f8f8;
-  --color-grey-100: #eaeaea;
-  --color-grey-200: #e0e0e0;
-  --color-grey-300: #d2d2d2;
-  --color-grey-400: #c9c9c9;
-  --color-grey-500: #bcbcbc;
-  --color-grey-600: #ababab;
-  --color-grey-700: #858585;
-  --color-grey-800: #676767;
-  --color-grey-900: #4f4f4f;
+  --font-family: 'DB Ozone X', 'Noto Sans Thai', system-ui, sans-serif;
   --radius: 0.625rem;
   --background: 0 0% 100%;
   --foreground: 20 15% 10%;
@@ -82,47 +61,6 @@ html { font-size: 20px; }
   --input: 0 0% 88%;
   --ring: var(--primary);
   --focus: var(--ring);
-  --chart-1: 48 100% 51%;
-  --chart-2: 20 25% 35%;
-  --chart-3: 0 0% 40%;
-  --chart-4: 48 100% 40%;
-  --chart-5: 20 35% 20%;
-  --sidebar: 0 0% 98%;
-  --sidebar-foreground: 20 15% 10%;
-  --sidebar-primary: var(--primary);
-  --sidebar-primary-foreground: var(--primary-foreground);
-  --sidebar-accent: 0 0% 96%;
-  --sidebar-accent-foreground: 20 15% 10%;
-  --sidebar-border: 0 0% 88%;
-  --sidebar-ring: var(--ring);
-}
-
-html.dark {
-  color-scheme: dark;
-  --background: 20 15% 10%;
-  --foreground: 0 0% 98%;
-  --card: 20 15% 14%;
-  --card-foreground: 0 0% 98%;
-  --popover: 20 15% 14%;
-  --popover-foreground: 0 0% 98%;
-  --primary: 48 100% 51%;
-  --primary-foreground: 20 25% 10%;
-  --secondary: 0 0% 18%;
-  --secondary-foreground: 0 0% 98%;
-  --muted: 0 0% 18%;
-  --muted-foreground: 0 0% 70%;
-  --accent: 0 0% 18%;
-  --accent-foreground: 0 0% 98%;
-  --destructive: 0 70% 55%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 0 0% 18%;
-  --input: 0 0% 22%;
-  --ring: var(--primary);
-  --sidebar: 20 15% 12%;
-  --sidebar-foreground: 0 0% 98%;
-  --sidebar-accent: 0 0% 18%;
-  --sidebar-accent-foreground: 0 0% 98%;
-  --sidebar-border: 0 0% 18%;
 }
 
 body {
