@@ -8,31 +8,22 @@ import { PlatformService } from '../core/services/platform.service';
   standalone: true,
   imports: [RouterOutlet],
   template: `
-    <div class="min-h-screen bg-[#232323] md:px-4 md:py-6">
-      <div class="mx-auto min-h-screen w-full max-w-[390px] bg-white md:min-h-[780px] md:rounded-sm md:shadow-2xl">
-        <header class="border-b border-[#e7e7e7] px-4 py-2.5">
-          <div class="text-center leading-tight">
-            <p class="text-[20px] font-bold">Nokair Booking Flight</p>
-            <p class="text-[17px] text-[#666]">bookingflight.nokair.com</p>
-          </div>
-        </header>
-
-        <div class="h-16 bg-[#ffcd00] px-4 py-3">
-          <img src="/assets/images/nokair-logo.png" alt="Nok Air logo" class="h-10 w-auto" />
-        </div>
-
-        <main class="px-4 pb-44 pt-5">
-          @if (!isLiffEnvironment()) {
-            <p class="text-[18px] text-red-600">กรุณาเปิดผ่านแอป LINE เพื่อใช้งาน LIFF</p>
-          } @else if (initError()) {
-            <p class="text-[18px] text-red-600">LIFF init error: {{ initError() }}</p>
-          } @else if (!liffLoggedIn()) {
-            <p class="text-[18px] text-[#444]">กำลังตรวจสอบการล็อกอิน LINE...</p>
-          } @else {
-            <router-outlet />
-          }
-        </main>
+    <div class="min-h-screen bg-white text-black">
+      <div class="h-16 bg-[#ffcd00] px-4 py-3">
+        <img src="/assets/images/nokair-logo.png" alt="Nok Air logo" class="h-10 w-auto" />
       </div>
+
+      <main class="mx-auto w-full max-w-[430px] px-4 pb-44 pt-5">
+        @if (!isLiffEnvironment()) {
+          <p class="text-[18px] text-red-600">กรุณาเปิดผ่านแอป LINE เพื่อใช้งาน LIFF</p>
+        } @else if (initError()) {
+          <p class="text-[18px] text-red-600">LIFF init error: {{ initError() }}</p>
+        } @else if (!liffLoggedIn()) {
+          <p class="text-[18px] text-[#444]">กำลังตรวจสอบการล็อกอิน LINE...</p>
+        } @else {
+          <router-outlet />
+        }
+      </main>
     </div>
   `,
 })
