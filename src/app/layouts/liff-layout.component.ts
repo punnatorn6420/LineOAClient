@@ -9,13 +9,6 @@ import { PlatformService } from '../core/services/platform.service';
   imports: [RouterOutlet],
   template: `
     <div class="min-h-screen bg-white text-black">
-      <header class="border-b border-[#e7e7e7] bg-white px-4 py-2.5">
-        <div class="text-center leading-tight">
-          <p class="text-[20px] font-bold">Nokair Booking Flight</p>
-          <p class="text-[17px] text-[#666]">bookingflight.nokair.com</p>
-        </div>
-      </header>
-
       <div class="h-16 bg-[#ffcd00] px-4 py-3">
         <img src="/assets/images/nokair-logo.png" alt="Nok Air logo" class="h-10 w-auto" />
       </div>
