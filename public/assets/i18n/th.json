@@ -6,11 +6,6 @@
       "title": "LineOA Web",
       "subtitle": "ประสบการณ์บนเว็บไซต์",
       "badge": "Website"
-    },
-    "liff": {
-      "title": "NOKAIR",
-      "subtitle": "LIFF Experience",
-      "badge": "LINE"
     }
   },
   "language": {
@@ -18,14 +13,12 @@
     "en": "English"
   },
   "navigation": {
-    "backToWebsite": "กลับหน้าเว็บไซต์",
-    "lineMode": "โหมด LINE"
+    "backToWebsite": "กลับหน้าเว็บไซต์"
   },
   "form": {
     "title": "ฟอร์มการจอง",
     "description": "หน้านี้จะถูกย้ายจากโปรเจ็คเดิมในขั้นถัดไป ตอนนี้ใช้เพื่อรองรับ flow หลังการยินยอม PDPA.",
-    "backToPdpa": "กลับไปหน้า PDPA",
-    "lineMode": "โหมด LINE"
+    "backToPdpa": "กลับไปหน้า PDPA"
   },
   "pdpa": {
     "privacyNotice": "ประกาศความเป็นส่วนตัว",

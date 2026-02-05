@@ -6,11 +6,6 @@
       "title": "LineOA Web",
       "subtitle": "Web experience",
       "badge": "Website"
-    },
-    "liff": {
-      "title": "NOKAIR",
-      "subtitle": "LIFF Experience",
-      "badge": "LINE"
     }
   },
   "language": {
@@ -18,14 +13,12 @@
     "en": "English"
   },
   "navigation": {
-    "backToWebsite": "Back to website",
-    "lineMode": "LINE mode"
+    "backToWebsite": "Back to website"
   },
   "form": {
     "title": "Booking form",
     "description": "This page will be migrated from the legacy project in the next phase. For now it supports the post-consent PDPA flow.",
-    "backToPdpa": "Back to PDPA",
-    "lineMode": "LINE mode"
+    "backToPdpa": "Back to PDPA"
   },
   "pdpa": {
     "privacyNotice": "Privacy notice",
