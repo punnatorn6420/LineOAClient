@@ -12,20 +12,23 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Runtime flow architecture
+## Runtime architecture (refactored)
 
-The application currently uses a single **web flow** with lazy-loaded feature routes.
+The app is now structured with a **page-first + shared layout** standard:
+
+- `src/app/pages/*` keeps each page isolated (`home`, `pdpa`, `booking`).
+- Every page has its own `components/` folder for page-local UI parts.
+- `src/app/shared/layout/*` contains reusable shell elements:
+  - header
+  - footer
+  - layout skeleton loading state
+- Route-level lazy loading is used for every page.
 
 ### Route entry points
 
-- `/` : web entry page.
-- `/pdpa` : consent screen.
-- `/booking` : booking form page (placeholder for future full booking journey).
-
-### Why this structure
-
-- Keep implementation simple while building and validating pages step by step.
-- Retain lazy-loaded route structure for maintainability as the project grows.
+- `/` : home page.
+- `/pdpa` : consent page.
+- `/booking` : booking form page.
 
 ## Code scaffolding
 
@@ -58,16 +61,6 @@ To execute unit tests with the [Karma](https://karma-runner.github.io) test runn
 ```bash
 ng test
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
 ## Additional Resources
 
