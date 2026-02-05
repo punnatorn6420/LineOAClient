@@ -12,6 +12,32 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
+## Runtime flow architecture (LIFF + Desktop)
+
+The application is organized for scale with **flow-based routing** and **lazy loading**.
+
+### Route entry points
+
+- `/` : smart entry page. Detects environment and redirects to the correct flow.
+- `/liff/*` : LINE LIFF flow (requires LIFF environment and auth guard).
+- `/web/*` : Desktop / normal browser flow.
+
+### Why this structure
+
+- Clear separation of concerns for LIFF-specific behavior vs normal web browser behavior.
+- Better maintainability for a larger booking project (different auth/session/UI rules per flow).
+- Smaller initial bundle through lazy-loaded route trees.
+
+### Current feature paths per flow
+
+- `pdpa` → consent screen.
+- `booking` → booking form page (placeholder for future full booking journey).
+
+Example:
+
+- LIFF: `/liff/pdpa`, `/liff/booking`
+- Web: `/web/pdpa`, `/web/booking`
+
 ## LINE LIFF setup
 
 The app uses the `@line/liff` package. Set your LIFF ID in the HTML meta tag so the app can initialize and log in users.

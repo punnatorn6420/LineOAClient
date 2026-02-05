@@ -18,7 +18,7 @@ import { TranslatePipe } from '../../core/pipes/translate.pipe';
         {{ 'form.description' | translate }}
       </p>
       <div class="flex flex-wrap gap-3">
-        <a hlmBtn size="lg" class="border border-[#222] text-[20px] font-bold" routerLink="/pdpa">
+        <a hlmBtn size="lg" class="border border-[#222] text-[20px] font-bold" routerLink="../pdpa">
           {{ 'form.backToPdpa' | translate }}
         </a>
       </div>

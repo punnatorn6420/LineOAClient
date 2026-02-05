@@ -1,22 +1,25 @@
 import { Routes } from '@angular/router';
-import { LiffLayoutComponent } from './layouts/liff-layout.component';
-import { FormPage } from './features/form/form.page';
-import { PdpaPage } from './features/pdpa/pdpa.page';
 import { liffAuthGuard } from './core/guards/liff-auth.guard';
 
 export const routes: Routes = [
   {
     path: '',
-    component: LiffLayoutComponent,
+    loadComponent: () =>
+      import('./layouts/landing-redirect.component').then((m) => m.LandingRedirectComponent),
+  },
+  {
+    path: 'liff',
     canActivateChild: [liffAuthGuard],
-    children: [
-      { path: '', redirectTo: 'pdpa', pathMatch: 'full' },
-      { path: 'pdpa', component: PdpaPage },
-      { path: 'form', component: FormPage },
-    ],
+    loadComponent: () => import('./layouts/liff-layout.component').then((m) => m.LiffLayoutComponent),
+    loadChildren: () => import('./flows/liff/liff.routes').then((m) => m.LIFF_ROUTES),
+  },
+  {
+    path: 'web',
+    loadComponent: () => import('./layouts/web-layout.component').then((m) => m.WebLayoutComponent),
+    loadChildren: () => import('./flows/web/web.routes').then((m) => m.WEB_ROUTES),
   },
   {
     path: '**',
-    redirectTo: 'pdpa',
+    redirectTo: '',
   },
 ];
