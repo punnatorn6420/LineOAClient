@@ -12,47 +12,20 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Runtime flow architecture (LIFF + Desktop)
+## Runtime flow architecture
 
-The application is organized for scale with **flow-based routing** and **lazy loading**.
+The application currently uses a single **web flow** with lazy-loaded feature routes.
 
 ### Route entry points
 
-- `/` : smart entry page. Detects environment and redirects to the correct flow.
-- `/liff/*` : LINE LIFF flow (requires LIFF environment and auth guard).
-- `/web/*` : Desktop / normal browser flow.
+- `/` : web entry page.
+- `/pdpa` : consent screen.
+- `/booking` : booking form page (placeholder for future full booking journey).
 
 ### Why this structure
 
-- Clear separation of concerns for LIFF-specific behavior vs normal web browser behavior.
-- Better maintainability for a larger booking project (different auth/session/UI rules per flow).
-- Smaller initial bundle through lazy-loaded route trees.
-
-### Current feature paths per flow
-
-- `pdpa` → consent screen.
-- `booking` → booking form page (placeholder for future full booking journey).
-
-Example:
-
-- LIFF: `/liff/pdpa`, `/liff/booking`
-- Web: `/web/pdpa`, `/web/booking`
-
-## LINE LIFF setup
-
-The app uses the `@line/liff` package. Set your LIFF ID in the HTML meta tag so the app can initialize and log in users.
-
-```html
-<meta name="liff-id" content="YOUR_LIFF_ID" />
-```
-
-If you prefer runtime configuration, you can also set a global:
-
-```html
-<script>
-  window.LIFF_ID = 'YOUR_LIFF_ID';
-</script>
-```
+- Keep implementation simple while building and validating pages step by step.
+- Retain lazy-loaded route structure for maintainability as the project grows.
 
 ## Code scaffolding
 
