@@ -18,7 +18,12 @@
       </div>
 
       <label class="mt-4 flex items-start gap-3 cursor-pointer">
-        <input type="checkbox" class="mt-1 h-4 w-4 accent-yellow-400" />
+        <input
+          type="checkbox"
+          class="mt-1 h-4 w-4 accent-yellow-400"
+          [checked]="accepted"
+          (change)="accepted = !accepted"
+        />
         <span class="text-sm text-white/90"> ฉันอ่านและยอมรับนโยบายความเป็นส่วนตัว (PDPA) </span>
       </label>
 
