@@ -1,7 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
-import { PlatformService } from './platform.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,10 +12,7 @@ export class I18nService {
   private readonly loadedLanguages = new Map<string, Record<string, unknown>>();
   private readonly currentLanguageSignal = signal('th');
 
-  constructor(
-    private readonly http: HttpClient,
-    private readonly platform: PlatformService,
-  ) {}
+  constructor(private readonly http: HttpClient) {}
 
   init(): void {
     const preferred = this.getSavedLanguage() ?? 'th';
@@ -52,18 +48,10 @@ export class I18nService {
   }
 
   private getSavedLanguage(): string | null {
-    if (!this.platform.isBrowser) {
-      return null;
-    }
-
     return window.localStorage.getItem(this.storageKey);
   }
 
   private persistLanguage(language: string): void {
-    if (!this.platform.isBrowser) {
-      return;
-    }
-
     window.localStorage.setItem(this.storageKey, language);
   }
 
