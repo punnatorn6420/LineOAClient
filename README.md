@@ -1,101 +1,125 @@
 # LineOAClient
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.15.
+Angular + Tailwind + Spartan UI project for LINE OA (LIFF-first flow).
 
-## Development server
+## Architecture (current)
 
-To start a local development server, run:
+The app now uses a **page-centric + lazy-loaded** structure:
+
+- `src/app/app.routes.ts`
+- `src/app/pages/entry/page.ts`
+- `src/app/pages/landing/page.ts`
+- `src/app/pages/callback/page.ts`
+- `src/app/pages/pdpa/page.ts`
+- `src/app/pages/pdpa/components/pdpa-content.ts`
+- `src/app/pages/booking/page.ts`
+
+### Runtime flow
+
+1. User opens `/` → redirects to `/entry`.
+2. `/entry` checks environment:
+   - LIFF/LINE context → `/callback`
+   - normal web/desktop browser → `/landing`
+3. Guarded routes (`/callback`, `/pdpa`, `/booking`) require LIFF initialization and login.
+4. On desktop/web browser, user always sees landing instructions + QR.
+5. If opened in LINE in-app browser but still not LIFF context, landing page shows a **"เปิดผ่าน LIFF ตอนนี้"** button to jump to `https://liff.line.me/<LIFF_ID>`.
+
+> Important: Desktop browser with mobile responsive mode is still **not LIFF context**. It should still show landing page.
+
+---
+
+## How to run (local)
 
 ```bash
-ng serve
+npm install
+ng serve --host 0.0.0.0 --port 4200
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open locally at `http://localhost:4200`.
 
-## Runtime flow architecture (LIFF + Desktop)
+> Dev-server host allowlist is set to `allowedHosts: true` in `angular.json` for tunnel testing.
+> If you changed `angular.json`, **restart `ng serve`** (hot reload will not apply this server option).
 
-The application is organized for scale with **flow-based routing** and **lazy loading**.
+---
 
-### Route entry points
+## How to test with LINE / LIFF (using ngrok)
 
-- `/` : smart entry page. Detects environment and redirects to the correct flow.
-- `/liff/*` : LINE LIFF flow (requires LIFF environment and auth guard).
-- `/web/*` : Desktop / normal browser flow.
+Because LIFF callback must be public HTTPS, use ngrok tunnel.
 
-### Why this structure
+### 1) Start app + tunnel
 
-- Clear separation of concerns for LIFF-specific behavior vs normal web browser behavior.
-- Better maintainability for a larger booking project (different auth/session/UI rules per flow).
-- Smaller initial bundle through lazy-loaded route trees.
+Terminal A:
 
-### Current feature paths per flow
+```bash
+ng serve --host 0.0.0.0 --port 4200
+```
 
-- `pdpa` → consent screen.
-- `booking` → booking form page (placeholder for future full booking journey).
+Terminal B:
 
-Example:
+```bash
+ngrok http 4200
+```
 
-- LIFF: `/liff/pdpa`, `/liff/booking`
-- Web: `/web/pdpa`, `/web/booking`
+Copy HTTPS URL, for example:
 
-## LINE LIFF setup
+- `https://xxxx-xxxx.ngrok-free.app`
 
-The app uses the `@line/liff` package. Set your LIFF ID in the HTML meta tag so the app can initialize and log in users.
+### 2) Update LINE Developer Console (every time URL changes)
+
+In your **LINE Login channel**:
+
+- Callback URL: `https://xxxx-xxxx.ngrok-free.app/callback`
+
+In your **LIFF app settings**:
+
+- Endpoint URL: `https://xxxx-xxxx.ngrok-free.app`
+
+> If ngrok URL changes, LINE console URLs must be updated too.
+
+### 3) Open from LINE OA on phone
+
+- Open LINE app on mobile
+- Open your OA rich menu/chat menu that links to LIFF
+- LIFF URL should be something like `https://liff.line.me/<LIFF_ID>`
+
+---
+
+## Why your previous access failed
+
+From your screenshot/logs there were 2 separate issues:
+
+1. **Blocked host (Vite allowedHosts)**
+   - Error: `Blocked request. This host ... is not allowed.`
+   - Cause: ngrok domain not in dev server allowed hosts.
+   - Fixed in `angular.json` by setting `serve.options.allowedHosts: true` for dev tunnel testing.
+
+2. **ngrok endpoint offline**
+   - Error: `ERR_NGROK_3200 endpoint is offline`
+   - Cause: tunnel process stopped or domain rotated.
+   - Fix: restart `ngrok http 4200` and update new URL in LINE console again.
+
+---
+
+## LIFF ID configuration
+
+Set LIFF ID in `src/index.html`:
 
 ```html
 <meta name="liff-id" content="YOUR_LIFF_ID" />
 ```
 
-If you prefer runtime configuration, you can also set a global:
+---
 
-```html
-<script>
-  window.LIFF_ID = 'YOUR_LIFF_ID';
-</script>
-```
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Build
 
 ```bash
-ng generate component component-name
+npm run build
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Lint
 
 ```bash
-ng generate --help
+npm run lint
 ```
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+> Note: If lint fails with `@angular-eslint/directive-selector` missing, this is an existing tooling/config issue in `src/ui/form-field/*` and not related to LIFF routing flow.
