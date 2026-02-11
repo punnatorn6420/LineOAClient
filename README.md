@@ -22,6 +22,7 @@ The app now uses a **page-centric + lazy-loaded** structure:
    - normal web/desktop browser → `/landing`
 3. Guarded routes (`/callback`, `/pdpa`, `/booking`) require LIFF initialization and login.
 4. On desktop/web browser, user always sees landing instructions + QR.
+5. If opened in LINE in-app browser but still not LIFF context, landing page shows a **"เปิดผ่าน LIFF ตอนนี้"** button to jump to `https://liff.line.me/<LIFF_ID>`.
 
 > Important: Desktop browser with mobile responsive mode is still **not LIFF context**. It should still show landing page.
 
