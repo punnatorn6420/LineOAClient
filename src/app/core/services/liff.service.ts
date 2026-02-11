@@ -1,38 +1,51 @@
 import { Injectable } from '@angular/core';
-import liff from '@line/liff';
+import liff, { type Liff } from '@line/liff';
 import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class LiffService {
-  private inited = false;
+  private readyPromise?: Promise<Liff>;
 
-  async init(): Promise<void> {
-    if (this.inited) return;
+  ready(): Promise<Liff> {
+    if (!this.readyPromise) {
+      this.readyPromise = this.initialize();
+    }
+
+    return this.readyPromise;
+  }
+
+  private async initialize(): Promise<Liff> {
     await liff.init({ liffId: environment.liffId });
-    this.inited = true;
+    return liff;
   }
 
-  isInClient(): boolean {
-    return liff.isInClient();
+  async isInClient(): Promise<boolean> {
+    const liffInstance = await this.ready();
+    return liffInstance.isInClient();
   }
 
-  isLoggedIn(): boolean {
-    return liff.isLoggedIn();
+  async isLoggedIn(): Promise<boolean> {
+    const liffInstance = await this.ready();
+    return liffInstance.isLoggedIn();
   }
 
-  login(redirectUri?: string) {
-    liff.login({ redirectUri: redirectUri ?? window.location.href });
+  async login(redirectUri?: string): Promise<void> {
+    const liffInstance = await this.ready();
+    liffInstance.login({ redirectUri: redirectUri ?? window.location.href });
   }
 
   async getProfile() {
-    return await liff.getProfile();
+    const liffInstance = await this.ready();
+    return liffInstance.getProfile();
   }
 
-  getIdToken(): string | null {
-    return liff.getIDToken() ?? null;
+  async getIdToken(): Promise<string | null> {
+    const liffInstance = await this.ready();
+    return liffInstance.getIDToken() ?? null;
   }
 
-  closeWindow() {
-    liff.closeWindow();
+  async closeWindow(): Promise<void> {
+    const liffInstance = await this.ready();
+    liffInstance.closeWindow();
   }
 }

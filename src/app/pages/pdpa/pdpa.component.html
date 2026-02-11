@@ -1,41 +1,72 @@
-<div class="min-h-screen bg-zinc-950 text-white p-6">
-  <div class="mx-auto max-w-md">
-    <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-      <h1 class="text-xl font-semibold">PDPA Consent</h1>
-      <p class="mt-2 text-sm text-white/70">
-        กรุณายินยอมให้ Nok Air ใช้ข้อมูลของคุณเพื่อการให้บริการจองตั๋ว/ยืนยันตัวตน/ติดต่อสื่อสาร
-        และการปรับปรุงประสบการณ์ใช้งาน
+<div class="min-h-screen bg-[#ececec] text-[#1f1f1f]">
+  <div class="mx-auto min-h-screen w-full max-w-[430px] bg-[#ececec] shadow-sm">
+    <header class="bg-[#ffd400] px-5 py-4">
+      <img src="/assets/images/nokair-logo.png" alt="Nok Air" class="h-10 w-auto" />
+    </header>
+
+    <main class="px-5 pb-44 pt-5">
+      <h1 class="text-[22px] font-bold leading-tight">
+        {{ t('PDPA_TITLE') }}
+      </h1>
+
+      <p class="mt-4 text-[17px] leading-8 text-[#2a2a2a]">
+        {{ t('PDPA_INTRO') }}
       </p>
 
+      @for (section of sections; track section.titleKey; let idx = $index) {
+        <section class="mt-7 text-[#202020]">
+          <h2 class="text-[32px] font-extrabold leading-none opacity-20">{{ idx + 1 }}</h2>
+          <h3 class="mt-2 text-[30px] font-black leading-[1.02] break-words">
+            {{ t(section.titleKey) }}
+          </h3>
+
+          @if (section.paragraphKeys?.length) {
+            <div class="mt-4 space-y-4 text-[17px] leading-8">
+              @for (paragraphKey of section.paragraphKeys; track paragraphKey) {
+                <p>{{ t(paragraphKey) }}</p>
+              }
+            </div>
+          }
+
+          @if (section.listKeys?.length) {
+            <ul class="mt-4 list-disc space-y-3 pl-6 text-[17px] leading-8">
+              @for (itemKey of section.listKeys; track itemKey) {
+                <li>{{ t(itemKey) }}</li>
+              }
+            </ul>
+          }
+        </section>
+      }
+
+      <p class="mt-8 text-[16px] leading-7 text-[#2a2a2a]">{{ t('PDPA_ANNOUNCEMENT_DATE') }}</p>
+    </main>
+
+    <div class="fixed inset-x-0 bottom-0 z-20 bg-[#ececec]/95 px-4 pb-4 pt-3 backdrop-blur-sm">
       <div
-        class="mt-4 rounded-xl border border-white/10 bg-black/20 p-4 text-sm text-white/80 leading-relaxed"
+        class="mx-auto w-full max-w-[430px] rounded-t-xl border border-[#d0d0d0] bg-[#ececec] px-3 pt-3"
       >
-        <ul class="list-disc pl-5 space-y-2">
-          <li>เก็บข้อมูลโปรไฟล์จาก LINE (เช่น displayName, userId)</li>
-          <li>ใช้เพื่อเข้าสู่ระบบ และเชื่อมกับรายการจองของคุณ</li>
-          <li>คุณสามารถเพิกถอนความยินยอมได้ภายหลัง</li>
-        </ul>
+        <label class="flex items-start gap-3 text-[16px] leading-7 text-[#3b3b3b]">
+          <input
+            type="checkbox"
+            class="mt-1 h-6 w-6 shrink-0 rounded border-[#979797] accent-[#9a9a9a]"
+            [checked]="accepted"
+            (change)="accepted = !accepted"
+          />
+          <span>{{ t('PDPA_ACCEPT_TEXT') }}</span>
+        </label>
+
+        <button
+          class="mb-3 mt-4 w-full rounded-lg px-4 py-3 text-[30px] font-bold leading-none transition-colors"
+          [class.bg-[#cfcfcf]]="!accepted"
+          [class.text-[#8f8f8f]]="!accepted"
+          [class.bg-[#ffd400]]="accepted"
+          [class.text-[#111111]]="accepted"
+          [disabled]="!accepted"
+          (click)="onAccept()"
+        >
+          {{ t('PDPA_CONFIRM_BUTTON') }}
+        </button>
       </div>
-
-      <label class="mt-4 flex items-start gap-3 cursor-pointer">
-        <input type="checkbox" class="mt-1 h-4 w-4 accent-yellow-400" />
-        <span class="text-sm text-white/90"> ฉันอ่านและยอมรับนโยบายความเป็นส่วนตัว (PDPA) </span>
-      </label>
-
-      <button
-        class="mt-6 w-full rounded-xl bg-yellow-400 px-4 py-3 font-semibold text-black disabled:opacity-40"
-        [disabled]="!accepted"
-        (click)="onAccept()"
-      >
-        Accept
-      </button>
-
-      <button
-        class="mt-3 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/80"
-        (click)="onCancel()"
-      >
-        Cancel
-      </button>
     </div>
   </div>
 </div>
