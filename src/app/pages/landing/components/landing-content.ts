@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { HlmButton } from '@ui/button';
 import { HlmCard } from '@ui/card';
 import { PlatformService } from '../../../core/services/platform.service';
@@ -28,10 +28,15 @@ import { PlatformService } from '../../../core/services/platform.service';
 
       @if (platform.isLineUserAgent && liffDeepLink()) {
         <div class="rounded-md bg-amber-50 p-3 text-sm text-amber-700">
-          <p class="mb-2">
-            คุณเปิดผ่าน LINE แล้ว แต่หน้านี้ยังไม่ใช่ LIFF context ให้กดปุ่มด้านล่างเพื่อเข้า LIFF
-            โดยตรง
-          </p>
+          @if (autoRedirecting()) {
+            <p class="mb-2">กำลังพาไปยัง LIFF อัตโนมัติ...</p>
+          } @else {
+            <p class="mb-2">
+              คุณเปิดผ่าน LINE แล้ว แต่หน้านี้ยังไม่ใช่ LIFF context ให้กดปุ่มด้านล่างเพื่อเข้า LIFF
+              โดยตรง
+            </p>
+          }
+
           <a
             hlmBtn
             size="sm"
@@ -54,8 +59,9 @@ import { PlatformService } from '../../../core/services/platform.service';
     </section>
   `,
 })
-export class LandingContent {
+export class LandingContent implements OnInit {
   protected readonly platform = inject(PlatformService);
+  protected readonly autoRedirecting = signal(false);
   protected readonly liffDeepLink = computed(() => this.platform.liffDeepLink);
   protected readonly qrCodeUrl = computed(() => {
     const targetUrl =
@@ -63,4 +69,14 @@ export class LandingContent {
       (this.platform.isBrowser ? window.location.origin : 'https://line.me');
     return `https://api.qrserver.com/v1/create-qr-code/?size=320x320&data=${encodeURIComponent(targetUrl)}`;
   });
+
+  ngOnInit(): void {
+    const deepLink = this.platform.liffDeepLink;
+    if (this.platform.isLineUserAgent && !this.platform.isLiffEnvironment && deepLink) {
+      this.autoRedirecting.set(true);
+      setTimeout(() => {
+        window.location.href = deepLink;
+      }, 300);
+    }
+  }
 }

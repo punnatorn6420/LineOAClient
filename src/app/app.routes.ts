@@ -8,6 +8,11 @@ export const routes: Routes = [
     redirectTo: 'entry',
   },
   {
+    path: 'login',
+    pathMatch: 'full',
+    redirectTo: 'entry',
+  },
+  {
     path: 'entry',
     loadComponent: () => import('./pages/entry/page').then((m) => m.EntryPage),
   },

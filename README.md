@@ -84,6 +84,22 @@ In your **LIFF app settings**:
 
 ---
 
+### 4) Expected behavior (same idea as your screenshots)
+
+- Desktop browser (normal) -> show landing/"mobile only" explanation + QR.
+- Desktop with responsive mode is still desktop browser context (not real LIFF).
+- Phone opened via normal browser URL -> still landing (not allowed business flow).
+- Phone opened from LINE OA menu (LIFF URL) -> enters LIFF auth -> callback -> PDPA.
+- Phone opened in LINE in-app browser but not LIFF -> landing will auto jump to LIFF deep link and also show manual CTA.
+
+### 5) Required LINE configuration checklist
+
+1. LIFF app endpoint URL = `https://<your-domain-or-ngrok>`
+2. LINE Login callback URL = `https://<your-domain-or-ngrok>/callback`
+3. `src/index.html` meta `liff-id` must be the same LIFF ID configured in LINE Developers
+4. Open your app from OA rich menu using `https://liff.line.me/<LIFF_ID>`
+5. If ngrok URL changes, update both endpoint + callback again
+
 ## Why your previous access failed
 
 From your screenshot/logs there were 2 separate issues:
