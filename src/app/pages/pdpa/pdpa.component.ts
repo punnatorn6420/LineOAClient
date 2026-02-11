@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LiffService } from '../../core/services/liff.service';
 
 @Component({
   selector: 'app-pdpa',
@@ -8,25 +9,26 @@ import { Router } from '@angular/router';
 export class PdpaComponent {
   accepted = false;
 
-  constructor(private router: Router) {}
+  constructor(
+    private readonly router: Router,
+    private readonly liffService: LiffService,
+  ) {}
 
-  async onAccept() {
+  async onAccept(): Promise<void> {
     localStorage.setItem('pdpaAccepted', 'true');
     await this.router.navigateByUrl('/booking');
   }
 
-  onCancel() {
-    // ถ้าเปิดใน LIFF browser ใน LINE app ปิดหน้าต่างได้
+  async onCancel(): Promise<void> {
     try {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const liff = (window as any).liff;
-      if (liff?.isInClient?.()) {
-        liff.closeWindow();
+      if (await this.liffService.isInClient()) {
+        await this.liffService.closeWindow();
         return;
       }
-    } catch {}
+    } catch {
+      // ignore and fallback to route navigation
+    }
 
-    // ถ้าไม่ใช่ใน LINE app ก็กลับไป entry
-    this.router.navigateByUrl('/entry');
+    await this.router.navigateByUrl('/entry');
   }
 }
