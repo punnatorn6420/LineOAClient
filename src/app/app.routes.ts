@@ -4,22 +4,34 @@ import { liffAuthGuard } from './core/guards/liff-auth.guard';
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () =>
-      import('./layouts/landing-redirect.component').then((m) => m.LandingRedirectComponent),
+    pathMatch: 'full',
+    redirectTo: 'entry',
   },
   {
-    path: 'liff',
-    canActivateChild: [liffAuthGuard],
-    loadComponent: () => import('./layouts/liff-layout.component').then((m) => m.LiffLayoutComponent),
-    loadChildren: () => import('./flows/liff/liff.routes').then((m) => m.LIFF_ROUTES),
+    path: 'entry',
+    loadComponent: () => import('./pages/entry/page').then((m) => m.EntryPage),
   },
   {
-    path: 'web',
-    loadComponent: () => import('./layouts/web-layout.component').then((m) => m.WebLayoutComponent),
-    loadChildren: () => import('./flows/web/web.routes').then((m) => m.WEB_ROUTES),
+    path: 'landing',
+    loadComponent: () => import('./pages/landing/page').then((m) => m.LandingPage),
+  },
+  {
+    path: 'callback',
+    canActivate: [liffAuthGuard],
+    loadComponent: () => import('./pages/callback/page').then((m) => m.CallbackPage),
+  },
+  {
+    path: 'pdpa',
+    canActivate: [liffAuthGuard],
+    loadComponent: () => import('./pages/pdpa/page').then((m) => m.PdpaPage),
+  },
+  {
+    path: 'booking',
+    canActivate: [liffAuthGuard],
+    loadComponent: () => import('./pages/booking/page').then((m) => m.BookingPage),
   },
   {
     path: '**',
-    redirectTo: '',
+    redirectTo: 'entry',
   },
 ];
