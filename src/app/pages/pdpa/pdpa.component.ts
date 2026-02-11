@@ -108,6 +108,11 @@ export class PdpaComponent {
     return this.i18n.translate(key);
   }
 
+  onToggleAccepted(ev: Event): void {
+    const input = ev.target as HTMLInputElement | null;
+    this.accepted = !!input?.checked;
+  }
+
   async onAccept(): Promise<void> {
     localStorage.setItem('pdpaAccepted', 'true');
     await this.router.navigateByUrl('/booking');
