@@ -36,6 +36,9 @@ ng serve --host 0.0.0.0 --port 4200
 
 Open locally at `http://localhost:4200`.
 
+> Dev-server host allowlist is set to `allowedHosts: true` in `angular.json` for tunnel testing.
+> If you changed `angular.json`, **restart `ng serve`** (hot reload will not apply this server option).
+
 ---
 
 ## How to test with LINE / LIFF (using ngrok)
@@ -87,7 +90,7 @@ From your screenshot/logs there were 2 separate issues:
 1. **Blocked host (Vite allowedHosts)**
    - Error: `Blocked request. This host ... is not allowed.`
    - Cause: ngrok domain not in dev server allowed hosts.
-   - Fixed in `angular.json` by allowing `.ngrok-free.app` for development.
+   - Fixed in `angular.json` by setting `serve.options.allowedHosts: true` for dev tunnel testing.
 
 2. **ngrok endpoint offline**
    - Error: `ERR_NGROK_3200 endpoint is offline`
