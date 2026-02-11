@@ -1,0 +1,76 @@
+@import '@angular/cdk/overlay-prebuilt.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'DB Ozone X';
+  src: url('/assets/fonts/DB Ozone X.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DB Ozone X';
+  src: url('/assets/fonts/DB Ozone X Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DB Ozone X';
+  src: url('/assets/fonts/DB Ozone X Med.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DB Ozone X';
+  src: url('/assets/fonts/DB Ozone X Bd.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  --font-family: 'DB Ozone X', 'Noto Sans Thai', 'Prompt', system-ui, sans-serif;
+  --radius: 0.625rem;
+  --background: 0 0% 100%;
+  --foreground: 20 15% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 15% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 15% 10%;
+  --primary: 48 100% 51%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 96%;
+  --secondary-foreground: 20 15% 10%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 45%;
+  --accent: 48 100% 95%;
+  --accent-foreground: 20 25% 10%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 88%;
+  --input: 0 0% 88%;
+  --ring: var(--primary);
+  --focus: var(--ring);
+}
+
+html {
+  font-size: 20px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-family);
+}

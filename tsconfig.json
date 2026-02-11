@@ -1,0 +1,74 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@spartan-ng/helm/card": [
+        "src/app/ui/card/src/index.ts"
+      ],
+      "@spartan-ng/helm/utils": [
+        "src/app/ui/utils/src/index.ts"
+      ],
+      "@ui/card": [
+        "./src/ui/card/src/index.ts"
+      ],
+      "@ui/utils": [
+        "./src/ui/utils/src/index.ts"
+      ],
+      "@ui/dialog": [
+        "./src/ui/dialog/src/index.ts"
+      ],
+      "@ui/icon": [
+        "./src/ui/icon/src/index.ts"
+      ],
+      "@ui/input": [
+        "./src/ui/input/src/index.ts"
+      ],
+      "@ui/skeleton": [
+        "./src/ui/skeleton/src/index.ts"
+      ],
+      "@ui/form-field": [
+        "./src/ui/form-field/src/index.ts"
+      ],
+      "@ui/checkbox": [
+        "./src/ui/checkbox/src/index.ts"
+      ],
+      "@ui/calendar": [
+        "./src/ui/calendar/src/index.ts"
+      ],
+      "@ui/button": [
+        "./src/ui/button/src/index.ts"
+      ],
+      "@ui/select": [
+        "./src/ui/select/src/index.ts"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "typeCheckHostBindings": true,
+    "strictTemplates": true
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}
