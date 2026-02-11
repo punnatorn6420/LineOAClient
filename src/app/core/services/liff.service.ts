@@ -131,7 +131,6 @@ export class LiffService {
   }
 
   private getRedirectUri(): string {
-    const { origin, pathname } = window.location;
-    return `${origin}${pathname}`;
+    return `${window.location.origin}/callback`;
   }
 }
