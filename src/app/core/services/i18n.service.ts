@@ -48,10 +48,18 @@ export class I18nService {
   }
 
   private getSavedLanguage(): string | null {
+    if (typeof window === 'undefined') {
+      return null;
+    }
+
     return window.localStorage.getItem(this.storageKey);
   }
 
   private persistLanguage(language: string): void {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
     window.localStorage.setItem(this.storageKey, language);
   }
 
