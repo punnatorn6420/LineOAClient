@@ -1,415 +1,313 @@
-<div class="min-h-dvh bg-[#2f2f2f] px-3 py-6 text-[#222]">
-  <div class="mx-auto w-full max-w-[430px] overflow-hidden rounded-sm bg-white shadow-lg">
-    <div class="bg-[#ffd400] px-4 pt-3 pb-4">
-      <div class="flex items-center justify-center gap-2">
-        <img src="/assets/images/nokair-logo.png" alt="Nok Air" class="h-7 w-auto" />
-      </div>
-      <div class="mt-3">
-        <div class="relative mx-auto max-w-[380px]">
+<div class="mx-auto w-full max-w-md overflow-hidden rounded-sm bg-white shadow-lg">
+  <div
+    class="px-2 pt-3 pb-4 bg-no-repeat bg-cover bg-center"
+    style="background-image: url('/assets/images/header-booking.png')"
+  >
+    <div class="flex items-center justify-center gap-2">
+      <img src="/assets/images/nokair-logo.png" alt="Nok Air" class="h-7 w-auto" />
+    </div>
+    <div class="mt-3 py-4">
+      <div class="relative mx-auto max-w-md">
+        <div class="relative grid grid-cols-4 justify-items-center">
           <div
-            class="absolute left-6 right-6 top-1/2 -translate-y-1/2 border-t border-dashed border-[#c9a200]"
+            class="absolute left-[12.5%] right-[12.5%] top-4 z-0 border-t border-dashed border-[#b18a00]"
           ></div>
-          <div class="relative flex items-center justify-between text-[11px] font-medium text-[#6a6a6a]">
-            <div class="flex flex-col items-center gap-1">
-              <span class="grid h-6 w-6 place-items-center rounded-full bg-[#4c4c4c] text-white">1</span>
-              <span class="text-[#303030]">Enter Details</span>
-            </div>
 
-            <div class="flex flex-col items-center gap-1">
-              <span
-                class="grid h-6 w-6 place-items-center rounded-full border border-[#b18a00] bg-[#ffd400] text-[#303030]"
-                >2</span
-              >
-              <span>Select Seat</span>
+          <div class="relative z-10 flex flex-col items-center gap-2">
+            <div
+              class="flex h-8 w-8 items-center justify-center rounded-full bg-[#4c4c4c] text-lg font-semibold text-white"
+            >
+              1
             </div>
+            <span class="text-sm font-semibold text-[#303030]">กรอกข้อมูล</span>
+          </div>
 
-            <div class="flex flex-col items-center gap-1">
-              <span
-                class="grid h-6 w-6 place-items-center rounded-full border border-[#b18a00] bg-[#ffd400] text-[#303030]"
-                >3</span
-              >
-              <span>Review</span>
+          <div class="relative z-10 flex flex-col items-center gap-2">
+            <div
+              class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#b18a00] bg-[#FFCB08] text-lg font-semibold text-[#b18a00]"
+            >
+              2
             </div>
+            <span class="text-sm font-semibold text-[#b18a00]">เลือกที่นั่ง</span>
+          </div>
 
-            <div class="flex flex-col items-center gap-1">
-              <span
-                class="grid h-6 w-6 place-items-center rounded-full border border-[#b18a00] bg-[#ffd400] text-[#303030]"
-                >4</span
-              >
-              <span>Confirm &amp; Pay</span>
+          <div class="relative z-10 flex flex-col items-center gap-2">
+            <div
+              class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#b18a00] bg-[#FFCB08] text-lg font-semibold text-[#b18a00]"
+            >
+              3
             </div>
+            <span class="text-sm font-semibold text-[#b18a00]">ตรวจสอบข้อมูล</span>
+          </div>
+
+          <div class="relative z-10 flex flex-col items-center gap-2">
+            <div
+              class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#b18a00] bg-[#FFCB08] text-lg font-semibold text-[#b18a00]"
+            >
+              4
+            </div>
+            <span class="text-sm font-semibold text-[#b18a00]">ยืนยันชำระเงิน</span>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="flex gap-2 overflow-x-auto border-b border-[#ededed] bg-white px-3 py-3">
-      @for (tab of passengerTabs; track tab; let idx = $index) {
-        <button
-          type="button"
-          class="min-w-[110px] rounded border px-3 py-2 text-sm"
-          [ngClass]="
-            idx + 1 === currentPassenger
-              ? 'border-[#ffd400] bg-[#fff7cf] text-[#1f1f1f]'
-              : 'border-[#dcdcdc] bg-white text-[#a7a7a7]'
-          "
-        >
-          {{ tab }}
-        </button>
-      }
+  <div class="flex gap-2 overflow-x-auto no-scrollbar border-b border-[#ededed] bg-white px-3 py-3">
+    @for (tab of passengerTabs; track tab; let idx = $index) {
+      <button
+        type="button"
+        class="min-w-[110px] rounded border px-3 py-2 text-sm"
+        [ngClass]="
+          idx + 1 === currentPassenger
+            ? 'border-[#ffd400] bg-[#fff7cf] text-[#1f1f1f]'
+            : 'border-[#dcdcdc] bg-white text-[#a7a7a7]'
+        "
+      >
+        {{ tab }}
+      </button>
+    }
+  </div>
+
+  <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()" class="px-4 py-4">
+    <h2 class="font-bold">Passenger 1 (Primary passenger)</h2>
+    <h3 class="font-medium">General Information</h3>
+
+    <div class="mt-4 space-y-2">
+      <hlm-form-field>
+        <brn-select class="inline-block w-full" placeholder="Title *" formControlName="title">
+          <hlm-select-trigger class="w-full">
+            <hlm-select-value />
+          </hlm-select-trigger>
+
+          <hlm-select-content>
+            <hlm-select-label>Title</hlm-select-label>
+            @for (option of titleOptions; track option) {
+              <hlm-option [value]="option">{{ option }}</hlm-option>
+            }
+          </hlm-select-content>
+        </brn-select>
+        @if (isInvalid('title')) {
+          <hlm-error>Title is required.</hlm-error>
+        }
+      </hlm-form-field>
+
+      <hlm-form-field>
+        <input
+          id="firstName"
+          hlmInput
+          formControlName="firstName"
+          placeholder="First Name (English) *"
+        />
+        @if (isInvalid('firstName')) {
+          <hlm-error>First name is required and must be English letters only.</hlm-error>
+        }
+      </hlm-form-field>
+
+      <!-- Middle Name -->
+      <hlm-form-field>
+        <input
+          id="middleName"
+          hlmInput
+          formControlName="middleName"
+          placeholder="Middle Name (English)"
+        />
+        @if (isInvalid('middleName')) {
+          <hlm-error>Middle name must be English letters only.</hlm-error>
+        }
+      </hlm-form-field>
+
+      <!-- Last Name -->
+      <hlm-form-field>
+        <input
+          id="lastName"
+          hlmInput
+          formControlName="lastName"
+          placeholder="Last Name (English) *"
+        />
+        @if (isInvalid('lastName')) {
+          <hlm-error>Last name is required and must be English letters only.</hlm-error>
+        }
+      </hlm-form-field>
+
+      <!-- Date of Birth -->
+      <hlm-form-field>
+        <input id="dateOfBirth" hlmInput type="date" formControlName="dateOfBirth" />
+        @if (isInvalid('dateOfBirth')) {
+          <hlm-error>Date of birth is required.</hlm-error>
+        }
+      </hlm-form-field>
     </div>
 
-    <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()" class="px-4 py-4">
-      <h2 class="text-base font-bold">Passenger 1 (Primary passenger)</h2>
-      <h3 class="mt-3 text-[44px] font-medium leading-none tracking-tight">General Information</h3>
+    <h3 class="mt-4 font-medium">Passport Information</h3>
 
-      <div class="mt-3 space-y-3">
-        <hlm-form-field class="relative pt-2">
-          <select
-            id="title"
-            hlmInput
-            formControlName="title"
-            class="h-14 w-full rounded-md border bg-white px-4 pt-5 pb-2 text-sm outline-none focus:border-black"
-            [ngClass]="isInvalid('title') ? '!border-red-500' : 'border-[#cfcfcf]'"
+    <div class="mt-4 space-y-2">
+      <div class="grid grid-cols-2 gap-3">
+        <!-- Nationality (select -> brn-select) -->
+        <hlm-form-field>
+          <brn-select
+            class="inline-block w-full"
+            placeholder="Nationality *"
+            formControlName="nationality"
           >
-            <option value="">Title</option>
-            @for (option of titleOptions; track option) {
-              <option [value]="option">{{ option }}</option>
-            }
-          </select>
-          <label
-            hlmLabel
-            for="title"
-            class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
-            [ngClass]="isInvalid('title') ? 'text-red-500' : 'text-[#2a2a2a]'"
-          >
-            Title <span class="text-red-500">*</span>
-          </label>
-          @if (isInvalid('title')) {
-            <hlm-error class="pl-4 text-[11px] !font-normal">Please select a title.</hlm-error>
-          }
-        </hlm-form-field>
+            <hlm-select-trigger class="w-full">
+              <hlm-select-value />
+            </hlm-select-trigger>
 
-        <hlm-form-field class="relative pt-2">
-          <input
-            id="firstName"
-            hlmInput
-            formControlName="firstName"
-            placeholder=" "
-            class="h-14 w-full rounded-md border bg-white px-4 pt-5 text-sm focus:border-black focus:outline-none"
-            [ngClass]="isInvalid('firstName') ? '!border-red-500 focus:!border-red-500' : 'border-[#cfcfcf]'"
-          />
-          <label
-            hlmLabel
-            for="firstName"
-            class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
-            [ngClass]="isInvalid('firstName') ? 'text-red-500' : 'text-[#2a2a2a]'"
-          >
-            First Name (English) <span class="text-red-500">*</span>
-          </label>
-          @if (isInvalid('firstName')) {
-            <hlm-error class="pl-4 text-[11px] !font-normal"
-              >Please enter your first name in English only.</hlm-error
-            >
-          }
-        </hlm-form-field>
-
-        <hlm-form-field class="relative pt-2">
-          <input
-            id="middleName"
-            hlmInput
-            formControlName="middleName"
-            placeholder=" "
-            class="h-14 w-full rounded-md border bg-white px-4 pt-5 text-sm focus:border-black focus:outline-none"
-            [ngClass]="isInvalid('middleName') ? '!border-red-500 focus:!border-red-500' : 'border-[#cfcfcf]'"
-          />
-          <label
-            hlmLabel
-            for="middleName"
-            class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
-            [ngClass]="isInvalid('middleName') ? 'text-red-500' : 'text-[#2a2a2a]'"
-          >
-            Middle Name (English)
-          </label>
-          @if (isInvalid('middleName')) {
-            <hlm-error class="pl-4 text-[11px] !font-normal"
-              >Please enter your middle name in English only.</hlm-error
-            >
-          }
-        </hlm-form-field>
-
-        <hlm-form-field class="relative pt-2">
-          <input
-            id="lastName"
-            hlmInput
-            formControlName="lastName"
-            placeholder=" "
-            class="h-14 w-full rounded-md border bg-white px-4 pt-5 text-sm focus:border-black focus:outline-none"
-            [ngClass]="isInvalid('lastName') ? '!border-red-500 focus:!border-red-500' : 'border-[#cfcfcf]'"
-          />
-          <label
-            hlmLabel
-            for="lastName"
-            class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
-            [ngClass]="isInvalid('lastName') ? 'text-red-500' : 'text-[#2a2a2a]'"
-          >
-            Last Name (English) <span class="text-red-500">*</span>
-          </label>
-          @if (isInvalid('lastName')) {
-            <hlm-error class="pl-4 text-[11px] !font-normal"
-              >Please enter your last name in English only.</hlm-error
-            >
-          }
-        </hlm-form-field>
-
-        <hlm-form-field class="relative pt-2">
-          <input
-            id="dateOfBirth"
-            hlmInput
-            type="date"
-            formControlName="dateOfBirth"
-            class="h-14 w-full rounded-md border bg-white px-4 pt-5 text-sm focus:border-black focus:outline-none"
-            [ngClass]="isInvalid('dateOfBirth') ? '!border-red-500 focus:!border-red-500' : 'border-[#cfcfcf]'"
-          />
-          <label
-            hlmLabel
-            for="dateOfBirth"
-            class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
-            [ngClass]="isInvalid('dateOfBirth') ? 'text-red-500' : 'text-[#2a2a2a]'"
-          >
-            Date of Birth <span class="text-red-500">*</span>
-          </label>
-          @if (isInvalid('dateOfBirth')) {
-            <hlm-error class="pl-4 text-[11px] !font-normal">Please select your date of birth.</hlm-error>
-          }
-        </hlm-form-field>
-      </div>
-
-      <h3 class="mt-5 text-sm font-bold text-[#1f1f1f]">Passport Information</h3>
-
-      <div class="mt-3 space-y-3">
-        <div class="grid grid-cols-2 gap-2">
-          <hlm-form-field class="relative pt-2">
-            <select
-              id="nationality"
-              hlmInput
-              formControlName="nationality"
-              class="h-14 w-full rounded-md border bg-white px-4 pt-5 pb-2 text-sm outline-none focus:border-black"
-              [ngClass]="isInvalid('nationality') ? '!border-red-500' : 'border-[#cfcfcf]'"
-            >
-              <option value="">Nationality</option>
+            <hlm-select-content>
+              <hlm-select-label>Nationality</hlm-select-label>
               @for (nationality of nationalities; track nationality) {
-                <option [value]="nationality">{{ nationality }}</option>
+                <hlm-option [value]="nationality">{{ nationality }}</hlm-option>
               }
-            </select>
-            <label
-              hlmLabel
-              for="nationality"
-              class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
-              [ngClass]="isInvalid('nationality') ? 'text-red-500' : 'text-[#2a2a2a]'"
-            >
-              Nationality <span class="text-red-500">*</span>
-            </label>
-            @if (isInvalid('nationality')) {
-              <hlm-error class="pl-2 text-[11px] !font-normal">Please select your nationality.</hlm-error>
-            }
-          </hlm-form-field>
+            </hlm-select-content>
+          </brn-select>
 
-          <hlm-form-field class="relative pt-2">
-            <select
-              id="countryOfResidence"
-              hlmInput
-              formControlName="countryOfResidence"
-              class="h-14 w-full rounded-md border bg-white px-4 pt-5 pb-2 text-sm outline-none focus:border-black"
-              [ngClass]="isInvalid('countryOfResidence') ? '!border-red-500' : 'border-[#cfcfcf]'"
-            >
-              <option value="">Country</option>
+          @if (isInvalid('nationality')) {
+            <hlm-error>Nationality is required.</hlm-error>
+          }
+        </hlm-form-field>
+
+        <!-- Country of residence (select -> brn-select) -->
+        <hlm-form-field>
+          <brn-select
+            class="inline-block w-full"
+            placeholder="Country of residence *"
+            formControlName="countryOfResidence"
+          >
+            <hlm-select-trigger class="w-full">
+              <hlm-select-value />
+            </hlm-select-trigger>
+
+            <hlm-select-content>
+              <hlm-select-label>Country of residence</hlm-select-label>
               @for (country of countries; track country) {
-                <option [value]="country">{{ country }}</option>
+                <hlm-option [value]="country">{{ country }}</hlm-option>
               }
-            </select>
-            <label
-              hlmLabel
-              for="countryOfResidence"
-              class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
-              [ngClass]="isInvalid('countryOfResidence') ? 'text-red-500' : 'text-[#2a2a2a]'"
-            >
-              Country of residence <span class="text-red-500">*</span>
-            </label>
-            @if (isInvalid('countryOfResidence')) {
-              <hlm-error class="pl-2 text-[11px] !font-normal"
-                >Please select your country of residence.</hlm-error
-              >
-            }
-          </hlm-form-field>
-        </div>
+            </hlm-select-content>
+          </brn-select>
 
-        <hlm-form-field class="relative pt-2">
-          <input
-            id="passportNumber"
-            hlmInput
-            formControlName="passportNumber"
-            placeholder=" "
-            class="h-14 w-full rounded-md border bg-white px-4 pt-5 text-sm focus:border-black focus:outline-none"
-            [ngClass]="isInvalid('passportNumber') ? '!border-red-500 focus:!border-red-500' : 'border-[#cfcfcf]'"
-          />
-          <label
-            hlmLabel
-            for="passportNumber"
-            class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
-            [ngClass]="isInvalid('passportNumber') ? 'text-red-500' : 'text-[#2a2a2a]'"
-          >
-            Passport Number <span class="text-red-500">*</span>
-          </label>
-          @if (isInvalid('passportNumber')) {
-            <hlm-error class="pl-4 text-[11px] !font-normal"
-              >Passport number must be 6–12 characters.</hlm-error
-            >
+          @if (isInvalid('countryOfResidence')) {
+            <hlm-error>Country of residence is required.</hlm-error>
           }
         </hlm-form-field>
+      </div>
 
-        <hlm-form-field class="relative pt-2">
-          <select
-            id="issuedBy"
-            hlmInput
-            formControlName="issuedBy"
-            class="h-14 w-full rounded-md border bg-white px-4 pt-5 pb-2 text-sm outline-none focus:border-black"
-            [ngClass]="isInvalid('issuedBy') ? '!border-red-500' : 'border-[#cfcfcf]'"
-          >
-            <option value="">Issued By</option>
+      <!-- Passport Number -->
+      <hlm-form-field>
+        <input
+          id="passportNumber"
+          hlmInput
+          formControlName="passportNumber"
+          placeholder="Passport Number *"
+        />
+        @if (isInvalid('passportNumber')) {
+          <hlm-error>Passport number is required (6–12 A–Z / 0–9).</hlm-error>
+        }
+      </hlm-form-field>
+
+      <!-- Issued By (select -> brn-select) -->
+      <hlm-form-field>
+        <brn-select
+          class="inline-block w-full"
+          placeholder="Issued By *"
+          formControlName="issuedBy"
+        >
+          <hlm-select-trigger class="w-full">
+            <hlm-select-value />
+          </hlm-select-trigger>
+
+          <hlm-select-content>
+            <hlm-select-label>Issued By</hlm-select-label>
             @for (country of countries; track country) {
-              <option [value]="country">{{ country }}</option>
+              <hlm-option [value]="country">{{ country }}</hlm-option>
             }
-          </select>
-          <label
-            hlmLabel
-            for="issuedBy"
-            class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
-            [ngClass]="isInvalid('issuedBy') ? 'text-red-500' : 'text-[#2a2a2a]'"
+          </hlm-select-content>
+        </brn-select>
+
+        @if (isInvalid('issuedBy')) {
+          <hlm-error>Issued by is required.</hlm-error>
+        }
+      </hlm-form-field>
+
+      <!-- Passport Expiry Date -->
+      <hlm-form-field>
+        <input id="passportExpiryDate" hlmInput type="date" formControlName="passportExpiryDate" />
+        @if (isInvalid('passportExpiryDate')) {
+          <hlm-error>Passport expiry date is required.</hlm-error>
+        }
+      </hlm-form-field>
+    </div>
+
+    <h3 class="mt-4 font-medium">Contact Information</h3>
+
+    <div class="mt-4 space-y-2">
+      <div class="grid grid-cols-[120px_1fr] gap-3">
+        <!-- Mobile Country Code (select -> brn-select) -->
+        <hlm-form-field>
+          <brn-select
+            class="inline-block w-full"
+            placeholder="Code *"
+            formControlName="mobileCountryCode"
           >
-            Issued By <span class="text-red-500">*</span>
-          </label>
-          @if (isInvalid('issuedBy')) {
-            <hlm-error class="pl-4 text-[11px] !font-normal">Please select issuing country.</hlm-error>
-          }
-        </hlm-form-field>
+            <hlm-select-trigger class="w-full">
+              <hlm-select-value />
+            </hlm-select-trigger>
 
-        <hlm-form-field class="relative pt-2">
-          <input
-            id="passportExpiryDate"
-            hlmInput
-            type="date"
-            formControlName="passportExpiryDate"
-            class="h-14 w-full rounded-md border bg-white px-4 pt-5 text-sm focus:border-black focus:outline-none"
-            [ngClass]="
-              isInvalid('passportExpiryDate') ? '!border-red-500 focus:!border-red-500' : 'border-[#cfcfcf]'
-            "
-          />
-          <label
-            hlmLabel
-            for="passportExpiryDate"
-            class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
-            [ngClass]="isInvalid('passportExpiryDate') ? 'text-red-500' : 'text-[#2a2a2a]'"
-          >
-            Passport Expiry Date <span class="text-red-500">*</span>
-          </label>
-          @if (isInvalid('passportExpiryDate')) {
-            <hlm-error class="pl-4 text-[11px] !font-normal"
-              >Please select passport expiry date.</hlm-error
-            >
-          }
-        </hlm-form-field>
-      </div>
-
-      <h3 class="mt-5 text-sm font-bold text-[#1f1f1f]">Contact Information</h3>
-
-      <div class="mt-3 space-y-3">
-        <div class="grid grid-cols-[120px_1fr] gap-2">
-          <hlm-form-field class="relative pt-2">
-            <select
-              id="mobileCountryCode"
-              hlmInput
-              formControlName="mobileCountryCode"
-              class="h-14 w-full rounded-md border bg-white px-3 pt-5 pb-2 text-sm outline-none focus:border-black"
-              [ngClass]="isInvalid('mobileCountryCode') ? '!border-red-500' : 'border-[#cfcfcf]'"
-            >
+            <hlm-select-content>
+              <hlm-select-label>Code</hlm-select-label>
               @for (code of mobileCountryCodes; track code) {
-                <option [value]="code">{{ code }}</option>
+                <hlm-option [value]="code">{{ code }}</hlm-option>
               }
-            </select>
-            <label
-              hlmLabel
-              for="mobileCountryCode"
-              class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
-              [ngClass]="isInvalid('mobileCountryCode') ? 'text-red-500' : 'text-[#2a2a2a]'"
-              >Code</label
-            >
-          </hlm-form-field>
+            </hlm-select-content>
+          </brn-select>
 
-          <hlm-form-field class="relative pt-2">
-            <input
-              id="mobileNumber"
-              hlmInput
-              formControlName="mobileNumber"
-              placeholder=" "
-              class="h-14 w-full rounded-md border bg-white px-4 pt-5 text-sm focus:border-black focus:outline-none"
-              [ngClass]="isInvalid('mobileNumber') ? '!border-red-500 focus:!border-red-500' : 'border-[#cfcfcf]'"
-            />
-            <label
-              hlmLabel
-              for="mobileNumber"
-              class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
-              [ngClass]="isInvalid('mobileNumber') ? 'text-red-500' : 'text-[#2a2a2a]'"
-            >
-              Mobile Number <span class="text-red-500">*</span>
-            </label>
-            @if (isInvalid('mobileNumber')) {
-              <hlm-error class="pl-4 text-[11px] !font-normal">Please enter 8–15 digits.</hlm-error>
-            }
-          </hlm-form-field>
-        </div>
+          @if (isInvalid('mobileCountryCode')) {
+            <hlm-error>Mobile code is required.</hlm-error>
+          }
+        </hlm-form-field>
 
-        <hlm-form-field class="relative pt-2">
+        <!-- Mobile Number -->
+        <hlm-form-field>
           <input
-            id="email"
+            id="mobileNumber"
             hlmInput
-            formControlName="email"
-            placeholder=" "
-            class="h-14 w-full rounded-md border bg-white px-4 pt-5 text-sm focus:border-black focus:outline-none"
-            [ngClass]="isInvalid('email') ? '!border-red-500 focus:!border-red-500' : 'border-[#cfcfcf]'"
+            formControlName="mobileNumber"
+            placeholder="Mobile Number *"
           />
-          <label
-            hlmLabel
-            for="email"
-            class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
-            [ngClass]="isInvalid('email') ? 'text-red-500' : 'text-[#2a2a2a]'"
-          >
-            Email <span class="text-red-500">*</span>
-          </label>
-          @if (isInvalid('email')) {
-            <hlm-error class="pl-4 text-[11px] !font-normal">Please enter a valid email address.</hlm-error>
+          @if (isInvalid('mobileNumber')) {
+            <hlm-error>Mobile number is required (8–15 digits).</hlm-error>
           }
         </hlm-form-field>
       </div>
 
-      <div class="mt-5 space-y-3 pb-3">
-        <button
-          type="submit"
-          hlmBtn
-          class="w-full rounded-md border border-[#1c1c1c] bg-[#ffd400] py-3 text-sm font-semibold text-[#1c1c1c]"
-        >
-          Continue to Next Passenger →
-        </button>
+      <!-- Email -->
+      <hlm-form-field>
+        <input id="email" hlmInput formControlName="email" placeholder="Email *" />
+        @if (isInvalid('email')) {
+          <hlm-error>The email is required and must be valid.</hlm-error>
+        }
+      </hlm-form-field>
+    </div>
 
-        <button
-          type="button"
-          hlmBtn
-          class="w-full rounded-md bg-[#d4d4d4] py-3 text-sm font-semibold text-[#666]"
-          [disabled]="bookingForm.invalid"
-        >
-          Confirm
-        </button>
-      </div>
-    </form>
-  </div>
+    <div class="mt-2 space-y-2 pb-2">
+      <button
+        type="submit"
+        hlmBtn
+        class="w-full !bg-transparent !border-0 !shadow-none !px-0 py-2 text-sm font-semibold text-[#1c1c1c] flex items-center justify-center gap-2"
+      >
+        <span class="underline decoration-2 underline-offset-4">Continue to Next Passenger</span>
+        <ng-icon name="lucideArrowRight" class="flex-none" size="18" aria-hidden="true"></ng-icon>
+      </button>
+
+      <button
+        type="button"
+        hlmBtn
+        variant="secondary"
+        class="w-full rounded-[4px] bg-[#d4d4d4] py-3 text-sm font-semibold text-[#666]"
+        [disabled]="bookingForm.invalid"
+      >
+        Confirm
+      </button>
+    </div>
+  </form>
 </div>

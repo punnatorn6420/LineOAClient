@@ -2,10 +2,14 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { BrnSelectImports } from '@spartan-ng/brain/select';
 import { HlmButtonImports } from '@ui/button';
 import { HlmFormFieldImports } from '@ui/form-field';
 import { HlmInputImports } from '@ui/input';
 import { HlmLabelImports } from '@ui/label';
+import { HlmSelectImports } from '@ui/select';
+import { lucideArrowRight } from '@ng-icons/lucide';
+import { provideIcons, NgIcon } from '@ng-icons/core';
 
 interface CountryNationalityPhoneInfo {
   country_en: string;
@@ -24,8 +28,12 @@ interface CountryNationalityPhoneInfo {
     HlmFormFieldImports,
     HlmInputImports,
     HlmLabelImports,
+    HlmSelectImports,
+    BrnSelectImports,
+    NgIcon,
   ],
   templateUrl: './booking.component.html',
+  providers: [provideIcons({ lucideArrowRight })],
 })
 export class BookingComponent implements OnInit {
   readonly passengerTabs = ['Passenger 1', 'Passenger 2', 'Passenger 3', 'Passenger 4'];
