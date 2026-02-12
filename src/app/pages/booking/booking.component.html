@@ -76,7 +76,7 @@
     <div class="mt-4 space-y-2">
       <hlm-form-field>
         <brn-select class="inline-block w-full" placeholder="Title *" formControlName="title">
-          <hlm-select-trigger class="w-full">
+          <hlm-select-trigger class="w-full text-muted-foreground">
             <hlm-select-value />
           </hlm-select-trigger>
 
@@ -130,32 +130,41 @@
         }
       </hlm-form-field>
 
-      <!-- Date of Birth -->
-      <hlm-form-field>
-        <input id="dateOfBirth" hlmInput type="date" formControlName="dateOfBirth" />
+      <div class="mt-2 flex flex-col gap-2">
+        <hlm-date-picker
+          buttonId="dateOfBirth"
+          [autoCloseOnSelect]="true"
+          formControlName="dateOfBirth"
+          class="w-full"
+        >
+          <span class="text-muted-foreground text-muted-foreground">Select date</span>
+        </hlm-date-picker>
+
         @if (isInvalid('dateOfBirth')) {
           <hlm-error>Date of birth is required.</hlm-error>
         }
-      </hlm-form-field>
+      </div>
     </div>
 
     <h3 class="mt-4 font-medium">Passport Information</h3>
 
     <div class="mt-4 space-y-2">
-      <div class="grid grid-cols-2 gap-3">
-        <!-- Nationality (select -> brn-select) -->
+      <div class="grid grid-cols-[120px_minmax(0,1fr)] gap-3">
         <hlm-form-field>
           <brn-select
             class="inline-block w-full"
             placeholder="Nationality *"
             formControlName="nationality"
           >
-            <hlm-select-trigger class="w-full">
+            <hlm-select-trigger
+              class="w-full text-muted-foreground"
+              brnSelectBottomSheetTrigger
+              [openBottomSheet]="openNationalitySheet"
+            >
               <hlm-select-value />
             </hlm-select-trigger>
 
             <hlm-select-content>
-              <hlm-select-label>Nationality</hlm-select-label>
               @for (nationality of nationalities; track nationality) {
                 <hlm-option [value]="nationality">{{ nationality }}</hlm-option>
               }
@@ -167,19 +176,21 @@
           }
         </hlm-form-field>
 
-        <!-- Country of residence (select -> brn-select) -->
         <hlm-form-field>
           <brn-select
             class="inline-block w-full"
             placeholder="Country of residence *"
             formControlName="countryOfResidence"
           >
-            <hlm-select-trigger class="w-full">
+            <hlm-select-trigger
+              class="w-full text-muted-foreground"
+              brnSelectBottomSheetTrigger
+              [openBottomSheet]="openCountryResidenceSheet"
+            >
               <hlm-select-value />
             </hlm-select-trigger>
 
             <hlm-select-content>
-              <hlm-select-label>Country of residence</hlm-select-label>
               @for (country of countries; track country) {
                 <hlm-option [value]="country">{{ country }}</hlm-option>
               }
@@ -192,7 +203,6 @@
         </hlm-form-field>
       </div>
 
-      <!-- Passport Number -->
       <hlm-form-field>
         <input
           id="passportNumber"
@@ -212,12 +222,15 @@
           placeholder="Issued By *"
           formControlName="issuedBy"
         >
-          <hlm-select-trigger class="w-full">
+          <hlm-select-trigger
+            class="w-full text-muted-foreground"
+            brnSelectBottomSheetTrigger
+            [openBottomSheet]="openIssuedBySheet"
+          >
             <hlm-select-value />
           </hlm-select-trigger>
 
           <hlm-select-content>
-            <hlm-select-label>Issued By</hlm-select-label>
             @for (country of countries; track country) {
               <hlm-option [value]="country">{{ country }}</hlm-option>
             }
@@ -230,12 +243,32 @@
       </hlm-form-field>
 
       <!-- Passport Expiry Date -->
-      <hlm-form-field>
-        <input id="passportExpiryDate" hlmInput type="date" formControlName="passportExpiryDate" />
+      <!-- <hlm-form-field>
+        <hlm-date-picker
+          buttonId="passportExpiryDate"
+          formControlName="passportExpiryDate"
+          class="w-full"
+        >
+          <span>Passport expiry date *</span>
+        </hlm-date-picker>
+
         @if (isInvalid('passportExpiryDate')) {
           <hlm-error>Passport expiry date is required.</hlm-error>
         }
-      </hlm-form-field>
+      </hlm-form-field> -->
+      <div class="mt-2 flex flex-col gap-2">
+        <hlm-date-picker
+          buttonId="passportExpiryDate"
+          [autoCloseOnSelect]="true"
+          formControlName="passportExpiryDate"
+          class="w-full"
+        >
+          <span class="text-muted-foreground text-muted-foreground">Select date</span>
+        </hlm-date-picker>
+        @if (isInvalid('passportExpiryDate')) {
+          <hlm-error>Passport expiry date is required.</hlm-error>
+        }
+      </div>
     </div>
 
     <h3 class="mt-4 font-medium">Contact Information</h3>
@@ -249,12 +282,15 @@
             placeholder="Code *"
             formControlName="mobileCountryCode"
           >
-            <hlm-select-trigger class="w-full">
+            <hlm-select-trigger
+              class="w-full text-muted-foreground"
+              brnSelectBottomSheetTrigger
+              [openBottomSheet]="openMobileCodeSheet"
+            >
               <hlm-select-value />
             </hlm-select-trigger>
 
             <hlm-select-content>
-              <hlm-select-label>Code</hlm-select-label>
               @for (code of mobileCountryCodes; track code) {
                 <hlm-option [value]="code">{{ code }}</hlm-option>
               }
@@ -311,3 +347,4 @@
     </div>
   </form>
 </div>
+<app-bottom-sheet-select-sheet #bsSheet></app-bottom-sheet-select-sheet>

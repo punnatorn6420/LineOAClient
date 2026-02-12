@@ -55,6 +55,12 @@
       ],
       "@ui/label": [
         "./src/ui/label/src/index.ts"
+      ],
+      "@ui/date-picker": [
+        "./src/ui/date-picker/src/index.ts"
+      ],
+      "@ui/popover": [
+        "./src/ui/popover/src/index.ts"
       ]
     }
   },

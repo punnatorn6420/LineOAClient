@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BrnSelectImports } from '@spartan-ng/brain/select';
 import { HlmButtonImports } from '@ui/button';
 import { HlmFormFieldImports } from '@ui/form-field';
@@ -10,6 +10,9 @@ import { HlmLabelImports } from '@ui/label';
 import { HlmSelectImports } from '@ui/select';
 import { lucideArrowRight } from '@ng-icons/lucide';
 import { provideIcons, NgIcon } from '@ng-icons/core';
+import { BottomSheetSelectSheetComponent } from 'src/app/core/components/bottom-sheet-select/bottom-sheet-select.component';
+import { BrnSelectBottomSheetTriggerDirective } from 'src/app/core/components/bottom-sheet-select/brn-select-bottom-sheet.directive';
+import { HlmDatePicker } from '@ui/date-picker';
 
 interface CountryNationalityPhoneInfo {
   country_en: string;
@@ -31,11 +34,15 @@ interface CountryNationalityPhoneInfo {
     HlmSelectImports,
     BrnSelectImports,
     NgIcon,
+    BrnSelectBottomSheetTriggerDirective,
+    BottomSheetSelectSheetComponent,
+    HlmDatePicker,
   ],
   templateUrl: './booking.component.html',
   providers: [provideIcons({ lucideArrowRight })],
 })
 export class BookingComponent implements OnInit {
+  @ViewChild('bsSheet') bsSheet!: BottomSheetSelectSheetComponent;
   readonly passengerTabs = ['Passenger 1', 'Passenger 2', 'Passenger 3', 'Passenger 4'];
   readonly titleOptions = ['MR', 'MS', 'MRS', 'MONK', 'MISS'];
   currentPassenger = 1;
@@ -97,4 +104,24 @@ export class BookingComponent implements OnInit {
   private uniqueSorted(values: string[]): string[] {
     return [...new Set(values.filter(Boolean))].sort((a, b) => a.localeCompare(b));
   }
+
+  openNationalitySheet = () => {
+    const ctrl = this.bookingForm.get('nationality') as FormControl<string | null>;
+    this.bsSheet.openFor(ctrl, this.nationalities, 'Nationality');
+  };
+
+  openCountryResidenceSheet = () => {
+    const ctrl = this.bookingForm.get('countryOfResidence') as FormControl<string | null>;
+    this.bsSheet.openFor(ctrl, this.countries, 'Country of residence');
+  };
+
+  openIssuedBySheet = () => {
+    const ctrl = this.bookingForm.get('issuedBy') as FormControl<string | null>;
+    this.bsSheet.openFor(ctrl, this.countries, 'Issued By');
+  };
+
+  openMobileCodeSheet = () => {
+    const ctrl = this.bookingForm.get('mobileCountryCode') as FormControl<string | null>;
+    this.bsSheet.openFor(ctrl, this.mobileCountryCodes, 'Code');
+  };
 }
