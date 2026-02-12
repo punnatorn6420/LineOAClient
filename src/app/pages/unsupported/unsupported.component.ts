@@ -10,6 +10,7 @@ import { environment } from '../../../environments/environment';
       <div class="max-w-md w-full space-y-4">
         <div class="text-2xl font-semibold">Supported only on mobile devices.</div>
         <div class="text-white/70">กรุณาเปิดผ่าน LINE บนมือถือ (LIFF)</div>
+        <div class="text-xs text-white/60">สำหรับทดสอบบน Desktop ให้เติม <code>?desktopAuth=1</code> ต่อท้าย URL</div>
 
         <div class="bg-white p-4 rounded-xl inline-block">
           <!-- วิธีง่ายสุด: โชว์เป็นรูป QR จากบริการภายนอก หรือใช้ lib ทำ QR -->
