@@ -1,0 +1,1721 @@
+[
+  {
+    "country_en": "Andorra",
+    "country_th": "อันดอร์รา",
+    "code": "AND",
+    "code_s": "AD",
+    "phone_code": 376,
+    "nationality_en": "Andorra",
+    "nationality_th": "อันดอร์รา"
+  },
+  {
+    "country_en": "United Arab Emirates",
+    "country_th": "สหรัฐอาหรับเอมิเรตส์",
+    "code": "ARE",
+    "code_s": "AE",
+    "phone_code": 971,
+    "nationality_en": "Emiria",
+    "nationality_th": "สหรัฐอาหรับเอมิเรตส์"
+  },
+  {
+    "country_en": "Afghanistan",
+    "country_th": "อัฟกานิสถาน",
+    "code": "AFG",
+    "code_s": "AF",
+    "phone_code": 93,
+    "nationality_en": "Afghan",
+    "nationality_th": "อัฟกานิสถาน"
+  },
+  {
+    "country_en": "Antigua and Barbuda",
+    "country_th": "แอนติกาและบาร์บูดา",
+    "code": "ATG",
+    "code_s": "AG",
+    "phone_code": "1-268",
+    "nationality_en": "Antiguans, Barbudans",
+    "nationality_th": "แอนติกาและบาร์บูดา"
+  },
+  {
+    "country_en": "Albania",
+    "country_th": "แอลเบเนีย",
+    "code": "ALB",
+    "code_s": "AL",
+    "phone_code": 355,
+    "nationality_en": "Albania",
+    "nationality_th": "แอลเบเนีย"
+  },
+  {
+    "country_en": "Armenia",
+    "country_th": "อาร์เมเนีย",
+    "code": "ARM",
+    "code_s": "AM",
+    "phone_code": 374,
+    "nationality_en": "Armenia",
+    "nationality_th": "อาร์เมเนีย"
+  },
+  {
+    "country_en": "Angola",
+    "country_th": "แองโกลา",
+    "code": "AGO",
+    "code_s": "AO",
+    "phone_code": 244,
+    "nationality_en": "Angola",
+    "nationality_th": "แองโกลา"
+  },
+  {
+    "country_en": "Argentina",
+    "country_th": "อาร์เจนตินา",
+    "code": "ARG",
+    "code_s": "AR",
+    "phone_code": 54,
+    "nationality_en": "Argentinea",
+    "nationality_th": "อาร์เจนตินา"
+  },
+  {
+    "country_en": "Austria",
+    "country_th": "ออสเตรีย",
+    "code": "AUT",
+    "code_s": "AT",
+    "phone_code": 43,
+    "nationality_en": "Austria",
+    "nationality_th": "ออสเตรีย"
+  },
+  {
+    "country_en": "Australia",
+    "country_th": "ออสเตรเลีย",
+    "code": "AUS",
+    "code_s": "AU",
+    "phone_code": 61,
+    "nationality_en": "Australia",
+    "nationality_th": "ออสเตรเลีย"
+  },
+  {
+    "country_en": "Azerbaijan",
+    "country_th": "อาเซอร์ไบจาน",
+    "code": "AZE",
+    "code_s": "AZ",
+    "phone_code": 994,
+    "nationality_en": "Azerbaijani",
+    "nationality_th": "อาเซอร์ไบจาน"
+  },
+  {
+    "country_en": "Bosnia and Herzegovina",
+    "country_th": "บอสเนียและเฮอร์เซโก",
+    "code": "BIH",
+    "code_s": "BA",
+    "phone_code": 387,
+    "nationality_en": "Bosnian, Herzegovinia",
+    "nationality_th": "บอสเนียและเฮอร์เซโก"
+  },
+  {
+    "country_en": "Barbados",
+    "country_th": "บาร์เบโดส",
+    "code": "BRB",
+    "code_s": "BB",
+    "phone_code": "1-246",
+    "nationality_en": "Barbadia",
+    "nationality_th": "บาร์เบโดส"
+  },
+  {
+    "country_en": "Bangladesh",
+    "country_th": "บังคลาเทศ",
+    "code": "BGD",
+    "code_s": "BD",
+    "phone_code": 880,
+    "nationality_en": "Bangladeshi",
+    "nationality_th": "บังคลาเทศ"
+  },
+  {
+    "country_en": "Belgium",
+    "country_th": "เบลเยียม",
+    "code": "BEL",
+    "code_s": "BE",
+    "phone_code": 32,
+    "nationality_en": "Belgia",
+    "nationality_th": "เบลเยียม"
+  },
+  {
+    "country_en": "Burkina Faso",
+    "country_th": "บูร์กินาฟาโซ",
+    "code": "BFA",
+    "code_s": "BF",
+    "phone_code": 226,
+    "nationality_en": "Burkinabe",
+    "nationality_th": "บูร์กินาฟาโซ"
+  },
+  {
+    "country_en": "Bulgaria",
+    "country_th": "บัลแกเรีย",
+    "code": "BGR",
+    "code_s": "BG",
+    "phone_code": 359,
+    "nationality_en": "Bulgaria",
+    "nationality_th": "บัลแกเรีย"
+  },
+  {
+    "country_en": "Bahrain",
+    "country_th": "บาห์เรน",
+    "code": "BHR",
+    "code_s": "BH",
+    "phone_code": 973,
+    "nationality_en": "Bahraini",
+    "nationality_th": "บาห์เรน"
+  },
+  {
+    "country_en": "Burundi",
+    "country_th": "บุรุนดี",
+    "code": "BDI",
+    "code_s": "BI",
+    "phone_code": 257,
+    "nationality_en": "Burundia",
+    "nationality_th": "บุรุนดี"
+  },
+  {
+    "country_en": "Benin",
+    "country_th": "เบนิน",
+    "code": "BEN",
+    "code_s": "BJ",
+    "phone_code": 229,
+    "nationality_en": "Beninese",
+    "nationality_th": "เบนิน"
+  },
+  {
+    "country_en": "Brunei",
+    "country_th": "บรูไน",
+    "code": "BRN",
+    "code_s": "BN",
+    "phone_code": 673,
+    "nationality_en": "Bruneia",
+    "nationality_th": "บรูไน"
+  },
+  {
+    "country_en": "Bolivia",
+    "country_th": "โบลิเวีย",
+    "code": "BOL",
+    "code_s": "BO",
+    "phone_code": 591,
+    "nationality_en": "Bolivia",
+    "nationality_th": "โบลิเวีย"
+  },
+  {
+    "country_en": "Brazil",
+    "country_th": "บราซิล",
+    "code": "BRA",
+    "code_s": "BR",
+    "phone_code": 55,
+    "nationality_en": "Brazilia",
+    "nationality_th": "บราซิล"
+  },
+  {
+    "country_en": "Bahamas",
+    "country_th": "บาฮามาส",
+    "code": "BHS",
+    "code_s": "BS",
+    "phone_code": "1-242",
+    "nationality_en": "Bahamia",
+    "nationality_th": "บาฮามาส"
+  },
+  {
+    "country_en": "Bhutan",
+    "country_th": "ภูฏาน",
+    "code": "BTN",
+    "code_s": "BT",
+    "phone_code": 975,
+    "nationality_en": "Bhutanese",
+    "nationality_th": "ภูฏาน"
+  },
+  {
+    "country_en": "Botswana",
+    "country_th": "บอตสวานา",
+    "code": "BWA",
+    "code_s": "BW",
+    "phone_code": 267,
+    "nationality_en": "Motswana (',singular), Batswana (',plural)",
+    "nationality_th": "บอตสวานา"
+  },
+  {
+    "country_en": "Belarus",
+    "country_th": "เบลารุส",
+    "code": "BLR",
+    "code_s": "BY",
+    "phone_code": 375,
+    "nationality_en": "Belarusia",
+    "nationality_th": "เบลารุส"
+  },
+  {
+    "country_en": "Belize",
+    "country_th": "เบลีซ",
+    "code": "BLZ",
+    "code_s": "BZ",
+    "phone_code": 501,
+    "nationality_en": "Belizea",
+    "nationality_th": "เบลีซ"
+  },
+  {
+    "country_en": "Canada",
+    "country_th": "แคนาดา",
+    "code": "CAN",
+    "code_s": "CA",
+    "phone_code": 1,
+    "nationality_en": "Canadia",
+    "nationality_th": "แคนาดา"
+  },
+  {
+    "country_en": "Democratic Republic of the Congo",
+    "country_th": "สาธารณรัฐประชาธิปไตยคองโก",
+    "code": "COD",
+    "code_s": "CD",
+    "phone_code": 243,
+    "nationality_en": "Congolese",
+    "nationality_th": "คองโก"
+  },
+  {
+    "country_en": "Republic of the Congo",
+    "country_th": "สาธารณรัฐคองโก",
+    "code": "COG",
+    "code_s": "CG",
+    "phone_code": 242,
+    "nationality_en": "Congolese",
+    "nationality_th": "คองโก"
+  },
+  {
+    "country_en": "Switzerland",
+    "country_th": "สวิสเซอร์แลนด์",
+    "code": "CHE",
+    "code_s": "CH",
+    "phone_code": 41,
+    "nationality_en": "Swiss",
+    "nationality_th": "สวิสเซอร์แลนด์"
+  },
+  {
+    "country_en": "Ivory Coast",
+    "country_th": "ไอวอรี่โคสต์",
+    "code": "CIV",
+    "code_s": "CI",
+    "phone_code": 225,
+    "nationality_en": "Ivorian",
+    "nationality_th": "ไอวอรี่โคสต์"
+  },
+  {
+    "country_en": "Cameroon",
+    "country_th": "แคเมอรูน",
+    "code": "CMR",
+    "code_s": "CM",
+    "phone_code": 237,
+    "nationality_en": "Cameroonia",
+    "nationality_th": "แคเมอรูน"
+  },
+  {
+    "country_en": "China",
+    "country_th": "จีน",
+    "code": "CHN",
+    "code_s": "CN",
+    "phone_code": 86,
+    "nationality_en": "Chinese",
+    "nationality_th": "จีน"
+  },
+  {
+    "country_en": "Colombia",
+    "country_th": "โคลอมเบีย",
+    "code": "COL",
+    "code_s": "CO",
+    "phone_code": 57,
+    "nationality_en": "Colombia",
+    "nationality_th": "โคลอมเบีย"
+  },
+  {
+    "country_en": "Costa Rica",
+    "country_th": "คอสตาริกา",
+    "code": "CRI",
+    "code_s": "CR",
+    "phone_code": 506,
+    "nationality_en": "Costa Rica",
+    "nationality_th": "คอสตาริกา"
+  },
+  {
+    "country_en": "Cuba",
+    "country_th": "คิวบา",
+    "code": "CUB",
+    "code_s": "CU",
+    "phone_code": 53,
+    "nationality_en": "Cuba",
+    "nationality_th": "คิวบา"
+  },
+  {
+    "country_en": "Cape Verde",
+    "country_th": "เคปเวิร์ด",
+    "code": "CPV",
+    "code_s": "CV",
+    "phone_code": 238,
+    "nationality_en": "Cape Verdia",
+    "nationality_th": "เคปเวิร์ด"
+  },
+  {
+    "country_en": "Cyprus",
+    "country_th": "ไซปรัส",
+    "code": "CYP",
+    "code_s": "CY",
+    "phone_code": 357,
+    "nationality_en": "Cypriot",
+    "nationality_th": "ไซปรัส"
+  },
+  {
+    "country_en": "Czech Republic",
+    "country_th": "สาธารณรัฐเช็ก",
+    "code": "CZE",
+    "code_s": "CZ",
+    "phone_code": 420,
+    "nationality_en": "Czech",
+    "nationality_th": "สาธารณรัฐเช็ก"
+  },
+  {
+    "country_en": "Germany",
+    "country_th": "เยอรมันนี",
+    "code": "DEU",
+    "code_s": "DE",
+    "phone_code": 49,
+    "nationality_en": "Germa",
+    "nationality_th": "เยอรมันนี"
+  },
+  {
+    "country_en": "Djibouti",
+    "country_th": "จิบูตี",
+    "code": "DJI",
+    "code_s": "DJ",
+    "phone_code": 253,
+    "nationality_en": "Djibouti",
+    "nationality_th": "จิบูตี"
+  },
+  {
+    "country_en": "Denmark",
+    "country_th": "เดนมาร์ก",
+    "code": "DNK",
+    "code_s": "DK",
+    "phone_code": 45,
+    "nationality_en": "Danish",
+    "nationality_th": "เดนมาร์ก"
+  },
+  {
+    "country_en": "Dominica",
+    "country_th": "โดมินิกา",
+    "code": "DMA",
+    "code_s": "DM",
+    "phone_code": "1-767",
+    "nationality_en": "Dominica",
+    "nationality_th": "โดมินิกา"
+  },
+  {
+    "country_en": "Dominican Republic",
+    "country_th": "สาธารณรัฐโดมินิกัน",
+    "code": "DOM",
+    "code_s": "DO",
+    "phone_code": "1-809",
+    "nationality_en": "Dominica",
+    "nationality_th": "สาธารณรัฐโดมินิกัน"
+  },
+  {
+    "country_en": "Algeria",
+    "country_th": "แอลจีเรีย",
+    "code": "DZA",
+    "code_s": "DZ",
+    "phone_code": 213,
+    "nationality_en": "Algeria",
+    "nationality_th": "แอลจีเรีย"
+  },
+  {
+    "country_en": "Ecuador",
+    "country_th": "เอกวาดอร์",
+    "code": "ECU",
+    "code_s": "EC",
+    "phone_code": 593,
+    "nationality_en": "Ecuadorea",
+    "nationality_th": "เอกวาดอร์"
+  },
+  {
+    "country_en": "Estonia",
+    "country_th": "เอสโตเนีย",
+    "code": "EST",
+    "code_s": "EE",
+    "phone_code": 372,
+    "nationality_en": "Estonia",
+    "nationality_th": "เอสโตเนีย"
+  },
+  {
+    "country_en": "Egypt",
+    "country_th": "อียิปต์",
+    "code": "EGY",
+    "code_s": "EG",
+    "phone_code": 20,
+    "nationality_en": "Egyptia",
+    "nationality_th": "อียิปต์"
+  },
+  {
+    "country_en": "Eritrea",
+    "country_th": "เอริเทรี",
+    "code": "ERI",
+    "code_s": "ER",
+    "phone_code": 291,
+    "nationality_en": "Eritrea",
+    "nationality_th": "เอริเทรี"
+  },
+  {
+    "country_en": "Spain",
+    "country_th": "สเปน",
+    "code": "ESP",
+    "code_s": "ES",
+    "phone_code": 34,
+    "nationality_en": "Spanish",
+    "nationality_th": "สเปน"
+  },
+  {
+    "country_en": "Ethiopia",
+    "country_th": "สาธารณรัฐเอธิโอเปีย",
+    "code": "ETH",
+    "code_s": "ET",
+    "phone_code": 251,
+    "nationality_en": "Ethiopia",
+    "nationality_th": "สาธารณรัฐเอธิโอเปีย"
+  },
+  {
+    "country_en": "Finland",
+    "country_th": "ฟินแลนด์",
+    "code": "FIN",
+    "code_s": "FI",
+    "phone_code": 358,
+    "nationality_en": "Finnish",
+    "nationality_th": "ฟินแลนด์"
+  },
+  {
+    "country_en": "Fiji",
+    "country_th": "ฟิจิ",
+    "code": "FJI",
+    "code_s": "FJ",
+    "phone_code": 679,
+    "nationality_en": "Fijia",
+    "nationality_th": "ฟิจิ"
+  },
+  {
+    "country_en": "France",
+    "country_th": "ฝรั่งเศส",
+    "code": "FRA",
+    "code_s": "FR",
+    "phone_code": 33,
+    "nationality_en": "French",
+    "nationality_th": "ฝรั่งเศส"
+  },
+  {
+    "country_en": "Gabon",
+    "country_th": "กาบอง",
+    "code": "GAB",
+    "code_s": "GA",
+    "phone_code": 241,
+    "nationality_en": "Gabonese",
+    "nationality_th": "กาบอง"
+  },
+  {
+    "country_en": "Grenada",
+    "country_th": "เกรเนดา",
+    "code": "GRD",
+    "code_s": "GD",
+    "phone_code": "1-473",
+    "nationality_en": "Grenadia",
+    "nationality_th": "เกรเนดา"
+  },
+  {
+    "country_en": "Georgia",
+    "country_th": "จอร์เจีย",
+    "code": "GEO",
+    "code_s": "GE",
+    "phone_code": 995,
+    "nationality_en": "Georgia",
+    "nationality_th": "จอร์เจีย"
+  },
+  {
+    "country_en": "Ghana",
+    "country_th": "เกิร์นซีย์",
+    "code": "GHA",
+    "code_s": "GH",
+    "phone_code": 233,
+    "nationality_en": "Ghanaia",
+    "nationality_th": "เกิร์นซีย์"
+  },
+  {
+    "country_en": "Gambia",
+    "country_th": "แกมเบีย",
+    "code": "GMB",
+    "code_s": "GM",
+    "phone_code": 220,
+    "nationality_en": "Gambia",
+    "nationality_th": "แกมเบีย"
+  },
+  {
+    "country_en": "Guinea",
+    "country_th": "กินี",
+    "code": "GIN",
+    "code_s": "GN",
+    "phone_code": 224,
+    "nationality_en": "Guinea",
+    "nationality_th": "กินี"
+  },
+  {
+    "country_en": "Equatorial Guinea",
+    "country_th": "อิเควทอเรียลกินี",
+    "code": "GNQ",
+    "code_s": "GQ",
+    "phone_code": 240,
+    "nationality_en": "Equatorial Guinea",
+    "nationality_th": "อิเควทอเรียลกินี"
+  },
+  {
+    "country_en": "Guatemala",
+    "country_th": "กัวเตมาลา",
+    "code": "GTM",
+    "code_s": "GT",
+    "phone_code": 502,
+    "nationality_en": "Guatemala",
+    "nationality_th": "กัวเตมาลา"
+  },
+  {
+    "country_en": "Guinea-Bissau",
+    "country_th": "กินีบิสเซา",
+    "code": "GNB",
+    "code_s": "GW",
+    "phone_code": 245,
+    "nationality_en": "Guinea-Bissaua",
+    "nationality_th": "กินีบิสเซา"
+  },
+  {
+    "country_en": "Guyana",
+    "country_th": "กายอานา",
+    "code": "GUY",
+    "code_s": "GY",
+    "phone_code": 592,
+    "nationality_en": "Guyanese",
+    "nationality_th": "กายอานา"
+  },
+  {
+    "country_en": "Hong Kong",
+    "country_th": "ฮ่องกง",
+    "code": "HKG",
+    "code_s": "HK",
+    "phone_code": 852,
+    "nationality_en": "Hong Kong",
+    "nationality_th": "ฮ่องกง"
+  },
+  {
+    "country_en": "Honduras",
+    "country_th": "ฮอนดูรัส",
+    "code": "HND",
+    "code_s": "HN",
+    "phone_code": 504,
+    "nationality_en": "Hondura",
+    "nationality_th": "ฮอนดูรัส"
+  },
+  {
+    "country_en": "Croatia",
+    "country_th": "โครเอเชีย",
+    "code": "HRV",
+    "code_s": "HR",
+    "phone_code": 385,
+    "nationality_en": "Croatia",
+    "nationality_th": "โครเอเชีย"
+  },
+  {
+    "country_en": "Haiti",
+    "country_th": "เฮติ",
+    "code": "HTI",
+    "code_s": "HT",
+    "phone_code": 509,
+    "nationality_en": "Haitia",
+    "nationality_th": "เฮติ"
+  },
+  {
+    "country_en": "Hungary",
+    "country_th": "ฮังการี",
+    "code": "HUN",
+    "code_s": "HU",
+    "phone_code": 36,
+    "nationality_en": "Hungaria",
+    "nationality_th": "ฮังการี"
+  },
+  {
+    "country_en": "Indonesia",
+    "country_th": "อินโดนีเซีย",
+    "code": "IDN",
+    "code_s": "ID",
+    "phone_code": 62,
+    "nationality_en": "Indonesia",
+    "nationality_th": "อินโดนีเซีย"
+  },
+  {
+    "country_en": "Ireland",
+    "country_th": "ไอร์แลนด์",
+    "code": "IRL",
+    "code_s": "IE",
+    "phone_code": 353,
+    "nationality_en": "Irish",
+    "nationality_th": "ไอร์แลนด์"
+  },
+  {
+    "country_en": "Israel",
+    "country_th": "อิสราเอล",
+    "code": "ISR",
+    "code_s": "IL",
+    "phone_code": 972,
+    "nationality_en": "Israeli",
+    "nationality_th": "อิสราเอล"
+  },
+  {
+    "country_en": "India",
+    "country_th": "อินเดีย",
+    "code": "IND",
+    "code_s": "IN",
+    "phone_code": 91,
+    "nationality_en": "India",
+    "nationality_th": "อินเดีย"
+  },
+  {
+    "country_en": "Iraq",
+    "country_th": "อิรัก",
+    "code": "IRQ",
+    "code_s": "IQ",
+    "phone_code": 964,
+    "nationality_en": "Iraqi",
+    "nationality_th": "อิรัก"
+  },
+  {
+    "country_en": "Iran",
+    "country_th": "อิหร่าน",
+    "code": "IRN",
+    "code_s": "IR",
+    "phone_code": 98,
+    "nationality_en": "Irania",
+    "nationality_th": "อิหร่าน"
+  },
+  {
+    "country_en": "Iceland",
+    "country_th": "ประเทศไอซ์แลนด์",
+    "code": "ISL",
+    "code_s": "IS",
+    "phone_code": 354,
+    "nationality_en": "Icelander",
+    "nationality_th": "ประเทศไอซ์แลนด์"
+  },
+  {
+    "country_en": "Italy",
+    "country_th": "อิตาลี",
+    "code": "ITA",
+    "code_s": "IT",
+    "phone_code": 39,
+    "nationality_en": "Italia",
+    "nationality_th": "อิตาลี"
+  },
+  {
+    "country_en": "Jamaica",
+    "country_th": "เกาะจาเมกา",
+    "code": "JAM",
+    "code_s": "JM",
+    "phone_code": "1-876",
+    "nationality_en": "Jamaica",
+    "nationality_th": "เกาะจาเมกา"
+  },
+  {
+    "country_en": "Jordan",
+    "country_th": "จอร์แดน",
+    "code": "JOR",
+    "code_s": "JO",
+    "phone_code": 962,
+    "nationality_en": "Jordania",
+    "nationality_th": "จอร์แดน"
+  },
+  {
+    "country_en": "Japan",
+    "country_th": "ญี่ปุ่น",
+    "code": "JPN",
+    "code_s": "JP",
+    "phone_code": 81,
+    "nationality_en": "Japanese",
+    "nationality_th": "ญี่ปุ่น"
+  },
+  {
+    "country_en": "Kenya",
+    "country_th": "เคนย่า",
+    "code": "KEN",
+    "code_s": "KE",
+    "phone_code": 254,
+    "nationality_en": "Kenya",
+    "nationality_th": "เคนย่า"
+  },
+  {
+    "country_en": "Kyrgyzstan",
+    "country_th": "คีร์กีสถาน",
+    "code": "KGZ",
+    "code_s": "KG",
+    "phone_code": 996,
+    "nationality_en": "Kirghiz",
+    "nationality_th": "คีร์กีสถาน"
+  },
+  {
+    "country_en": "Cambodia",
+    "country_th": "กัมพูชา",
+    "code": "KHM",
+    "code_s": "KH",
+    "phone_code": 855,
+    "nationality_en": "Cambodia",
+    "nationality_th": "กัมพูชา"
+  },
+  {
+    "country_en": "Kiribati",
+    "country_th": "คิริบาส",
+    "code": "KIR",
+    "code_s": "KI",
+    "phone_code": 686,
+    "nationality_en": "I-Kiribati",
+    "nationality_th": "คิริบาส"
+  },
+  {
+    "country_en": "Comoros",
+    "country_th": "คอโมโรส",
+    "code": "COM",
+    "code_s": "KM",
+    "phone_code": 269,
+    "nationality_en": "Comora",
+    "nationality_th": "คอโมโรส"
+  },
+  {
+    "country_en": "Saint Kitts and Nevis",
+    "country_th": "เซนต์คิตส์และเนวิส",
+    "code": "KNA",
+    "code_s": "KN",
+    "phone_code": "1-869",
+    "nationality_en": "Kittian and Nevisia",
+    "nationality_th": "เซนต์คิตส์และเนวิส"
+  },
+  {
+    "country_en": "North Korea",
+    "country_th": "เกาหลีเหนือ",
+    "code": "PRK",
+    "code_s": "KP",
+    "phone_code": 850,
+    "nationality_en": "North Korea",
+    "nationality_th": "เกาหลีเหนือ"
+  },
+  {
+    "country_en": "South Korea",
+    "country_th": "เกาหลีใต้",
+    "code": "KOR",
+    "code_s": "KR",
+    "phone_code": 82,
+    "nationality_en": "South Korea",
+    "nationality_th": "เกาหลีใต้"
+  },
+  {
+    "country_en": "Kuwait",
+    "country_th": "คูเวต",
+    "code": "KWT",
+    "code_s": "KW",
+    "phone_code": 965,
+    "nationality_en": "Kuwaiti",
+    "nationality_th": "คูเวต"
+  },
+  {
+    "country_en": "Central African Republic",
+    "country_th": "สาธารณรัฐแอฟริกากลาง",
+    "code": "CAF",
+    "code_s": "CF",
+    "phone_code": 236,
+    "nationality_en": "Central Africa",
+    "nationality_th": "สาธารณรัฐแอฟริกากลาง"
+  },
+  {
+    "country_en": "Kazakhstan",
+    "country_th": "คาซัคสถาน",
+    "code": "KAZ",
+    "code_s": "KZ",
+    "phone_code": 7,
+    "nationality_en": "Kazakhstani",
+    "nationality_th": "คาซัคสถาน"
+  },
+  {
+    "country_en": "Laos",
+    "country_th": "ลาว",
+    "code": "LAO",
+    "code_s": "LA",
+    "phone_code": 856,
+    "nationality_en": "Laotia",
+    "nationality_th": "ลาว"
+  },
+  {
+    "country_en": "Lebanon",
+    "country_th": "เลบานอน",
+    "code": "LBN",
+    "code_s": "LB",
+    "phone_code": 961,
+    "nationality_en": "Lebanese",
+    "nationality_th": "เลบานอน"
+  },
+  {
+    "country_en": "Saint Lucia",
+    "country_th": "เซนต์ลูเซีย",
+    "code": "LCA",
+    "code_s": "LC",
+    "phone_code": "1-758",
+    "nationality_en": "Saint Lucia",
+    "nationality_th": "เซนต์ลูเซีย"
+  },
+  {
+    "country_en": "Liechtenstein",
+    "country_th": "ลิกเตนสไตน์",
+    "code": "LIE",
+    "code_s": "LI",
+    "phone_code": 423,
+    "nationality_en": "Liechtensteiner",
+    "nationality_th": "ลิกเตนสไตน์"
+  },
+  {
+    "country_en": "Sri Lanka",
+    "country_th": "ศรีลังกา",
+    "code": "LKA",
+    "code_s": "LK",
+    "phone_code": 94,
+    "nationality_en": "Sri Lanka",
+    "nationality_th": "ศรีลังกา"
+  },
+  {
+    "country_en": "Liberia",
+    "country_th": "ประเทศไลบีเรีย",
+    "code": "LBR",
+    "code_s": "LR",
+    "phone_code": 231,
+    "nationality_en": "Liberia",
+    "nationality_th": "ประเทศไลบีเรีย"
+  },
+  {
+    "country_en": "Lesotho",
+    "country_th": "เลโซโท",
+    "code": "LSO",
+    "code_s": "LS",
+    "phone_code": 266,
+    "nationality_en": "Mosotho",
+    "nationality_th": "เลโซโท"
+  },
+  {
+    "country_en": "Lithuania",
+    "country_th": "ลิธัวเนีย",
+    "code": "LTU",
+    "code_s": "LT",
+    "phone_code": 370,
+    "nationality_en": "Lithuania",
+    "nationality_th": "ลิธัวเนีย"
+  },
+  {
+    "country_en": "Luxembourg",
+    "country_th": "ลักเซมเบิร์ก",
+    "code": "LUX",
+    "code_s": "LU",
+    "phone_code": 352,
+    "nationality_en": "Luxembourger",
+    "nationality_th": "ลักเซมเบิร์ก"
+  },
+  {
+    "country_en": "Latvia",
+    "country_th": "ลัตเวีย",
+    "code": "LVA",
+    "code_s": "LV",
+    "phone_code": 371,
+    "nationality_en": "Latvia",
+    "nationality_th": "ลัตเวีย"
+  },
+  {
+    "country_en": "Libya",
+    "country_th": "ลิบยา",
+    "code": "LBY",
+    "code_s": "LY",
+    "phone_code": 218,
+    "nationality_en": "Libya",
+    "nationality_th": "ลิบยา"
+  },
+  {
+    "country_en": "Morocco",
+    "country_th": "โมร็อกโก",
+    "code": "MAR",
+    "code_s": "MA",
+    "phone_code": 212,
+    "nationality_en": "Morocca",
+    "nationality_th": "โมร็อกโก"
+  },
+  {
+    "country_en": "Monaco",
+    "country_th": "โมนาโก",
+    "code": "MCO",
+    "code_s": "MC",
+    "phone_code": 377,
+    "nationality_en": "Monegasque",
+    "nationality_th": "โมนาโก"
+  },
+  {
+    "country_en": "Moldova",
+    "country_th": "มอลโดวา",
+    "code": "MDA",
+    "code_s": "MD",
+    "phone_code": 373,
+    "nationality_en": "Moldova",
+    "nationality_th": "มอลโดวา"
+  },
+  {
+    "country_en": "Madagascar",
+    "country_th": "มาดากัสการ์",
+    "code": "MDG",
+    "code_s": "MG",
+    "phone_code": 261,
+    "nationality_en": "Malagasy",
+    "nationality_th": "มาดากัสการ์"
+  },
+  {
+    "country_en": "Marshall Islands",
+    "country_th": "หมู่เกาะมาร์แชลล์",
+    "code": "MHL",
+    "code_s": "MH",
+    "phone_code": 692,
+    "nationality_en": "Marshallese",
+    "nationality_th": "หมู่เกาะมาร์แชลล์"
+  },
+  {
+    "country_en": "Micronesia",
+    "country_th": "ไมโครนีเซีย",
+    "code": "FSM",
+    "code_s": "FM",
+    "phone_code": 691,
+    "nationality_en": "Micronesia",
+    "nationality_th": "ไมโครนีเซีย"
+  },
+  {
+    "country_en": "Macedonia",
+    "country_th": "มาซิโดเนีย",
+    "code": "MKD",
+    "code_s": "MK",
+    "phone_code": 389,
+    "nationality_en": "Macedonia",
+    "nationality_th": "มาซิโดเนีย"
+  },
+  {
+    "country_en": "Mali",
+    "country_th": "มาลี",
+    "code": "MLI",
+    "code_s": "ML",
+    "phone_code": 223,
+    "nationality_en": "Malia",
+    "nationality_th": "มาลี"
+  },
+  {
+    "country_en": "Myanmar",
+    "country_th": "พม่า",
+    "code": "MMR",
+    "code_s": "MM",
+    "phone_code": 95,
+    "nationality_en": "Burmese",
+    "nationality_th": "พม่า"
+  },
+  {
+    "country_en": "Mauritania",
+    "country_th": "มอริเตเนีย",
+    "code": "MRT",
+    "code_s": "MR",
+    "phone_code": 222,
+    "nationality_en": "Mauritania",
+    "nationality_th": "มอริเตเนีย"
+  },
+  {
+    "country_en": "Malta",
+    "country_th": "เกาะมอลตา",
+    "code": "MLT",
+    "code_s": "MT",
+    "phone_code": 356,
+    "nationality_en": "Maltese",
+    "nationality_th": "เกาะมอลตา"
+  },
+  {
+    "country_en": "Mauritius",
+    "country_th": "มอริเชียส",
+    "code": "MUS",
+    "code_s": "MU",
+    "phone_code": 230,
+    "nationality_en": "Mauritia",
+    "nationality_th": "มอริเชียส"
+  },
+  {
+    "country_en": "Maldives",
+    "country_th": "มัลดีฟส์",
+    "code": "MDV",
+    "code_s": "MV",
+    "phone_code": 960,
+    "nationality_en": "Maldiva",
+    "nationality_th": "มัลดีฟส์"
+  },
+  {
+    "country_en": "Malawi",
+    "country_th": "มาลาวี",
+    "code": "MWI",
+    "code_s": "MW",
+    "phone_code": 265,
+    "nationality_en": "Malawia",
+    "nationality_th": "มาลาวี"
+  },
+  {
+    "country_en": "Mexico",
+    "country_th": "เม็กซิโก",
+    "code": "MEX",
+    "code_s": "MX",
+    "phone_code": 52,
+    "nationality_en": "Mexica",
+    "nationality_th": "เม็กซิโก"
+  },
+  {
+    "country_en": "Malaysia",
+    "country_th": "มาเลเซีย",
+    "code": "MYS",
+    "code_s": "MY",
+    "phone_code": 60,
+    "nationality_en": "Malaysia",
+    "nationality_th": "มาเลเซีย"
+  },
+  {
+    "country_en": "Mozambique",
+    "country_th": "โมซัมบิก",
+    "code": "MOZ",
+    "code_s": "MZ",
+    "phone_code": 258,
+    "nationality_en": "Mozambica",
+    "nationality_th": "โมซัมบิก"
+  },
+  {
+    "country_en": "Namibia",
+    "country_th": "นามิเบีย",
+    "code": "NAM",
+    "code_s": "NA",
+    "phone_code": 264,
+    "nationality_en": "Namibia",
+    "nationality_th": "นามิเบีย"
+  },
+  {
+    "country_en": "Niger",
+    "country_th": "ไนเธอร์",
+    "code": "NER",
+    "code_s": "NE",
+    "phone_code": 227,
+    "nationality_en": "Nigerie",
+    "nationality_th": "ไนเธอร์"
+  },
+  {
+    "country_en": "Nigeria",
+    "country_th": "ไนจีเรีย",
+    "code": "NGA",
+    "code_s": "NG",
+    "phone_code": 234,
+    "nationality_en": "Nigeria",
+    "nationality_th": "ไนจีเรีย"
+  },
+  {
+    "country_en": "Nicaragua",
+    "country_th": "นิการากัว",
+    "code": "NIC",
+    "code_s": "NI",
+    "phone_code": 505,
+    "nationality_en": "Nicaragua",
+    "nationality_th": "นิการากัว"
+  },
+  {
+    "country_en": "Netherlands",
+    "country_th": "เนเธอร์แลนด์",
+    "code": "NLD",
+    "code_s": "NL",
+    "phone_code": 31,
+    "nationality_en": "Dutch",
+    "nationality_th": "เนเธอร์แลนด์"
+  },
+  {
+    "country_en": "Norway",
+    "country_th": "นอร์เวย์",
+    "code": "NOR",
+    "code_s": "NO",
+    "phone_code": 47,
+    "nationality_en": "Norwegia",
+    "nationality_th": "นอร์เวย์"
+  },
+  {
+    "country_en": "Nepal",
+    "country_th": "เนปาล",
+    "code": "NPL",
+    "code_s": "NP",
+    "phone_code": 977,
+    "nationality_en": "Nepalese",
+    "nationality_th": "เนปาล"
+  },
+  {
+    "country_en": "Nauru",
+    "country_th": "นาอูรู",
+    "code": "NRU",
+    "code_s": "NR",
+    "phone_code": 674,
+    "nationality_en": "Naurua",
+    "nationality_th": "นาอูรู"
+  },
+  {
+    "country_en": "New Zealand",
+    "country_th": "นิวซีแลนด์",
+    "code": "NZL",
+    "code_s": "NZ",
+    "phone_code": 64,
+    "nationality_en": "New Zealander",
+    "nationality_th": "นิวซีแลนด์"
+  },
+  {
+    "country_en": "Oman",
+    "country_th": "โอมาน",
+    "code": "OMN",
+    "code_s": "OM",
+    "phone_code": 968,
+    "nationality_en": "Omani",
+    "nationality_th": "โอมาน"
+  },
+  {
+    "country_en": "Panama",
+    "country_th": "ปานามา",
+    "code": "PAN",
+    "code_s": "PA",
+    "phone_code": 507,
+    "nationality_en": "Panamania",
+    "nationality_th": "ปานามา"
+  },
+  {
+    "country_en": "Peru",
+    "country_th": "เปรู",
+    "code": "PER",
+    "code_s": "PE",
+    "phone_code": 51,
+    "nationality_en": "Peruvia",
+    "nationality_th": "เปรู"
+  },
+  {
+    "country_en": "Papua New Guinea",
+    "country_th": "ปาปัวนิวกินี",
+    "code": "PNG",
+    "code_s": "PG",
+    "phone_code": 675,
+    "nationality_en": "Papua New Guinea",
+    "nationality_th": "ปาปัวนิวกินี"
+  },
+  {
+    "country_en": "Philippines",
+    "country_th": "ฟิลิปปินส์",
+    "code": "PHL",
+    "code_s": "PH",
+    "phone_code": 63,
+    "nationality_en": "Filipino",
+    "nationality_th": "ฟิลิปปินส์"
+  },
+  {
+    "country_en": "Pakistan",
+    "country_th": "ปากีสถาน",
+    "code": "PAK",
+    "code_s": "PK",
+    "phone_code": 92,
+    "nationality_en": "Pakistani",
+    "nationality_th": "ปากีสถาน"
+  },
+  {
+    "country_en": "Poland",
+    "country_th": "โปแลนด์",
+    "code": "POL",
+    "code_s": "PL",
+    "phone_code": 48,
+    "nationality_en": "Polish",
+    "nationality_th": "โปแลนด์"
+  },
+  {
+    "country_en": "Portugal",
+    "country_th": "โปรตุเกส",
+    "code": "PRT",
+    "code_s": "PT",
+    "phone_code": 351,
+    "nationality_en": "Portuguese",
+    "nationality_th": "โปรตุเกส"
+  },
+  {
+    "country_en": "Palau",
+    "country_th": "ปาเลา",
+    "code": "PLW",
+    "code_s": "PW",
+    "phone_code": 680,
+    "nationality_en": "Palaua",
+    "nationality_th": "ปาเลา"
+  },
+  {
+    "country_en": "Paraguay",
+    "country_th": "ปารากวัย",
+    "code": "PRY",
+    "code_s": "PY",
+    "phone_code": 595,
+    "nationality_en": "Paraguaya",
+    "nationality_th": "ปารากวัย"
+  },
+  {
+    "country_en": "Qatar",
+    "country_th": "กาตาร์",
+    "code": "QAT",
+    "code_s": "QA",
+    "phone_code": 974,
+    "nationality_en": "Qatari",
+    "nationality_th": "กาตาร์"
+  },
+  {
+    "country_en": "Romania",
+    "country_th": "โรมาเนีย",
+    "code": "ROU",
+    "code_s": "RO",
+    "phone_code": 40,
+    "nationality_en": "Romania",
+    "nationality_th": "โรมาเนีย"
+  },
+  {
+    "country_en": "Serbia",
+    "country_th": "เซอร์เบีย",
+    "code": "SRB",
+    "code_s": "RS",
+    "phone_code": 381,
+    "nationality_en": "Serbia",
+    "nationality_th": "เซอร์เบีย"
+  },
+  {
+    "country_en": "Russia",
+    "country_th": "รัสเซีย",
+    "code": "RUS",
+    "code_s": "RU",
+    "phone_code": 7,
+    "nationality_en": "Russia",
+    "nationality_th": "รัสเซีย"
+  },
+  {
+    "country_en": "Rwanda",
+    "country_th": "รวันดา",
+    "code": "RWA",
+    "code_s": "RW",
+    "phone_code": 250,
+    "nationality_en": "Rwanda",
+    "nationality_th": "รวันดา"
+  },
+  {
+    "country_en": "Saudi Arabia",
+    "country_th": "ซาอุดิอาราเบีย",
+    "code": "SAU",
+    "code_s": "SA",
+    "phone_code": 966,
+    "nationality_en": "Saudi Arabia",
+    "nationality_th": "ซาอุดิอาราเบีย"
+  },
+  {
+    "country_en": "Solomon Islands",
+    "country_th": "หมู่เกาะโซโลมอน",
+    "code": "SLB",
+    "code_s": "SB",
+    "phone_code": 677,
+    "nationality_en": "Solomon Islander",
+    "nationality_th": "หมู่เกาะโซโลมอน"
+  },
+  {
+    "country_en": "Seychelles",
+    "country_th": "เซเชลส์",
+    "code": "SYC",
+    "code_s": "SC",
+    "phone_code": 248,
+    "nationality_en": "Seychellois",
+    "nationality_th": "เซเชลส์"
+  },
+  {
+    "country_en": "Sudan",
+    "country_th": "ซูดาน",
+    "code": "SDN",
+    "code_s": "SD",
+    "phone_code": 249,
+    "nationality_en": "Sudanese",
+    "nationality_th": "ซูดาน"
+  },
+  {
+    "country_en": "Sweden",
+    "country_th": "สวีเดน",
+    "code": "SWE",
+    "code_s": "SE",
+    "phone_code": 46,
+    "nationality_en": "Swedish",
+    "nationality_th": "สวีเดน"
+  },
+  {
+    "country_en": "Singapore",
+    "country_th": "สิงคโปร์",
+    "code": "SGP",
+    "code_s": "SG",
+    "phone_code": 65,
+    "nationality_en": "Singaporea",
+    "nationality_th": "สิงคโปร์"
+  },
+  {
+    "country_en": "Slovenia",
+    "country_th": "สโลวีเนีย",
+    "code": "SVN",
+    "code_s": "SI",
+    "phone_code": 386,
+    "nationality_en": "Slovene",
+    "nationality_th": "สโลวีเนีย"
+  },
+  {
+    "country_en": "Slovakia",
+    "country_th": "สโลวะเกีย",
+    "code": "SVK",
+    "code_s": "SK",
+    "phone_code": 421,
+    "nationality_en": "Slovak",
+    "nationality_th": "สโลวะเกีย"
+  },
+  {
+    "country_en": "Sierra Leone",
+    "country_th": "เซียร์ราลีโอน",
+    "code": "SLE",
+    "code_s": "SL",
+    "phone_code": 232,
+    "nationality_en": "Sierra Leonea",
+    "nationality_th": "เซียร์ราลีโอน"
+  },
+  {
+    "country_en": "San Marino",
+    "country_th": "ซานมาริโน",
+    "code": "SMR",
+    "code_s": "SM",
+    "phone_code": 378,
+    "nationality_en": "Sammarinese",
+    "nationality_th": "ซานมาริโน"
+  },
+  {
+    "country_en": "Senegal",
+    "country_th": "เซเนกัล",
+    "code": "SEN",
+    "code_s": "SN",
+    "phone_code": 221,
+    "nationality_en": "Senegalese",
+    "nationality_th": "เซเนกัล"
+  },
+  {
+    "country_en": "Somalia",
+    "country_th": "โซมาเลีย",
+    "code": "SOM",
+    "code_s": "SO",
+    "phone_code": 252,
+    "nationality_en": "Somali",
+    "nationality_th": "โซมาเลีย"
+  },
+  {
+    "country_en": "Suriname",
+    "country_th": "ซูรินาเม",
+    "code": "SUR",
+    "code_s": "SR",
+    "phone_code": 597,
+    "nationality_en": "Surinamer",
+    "nationality_th": "ซูรินาเม"
+  },
+  {
+    "country_en": "Sao Tome and Principe",
+    "country_th": "เซาตูเมและปรินซิปี",
+    "code": "STP",
+    "code_s": "ST",
+    "phone_code": 239,
+    "nationality_en": "Sao Tomea",
+    "nationality_th": "เซาตูเมและปรินซิปี"
+  },
+  {
+    "country_en": "El Salvador",
+    "country_th": "เอลซัลวาดอร์",
+    "code": "SLV",
+    "code_s": "SV",
+    "phone_code": 503,
+    "nationality_en": "Salvadora",
+    "nationality_th": "เอลซัลวาดอร์"
+  },
+  {
+    "country_en": "Syria",
+    "country_th": "ซีเรีย",
+    "code": "SYR",
+    "code_s": "SY",
+    "phone_code": 963,
+    "nationality_en": "Syria",
+    "nationality_th": "ซีเรีย"
+  },
+  {
+    "country_en": "Swaziland",
+    "country_th": "สวาซิแลนด์",
+    "code": "SWZ",
+    "code_s": "SZ",
+    "phone_code": 268,
+    "nationality_en": "Swazi",
+    "nationality_th": "สวาซิแลนด์"
+  },
+  {
+    "country_en": "Chad",
+    "country_th": "ชาด",
+    "code": "TCD",
+    "code_s": "TD",
+    "phone_code": 235,
+    "nationality_en": "Chadia",
+    "nationality_th": "ชาด"
+  },
+  {
+    "country_en": "Togo",
+    "country_th": "โตโก",
+    "code": "TGO",
+    "code_s": "TG",
+    "phone_code": 228,
+    "nationality_en": "Togolese",
+    "nationality_th": "โตโก"
+  },
+  {
+    "country_en": "Thailand",
+    "country_th": "ไทย",
+    "code": "THA",
+    "code_s": "TH",
+    "phone_code": 66,
+    "nationality_en": "Thai",
+    "nationality_th": "ไทย"
+  },
+  {
+    "country_en": "Tajikistan",
+    "country_th": "ทาจิกิสถาน",
+    "code": "TJK",
+    "code_s": "TJ",
+    "phone_code": 992,
+    "nationality_en": "Tadzhik",
+    "nationality_th": "ทาจิกิสถาน"
+  },
+  {
+    "country_en": "East Timor",
+    "country_th": "ติมอร์ตะวันออก",
+    "code": "TLS",
+    "code_s": "TL",
+    "phone_code": 670,
+    "nationality_en": "East Timorese",
+    "nationality_th": "ติมอร์ตะวันออก"
+  },
+  {
+    "country_en": "Turkmenistan",
+    "country_th": "เติร์กเมนิสถาน",
+    "code": "TKM",
+    "code_s": "TM",
+    "phone_code": 993,
+    "nationality_en": "Turkme",
+    "nationality_th": "เติร์กเมนิสถาน"
+  },
+  {
+    "country_en": "Tunisia",
+    "country_th": "ตูนิเซีย",
+    "code": "TUN",
+    "code_s": "TN",
+    "phone_code": 216,
+    "nationality_en": "Tunisia",
+    "nationality_th": "ตูนิเซีย"
+  },
+  {
+    "country_en": "Tonga",
+    "country_th": "ตองกา",
+    "code": "TON",
+    "code_s": "TO",
+    "phone_code": 676,
+    "nationality_en": "Tonga",
+    "nationality_th": "ตองกา"
+  },
+  {
+    "country_en": "Turkey",
+    "country_th": "ตุรกี",
+    "code": "TUR",
+    "code_s": "TR",
+    "phone_code": 90,
+    "nationality_en": "Turkish",
+    "nationality_th": "ตุรกี"
+  },
+  {
+    "country_en": "Trinidad and Tobago",
+    "country_th": "ตรินิแดดและโตเบโก",
+    "code": "TTO",
+    "code_s": "TT",
+    "phone_code": "1-868",
+    "nationality_en": "Trinidadia",
+    "nationality_th": "ตรินิแดดและโตเบโก"
+  },
+  {
+    "country_en": "Tuvalu",
+    "country_th": "ตูวาลู",
+    "code": "TUV",
+    "code_s": "TV",
+    "phone_code": 688,
+    "nationality_en": "Tuvalua",
+    "nationality_th": "ตูวาลู"
+  },
+  {
+    "country_en": "Taiwan",
+    "country_th": "ไต้หวัน",
+    "code": "TWN",
+    "code_s": "TW",
+    "phone_code": 886,
+    "nationality_en": "Taiwanese",
+    "nationality_th": "ไต้หวัน"
+  },
+  {
+    "country_en": "Tanzania",
+    "country_th": "แทนซาเนีย",
+    "code": "TZA",
+    "code_s": "TZ",
+    "phone_code": 255,
+    "nationality_en": "Tanzania",
+    "nationality_th": "แทนซาเนีย"
+  },
+  {
+    "country_en": "Ukraine",
+    "country_th": "ยูเครน",
+    "code": "UKR",
+    "code_s": "UA",
+    "phone_code": 380,
+    "nationality_en": "Ukrainia",
+    "nationality_th": "ยูเครน"
+  },
+  {
+    "country_en": "Uganda",
+    "country_th": "ยูกันดา",
+    "code": "UGA",
+    "code_s": "UG",
+    "phone_code": 256,
+    "nationality_en": "Uganda",
+    "nationality_th": "ยูกันดา"
+  },
+  {
+    "country_en": "United Kingdom",
+    "country_th": "อังกฤษ (สหราชอาณาจักร)",
+    "code": "GBR",
+    "code_s": "GB",
+    "phone_code": 44,
+    "nationality_en": "British",
+    "nationality_th": "อังกฤษ (สหราชอาณาจักร)"
+  },
+  {
+    "country_en": "United States",
+    "country_th": "สหรัฐอเมริกา",
+    "code": "USA",
+    "code_s": "US",
+    "phone_code": 1,
+    "nationality_en": "America",
+    "nationality_th": "สหรัฐอเมริกา"
+  },
+  {
+    "country_en": "Uruguay",
+    "country_th": "อุรุกวัย",
+    "code": "URY",
+    "code_s": "UY",
+    "phone_code": 598,
+    "nationality_en": "Uruguaya",
+    "nationality_th": "อุรุกวัย"
+  },
+  {
+    "country_en": "Uzbekistan",
+    "country_th": "อุซเบกิสถาน",
+    "code": "UZB",
+    "code_s": "UZ",
+    "phone_code": 998,
+    "nationality_en": "Uzbekistani",
+    "nationality_th": "อุซเบกิสถาน"
+  },
+  {
+    "country_en": "Vatican City",
+    "country_th": "เมืองวาติกัน",
+    "code": "VAT",
+    "code_s": "VA",
+    "phone_code": 379,
+    "nationality_en": "Vatican",
+    "nationality_th": "วาติกัน"
+  },
+  {
+    "country_en": "Venezuela",
+    "country_th": "เวเนซุเอลา",
+    "code": "VEN",
+    "code_s": "VE",
+    "phone_code": 58,
+    "nationality_en": "Venezuela",
+    "nationality_th": "เวเนซุเอลา"
+  },
+  {
+    "country_en": "Chile",
+    "country_th": "ชิลี",
+    "code": "CHL",
+    "code_s": "CL",
+    "phone_code": 56,
+    "nationality_en": "Chilea",
+    "nationality_th": "ชิลี"
+  },
+  {
+    "country_en": "Vietnam",
+    "country_th": "เวียดนาม",
+    "code": "VNM",
+    "code_s": "VN",
+    "phone_code": 84,
+    "nationality_en": "Vietnamese",
+    "nationality_th": "เวียดนาม"
+  },
+  {
+    "country_en": "Vanuatu",
+    "country_th": "วานูอาตู",
+    "code": "VUT",
+    "code_s": "VU",
+    "phone_code": 678,
+    "nationality_en": "Ni-Vanuatu",
+    "nationality_th": "วานูอาตู"
+  },
+  {
+    "country_en": "Samoa",
+    "country_th": "ซามัว",
+    "code": "WSM",
+    "code_s": "WS",
+    "phone_code": 685,
+    "nationality_en": "Samoa",
+    "nationality_th": "ซามัว"
+  },
+  {
+    "country_en": "Yemen",
+    "country_th": "เยเมน",
+    "code": "YEM",
+    "code_s": "YE",
+    "phone_code": 967,
+    "nationality_en": "Yemeni",
+    "nationality_th": "เยเมน"
+  },
+  {
+    "country_en": "South Africa",
+    "country_th": "แอฟริกาใต้",
+    "code": "ZAF",
+    "code_s": "ZA",
+    "phone_code": 27,
+    "nationality_en": "South Africa",
+    "nationality_th": "แอฟริกาใต้"
+  },
+  {
+    "country_en": "Zambia",
+    "country_th": "แซมเบีย",
+    "code": "ZMB",
+    "code_s": "ZM",
+    "phone_code": 260,
+    "nationality_en": "Zambia",
+    "nationality_th": "แซมเบีย"
+  },
+  {
+    "country_en": "Zimbabwe",
+    "country_th": "ประเทศซิมบับเว",
+    "code": "ZWE",
+    "code_s": "ZW",
+    "phone_code": 263,
+    "nationality_en": "Zimbabwea",
+    "nationality_th": "ประเทศซิมบับเว"
+  }
+]
