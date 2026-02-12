@@ -1,51 +1,72 @@
-import { Injectable } from '@angular/core';
-import liff, { type Liff } from '@line/liff';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { environment } from 'src/environments/environment';
+
+type LiffLike = {
+  isInClient(): boolean;
+  isLoggedIn(): boolean;
+  login(arg: { redirectUri: string }): void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getProfile(): Promise<any>;
+  getIDToken(): string | null;
+  closeWindow(): void;
+};
 
 @Injectable({ providedIn: 'root' })
 export class LiffService {
-  private readyPromise?: Promise<Liff>;
+  private readyPromise?: Promise<LiffLike>;
+  private isBrowser: boolean;
 
-  ready(): Promise<Liff> {
+  constructor(@Inject(PLATFORM_ID) platformId: object) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
+
+  ready(): Promise<LiffLike> {
     if (!this.readyPromise) {
       this.readyPromise = this.initialize();
     }
-
     return this.readyPromise;
   }
 
-  private async initialize(): Promise<Liff> {
+  private async initialize(): Promise<LiffLike> {
+    if (!this.isBrowser) {
+      throw new Error('LIFF is not available on server (SSR).');
+    }
+
+    const mod = await import('@line/liff');
+    const liff = mod.default;
+
     await liff.init({ liffId: environment.liffId });
-    return liff;
+    return liff as unknown as LiffLike;
   }
 
   async isInClient(): Promise<boolean> {
-    const liffInstance = await this.ready();
-    return liffInstance.isInClient();
+    const l = await this.ready();
+    return l.isInClient();
   }
 
   async isLoggedIn(): Promise<boolean> {
-    const liffInstance = await this.ready();
-    return liffInstance.isLoggedIn();
+    const l = await this.ready();
+    return l.isLoggedIn();
   }
 
   async login(redirectUri?: string): Promise<void> {
-    const liffInstance = await this.ready();
-    liffInstance.login({ redirectUri: redirectUri ?? window.location.href });
+    const l = await this.ready();
+    l.login({ redirectUri: redirectUri ?? window.location.href });
   }
 
   async getProfile() {
-    const liffInstance = await this.ready();
-    return liffInstance.getProfile();
+    const l = await this.ready();
+    return l.getProfile();
   }
 
   async getIdToken(): Promise<string | null> {
-    const liffInstance = await this.ready();
-    return liffInstance.getIDToken() ?? null;
+    const l = await this.ready();
+    return l.getIDToken() ?? null;
   }
 
   async closeWindow(): Promise<void> {
-    const liffInstance = await this.ready();
-    liffInstance.closeWindow();
+    const l = await this.ready();
+    l.closeWindow();
   }
 }

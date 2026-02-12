@@ -52,6 +52,9 @@
       ],
       "@ui/select": [
         "./src/ui/select/src/index.ts"
+      ],
+      "@ui/label": [
+        "./src/ui/label/src/index.ts"
       ]
     }
   },

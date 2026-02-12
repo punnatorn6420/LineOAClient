@@ -5,34 +5,23 @@
     <header class="bg-[#ffd400] px-5 py-4">
       <img src="/assets/images/nokair-logo.png" alt="Nok Air" class="h-9 w-auto" />
     </header>
-    <main class="px-3 pt-5 pb-[220px]">
-      <h1 class="text-[20px] font-bold leading-7">
+
+    <main class="px-3 pt-3 pb-[220px]">
+      <h1 class="text-xl font-bold leading-tight">
         {{ t('PDPA_TITLE') }}
       </h1>
-
-      <p class="mt-3 text-[14px] leading-6 text-[#2a2a2a]">
-        {{ t('PDPA_INTRO') }}
-      </p>
-
       @for (section of sections; track section.titleKey; let idx = $index) {
-        <section class="mt-6">
-          <!-- 1. Section Title -->
-          <h2 class="text-[16px] font-bold leading-6 text-[#1f1f1f]">
-            {{ idx + 1 }}. {{ t(section.titleKey) }}
-          </h2>
-
-          <!-- Paragraphs -->
+        <section class="mt-4">
+          <h2 class="text-md font-bold leading-tight">{{ idx + 1 }}. {{ t(section.titleKey) }}</h2>
           @if (section.paragraphKeys?.length) {
-            <div class="mt-2 space-y-3 text-[14px] leading-6 text-[#2a2a2a]">
+            <div class="text-sm leading-tight font-medium">
               @for (paragraphKey of section.paragraphKeys; track paragraphKey) {
                 <p>{{ t(paragraphKey) }}</p>
               }
             </div>
           }
-
-          <!-- Bullets -->
           @if (section.listKeys?.length) {
-            <ul class="mt-2 list-disc space-y-2 pl-6 text-[14px] leading-6 text-[#2a2a2a]">
+            <ul class="list-disc pl-6 text-sm leading-tight font-medium">
               @for (itemKey of section.listKeys; track itemKey) {
                 <li>{{ t(itemKey) }}</li>
               }
@@ -40,33 +29,30 @@
           }
         </section>
       }
-
-      <p class="mt-6 text-[14px] leading-6 text-[#2a2a2a]">
-        {{ t('PDPA_ANNOUNCEMENT_DATE') }}
-      </p>
     </main>
-
     <div class="fixed inset-x-0 bottom-0 z-20">
       <div
         class="mx-auto w-full max-w-[430px] border-t border-white bg-white px-3 pt-4 pb-[calc(16px+env(safe-area-inset-bottom))]"
       >
-        <label class="flex items-start gap-3 text-[14px] leading-6 text-[#3b3b3b]">
-          <input
-            type="checkbox"
-            class="mt-0.5 h-5 w-5 shrink-0 border-[#9a9a9a] accent-[#9a9a9a]"
-            [checked]="accepted"
-            (change)="onToggleAccepted($event)"
+        <label class="flex items-start gap-3 text-sm leading-tight cursor-pointer">
+          <hlm-checkbox
+            id="pdpa-accept"
+            [(checked)]="accepted"
+            class="mt-0.5 data-[state=checked]:bg-[#ffd400] data-[state=checked]:border-[#ffd400] data-[state=checked]:text-white"
           />
-          <span>{{ t('PDPA_ACCEPT_TEXT') }}</span>
+          <span hlmLabel for="pdpa-accept">
+            {{ t('PDPA_ACCEPT_TEXT') }}
+          </span>
         </label>
-
         <button
           type="button"
-          class="mt-4 w-full rounded-sm px-4 py-4 text-[18px] font-bold leading-none transition-colors"
+          hlmBtn
+          class="mt-4 w-full rounded-[4px] text-lg transition-colors border"
           [class.bg-[#cfcfcf]]="!accepted"
           [class.text-[#8f8f8f]]="!accepted"
           [class.bg-[#ffd400]]="accepted"
           [class.text-[#111111]]="accepted"
+          [class.border-[#111111]]="accepted"
           [disabled]="!accepted"
           (click)="onAccept()"
         >
