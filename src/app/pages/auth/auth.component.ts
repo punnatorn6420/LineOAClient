@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { isMobile } from '../../core/services/device';
+import {
+  canUseDesktopAuthForDevelopment,
+  isMobile,
+} from '../../core/services/device';
 import { LiffService } from '../../core/services/liff.service';
 
 @Component({
@@ -18,7 +21,9 @@ export class AuthComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     try {
-      if (!isMobile()) {
+      const allowDesktopDev = canUseDesktopAuthForDevelopment();
+
+      if (!isMobile() && !allowDesktopDev) {
         await this.router.navigateByUrl('/unsupported');
         return;
       }
