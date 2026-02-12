@@ -64,9 +64,10 @@
       <h3 class="mt-3 text-[44px] font-medium leading-none tracking-tight">General Information</h3>
 
       <div class="mt-3 space-y-3">
-        <div class="relative pt-2">
+        <hlm-form-field class="relative pt-2">
           <select
             id="title"
+            hlmInput
             formControlName="title"
             class="h-14 w-full rounded-md border bg-white px-4 pt-5 pb-2 text-sm outline-none focus:border-black"
             [ngClass]="isInvalid('title') ? '!border-red-500' : 'border-[#cfcfcf]'"
@@ -85,11 +86,11 @@
             Title <span class="text-red-500">*</span>
           </label>
           @if (isInvalid('title')) {
-            <p class="mt-1 pl-4 text-[11px] text-red-500">Please select a title.</p>
+            <hlm-error class="pl-4 text-[11px] !font-normal">Please select a title.</hlm-error>
           }
-        </div>
+        </hlm-form-field>
 
-        <div class="relative pt-2">
+        <hlm-form-field class="relative pt-2">
           <input
             id="firstName"
             hlmInput
@@ -107,11 +108,13 @@
             First Name (English) <span class="text-red-500">*</span>
           </label>
           @if (isInvalid('firstName')) {
-            <p class="mt-1 pl-4 text-[11px] text-red-500">Please enter your first name in English only.</p>
+            <hlm-error class="pl-4 text-[11px] !font-normal"
+              >Please enter your first name in English only.</hlm-error
+            >
           }
-        </div>
+        </hlm-form-field>
 
-        <div class="relative pt-2">
+        <hlm-form-field class="relative pt-2">
           <input
             id="middleName"
             hlmInput
@@ -129,13 +132,13 @@
             Middle Name (English)
           </label>
           @if (isInvalid('middleName')) {
-            <p class="mt-1 pl-4 text-[11px] text-red-500">
-              Please enter your middle name in English only.
-            </p>
+            <hlm-error class="pl-4 text-[11px] !font-normal"
+              >Please enter your middle name in English only.</hlm-error
+            >
           }
-        </div>
+        </hlm-form-field>
 
-        <div class="relative pt-2">
+        <hlm-form-field class="relative pt-2">
           <input
             id="lastName"
             hlmInput
@@ -153,11 +156,13 @@
             Last Name (English) <span class="text-red-500">*</span>
           </label>
           @if (isInvalid('lastName')) {
-            <p class="mt-1 pl-4 text-[11px] text-red-500">Please enter your last name in English only.</p>
+            <hlm-error class="pl-4 text-[11px] !font-normal"
+              >Please enter your last name in English only.</hlm-error
+            >
           }
-        </div>
+        </hlm-form-field>
 
-        <div class="relative pt-2">
+        <hlm-form-field class="relative pt-2">
           <input
             id="dateOfBirth"
             hlmInput
@@ -175,18 +180,19 @@
             Date of Birth <span class="text-red-500">*</span>
           </label>
           @if (isInvalid('dateOfBirth')) {
-            <p class="mt-1 pl-4 text-[11px] text-red-500">Please select your date of birth.</p>
+            <hlm-error class="pl-4 text-[11px] !font-normal">Please select your date of birth.</hlm-error>
           }
-        </div>
+        </hlm-form-field>
       </div>
 
       <h3 class="mt-5 text-sm font-bold text-[#1f1f1f]">Passport Information</h3>
 
       <div class="mt-3 space-y-3">
         <div class="grid grid-cols-2 gap-2">
-          <div class="relative pt-2">
+          <hlm-form-field class="relative pt-2">
             <select
               id="nationality"
+              hlmInput
               formControlName="nationality"
               class="h-14 w-full rounded-md border bg-white px-4 pt-5 pb-2 text-sm outline-none focus:border-black"
               [ngClass]="isInvalid('nationality') ? '!border-red-500' : 'border-[#cfcfcf]'"
@@ -205,13 +211,14 @@
               Nationality <span class="text-red-500">*</span>
             </label>
             @if (isInvalid('nationality')) {
-              <p class="mt-1 pl-2 text-[11px] text-red-500">Please select your nationality.</p>
+              <hlm-error class="pl-2 text-[11px] !font-normal">Please select your nationality.</hlm-error>
             }
-          </div>
+          </hlm-form-field>
 
-          <div class="relative pt-2">
+          <hlm-form-field class="relative pt-2">
             <select
               id="countryOfResidence"
+              hlmInput
               formControlName="countryOfResidence"
               class="h-14 w-full rounded-md border bg-white px-4 pt-5 pb-2 text-sm outline-none focus:border-black"
               [ngClass]="isInvalid('countryOfResidence') ? '!border-red-500' : 'border-[#cfcfcf]'"
@@ -230,12 +237,14 @@
               Country of residence <span class="text-red-500">*</span>
             </label>
             @if (isInvalid('countryOfResidence')) {
-              <p class="mt-1 pl-2 text-[11px] text-red-500">Please select your country of residence.</p>
+              <hlm-error class="pl-2 text-[11px] !font-normal"
+                >Please select your country of residence.</hlm-error
+              >
             }
-          </div>
+          </hlm-form-field>
         </div>
 
-        <div class="relative pt-2">
+        <hlm-form-field class="relative pt-2">
           <input
             id="passportNumber"
             hlmInput
@@ -253,13 +262,16 @@
             Passport Number <span class="text-red-500">*</span>
           </label>
           @if (isInvalid('passportNumber')) {
-            <p class="mt-1 pl-4 text-[11px] text-red-500">Passport number must be 6–12 characters.</p>
+            <hlm-error class="pl-4 text-[11px] !font-normal"
+              >Passport number must be 6–12 characters.</hlm-error
+            >
           }
-        </div>
+        </hlm-form-field>
 
-        <div class="relative pt-2">
+        <hlm-form-field class="relative pt-2">
           <select
             id="issuedBy"
+            hlmInput
             formControlName="issuedBy"
             class="h-14 w-full rounded-md border bg-white px-4 pt-5 pb-2 text-sm outline-none focus:border-black"
             [ngClass]="isInvalid('issuedBy') ? '!border-red-500' : 'border-[#cfcfcf]'"
@@ -278,11 +290,11 @@
             Issued By <span class="text-red-500">*</span>
           </label>
           @if (isInvalid('issuedBy')) {
-            <p class="mt-1 pl-4 text-[11px] text-red-500">Please select issuing country.</p>
+            <hlm-error class="pl-4 text-[11px] !font-normal">Please select issuing country.</hlm-error>
           }
-        </div>
+        </hlm-form-field>
 
-        <div class="relative pt-2">
+        <hlm-form-field class="relative pt-2">
           <input
             id="passportExpiryDate"
             hlmInput
@@ -302,18 +314,21 @@
             Passport Expiry Date <span class="text-red-500">*</span>
           </label>
           @if (isInvalid('passportExpiryDate')) {
-            <p class="mt-1 pl-4 text-[11px] text-red-500">Please select passport expiry date.</p>
+            <hlm-error class="pl-4 text-[11px] !font-normal"
+              >Please select passport expiry date.</hlm-error
+            >
           }
-        </div>
+        </hlm-form-field>
       </div>
 
       <h3 class="mt-5 text-sm font-bold text-[#1f1f1f]">Contact Information</h3>
 
       <div class="mt-3 space-y-3">
         <div class="grid grid-cols-[120px_1fr] gap-2">
-          <div class="relative pt-2">
+          <hlm-form-field class="relative pt-2">
             <select
               id="mobileCountryCode"
+              hlmInput
               formControlName="mobileCountryCode"
               class="h-14 w-full rounded-md border bg-white px-3 pt-5 pb-2 text-sm outline-none focus:border-black"
               [ngClass]="isInvalid('mobileCountryCode') ? '!border-red-500' : 'border-[#cfcfcf]'"
@@ -329,9 +344,9 @@
               [ngClass]="isInvalid('mobileCountryCode') ? 'text-red-500' : 'text-[#2a2a2a]'"
               >Code</label
             >
-          </div>
+          </hlm-form-field>
 
-          <div class="relative pt-2">
+          <hlm-form-field class="relative pt-2">
             <input
               id="mobileNumber"
               hlmInput
@@ -349,12 +364,12 @@
               Mobile Number <span class="text-red-500">*</span>
             </label>
             @if (isInvalid('mobileNumber')) {
-              <p class="mt-1 pl-4 text-[11px] text-red-500">Please enter 8–15 digits.</p>
+              <hlm-error class="pl-4 text-[11px] !font-normal">Please enter 8–15 digits.</hlm-error>
             }
-          </div>
+          </hlm-form-field>
         </div>
 
-        <div class="relative pt-2">
+        <hlm-form-field class="relative pt-2">
           <input
             id="email"
             hlmInput
@@ -372,9 +387,9 @@
             Email <span class="text-red-500">*</span>
           </label>
           @if (isInvalid('email')) {
-            <p class="mt-1 pl-4 text-[11px] text-red-500">Please enter a valid email address.</p>
+            <hlm-error class="pl-4 text-[11px] !font-normal">Please enter a valid email address.</hlm-error>
           }
-        </div>
+        </hlm-form-field>
       </div>
 
       <div class="mt-5 space-y-3 pb-3">

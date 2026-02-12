@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HlmButtonImports } from '@ui/button';
+import { HlmFormFieldImports } from '@ui/form-field';
 import { HlmInputImports } from '@ui/input';
 import { HlmLabelImports } from '@ui/label';
 
@@ -16,7 +17,14 @@ interface CountryNationalityPhoneInfo {
 @Component({
   selector: 'app-booking',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HlmButtonImports, HlmInputImports, HlmLabelImports],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    HlmButtonImports,
+    HlmFormFieldImports,
+    HlmInputImports,
+    HlmLabelImports,
+  ],
   templateUrl: './booking.component.html',
 })
 export class BookingComponent implements OnInit {
