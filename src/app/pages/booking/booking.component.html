@@ -9,13 +9,9 @@
           <div
             class="absolute left-6 right-6 top-1/2 -translate-y-1/2 border-t border-dashed border-[#c9a200]"
           ></div>
-          <div
-            class="relative flex items-center justify-between text-[11px] font-medium text-[#6a6a6a]"
-          >
+          <div class="relative flex items-center justify-between text-[11px] font-medium text-[#6a6a6a]">
             <div class="flex flex-col items-center gap-1">
-              <span class="grid h-6 w-6 place-items-center rounded-full bg-[#4c4c4c] text-white"
-                >1</span
-              >
+              <span class="grid h-6 w-6 place-items-center rounded-full bg-[#4c4c4c] text-white">1</span>
               <span class="text-[#303030]">Enter Details</span>
             </div>
 
@@ -47,7 +43,6 @@
       </div>
     </div>
 
-    <!-- passenger tabs -->
     <div class="flex gap-2 overflow-x-auto border-b border-[#ededed] bg-white px-3 py-3">
       @for (tab of passengerTabs; track tab; let idx = $index) {
         <button
@@ -64,273 +59,339 @@
       }
     </div>
 
-    <!-- form -->
     <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()" class="px-4 py-4">
-      <!-- titles -->
       <h2 class="text-base font-bold">Passenger 1 (Primary passenger)</h2>
+      <h3 class="mt-3 text-[44px] font-medium leading-none tracking-tight">General Information</h3>
 
-      <h3 class="mt-3 text-sm font-bold text-[#1f1f1f]">General Information</h3>
-
-      <!-- Field block helper styles:
-           - label: text-xs
-           - input: hlmInput + custom border
-      -->
       <div class="mt-3 space-y-3">
-        <!-- Title -->
-        <div>
-          <label hlmLabel for="title" class="text-xs font-medium text-[#2a2a2a]"
-            >Title <span class="text-red-500">*</span></label
-          >
-
+        <hlm-form-field class="relative pt-2">
           <select
             id="title"
+            hlmInput
             formControlName="title"
-            class="mt-1 h-10 w-full rounded-md border bg-white px-3 text-sm outline-none focus:border-[#222]"
-            [ngClass]="isInvalid('title') ? 'border-red-400' : 'border-[#cfcfcf]'"
+            class="h-14 w-full rounded-md border bg-white px-4 pt-5 pb-2 text-sm outline-none focus:border-black"
+            [ngClass]="isInvalid('title') ? '!border-red-500' : 'border-[#cfcfcf]'"
           >
             <option value="">Title</option>
             @for (option of titleOptions; track option) {
               <option [value]="option">{{ option }}</option>
             }
           </select>
-
-          @if (isInvalid('title')) {
-            <p class="mt-1 text-[11px] text-red-500">Please select a title.</p>
-          }
-        </div>
-
-        <!-- First name -->
-        <div>
-          <label hlmLabel for="firstName" class="text-xs font-medium text-[#2a2a2a]"
-            >First Name (English) <span class="text-red-500">*</span></label
+          <label
+            hlmLabel
+            for="title"
+            class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
+            [ngClass]="isInvalid('title') ? 'text-red-500' : 'text-[#2a2a2a]'"
           >
+            Title <span class="text-red-500">*</span>
+          </label>
+          @if (isInvalid('title')) {
+            <hlm-error class="pl-4 text-[11px] !font-normal">Please select a title.</hlm-error>
+          }
+        </hlm-form-field>
+
+        <hlm-form-field class="relative pt-2">
           <input
             id="firstName"
             hlmInput
             formControlName="firstName"
             placeholder=" "
-            class="mt-1 h-10 w-full rounded-md border border-[#cfcfcf] bg-white text-sm focus:border-[#222]"
-            [ngClass]="isInvalid('firstName') ? '!border-red-400' : ''"
+            class="h-14 w-full rounded-md border bg-white px-4 pt-5 text-sm focus:border-black focus:outline-none"
+            [ngClass]="isInvalid('firstName') ? '!border-red-500 focus:!border-red-500' : 'border-[#cfcfcf]'"
           />
-          @if (isInvalid('firstName')) {
-            <p class="mt-1 text-[11px] text-red-500">English letters only.</p>
-          }
-        </div>
-
-        <!-- Middle name -->
-        <div>
-          <label hlmLabel for="middleName" class="text-xs font-medium text-[#2a2a2a]"
-            >Middle Name (English)</label
+          <label
+            hlmLabel
+            for="firstName"
+            class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
+            [ngClass]="isInvalid('firstName') ? 'text-red-500' : 'text-[#2a2a2a]'"
           >
+            First Name (English) <span class="text-red-500">*</span>
+          </label>
+          @if (isInvalid('firstName')) {
+            <hlm-error class="pl-4 text-[11px] !font-normal"
+              >Please enter your first name in English only.</hlm-error
+            >
+          }
+        </hlm-form-field>
+
+        <hlm-form-field class="relative pt-2">
           <input
             id="middleName"
             hlmInput
             formControlName="middleName"
-            placeholder="Middle Name (English)"
-            class="mt-1 h-10 w-full rounded-md border border-[#cfcfcf] bg-white text-sm focus:border-[#222]"
-            [ngClass]="isInvalid('middleName') ? '!border-red-400' : ''"
+            placeholder=" "
+            class="h-14 w-full rounded-md border bg-white px-4 pt-5 text-sm focus:border-black focus:outline-none"
+            [ngClass]="isInvalid('middleName') ? '!border-red-500 focus:!border-red-500' : 'border-[#cfcfcf]'"
           />
-          @if (isInvalid('middleName')) {
-            <p class="mt-1 text-[11px] text-red-500">English letters only.</p>
-          }
-        </div>
-
-        <!-- Last name -->
-        <div>
-          <label hlmLabel for="lastName" class="text-xs font-medium text-[#2a2a2a]"
-            >Last Name (English) <span class="text-red-500">*</span></label
+          <label
+            hlmLabel
+            for="middleName"
+            class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
+            [ngClass]="isInvalid('middleName') ? 'text-red-500' : 'text-[#2a2a2a]'"
           >
+            Middle Name (English)
+          </label>
+          @if (isInvalid('middleName')) {
+            <hlm-error class="pl-4 text-[11px] !font-normal"
+              >Please enter your middle name in English only.</hlm-error
+            >
+          }
+        </hlm-form-field>
+
+        <hlm-form-field class="relative pt-2">
           <input
             id="lastName"
             hlmInput
             formControlName="lastName"
-            placeholder="Last Name (English)"
-            class="mt-1 h-10 w-full rounded-md border border-[#cfcfcf] bg-white text-sm focus:border-[#222]"
-            [ngClass]="isInvalid('lastName') ? '!border-red-400' : ''"
+            placeholder=" "
+            class="h-14 w-full rounded-md border bg-white px-4 pt-5 text-sm focus:border-black focus:outline-none"
+            [ngClass]="isInvalid('lastName') ? '!border-red-500 focus:!border-red-500' : 'border-[#cfcfcf]'"
           />
-          @if (isInvalid('lastName')) {
-            <p class="mt-1 text-[11px] text-red-500">English letters only.</p>
-          }
-        </div>
-
-        <!-- DOB -->
-        <div>
-          <label hlmLabel for="dateOfBirth" class="text-xs font-medium text-[#2a2a2a]"
-            >Date of Birth <span class="text-red-500">*</span></label
+          <label
+            hlmLabel
+            for="lastName"
+            class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
+            [ngClass]="isInvalid('lastName') ? 'text-red-500' : 'text-[#2a2a2a]'"
           >
+            Last Name (English) <span class="text-red-500">*</span>
+          </label>
+          @if (isInvalid('lastName')) {
+            <hlm-error class="pl-4 text-[11px] !font-normal"
+              >Please enter your last name in English only.</hlm-error
+            >
+          }
+        </hlm-form-field>
+
+        <hlm-form-field class="relative pt-2">
           <input
             id="dateOfBirth"
             hlmInput
             type="date"
             formControlName="dateOfBirth"
-            class="mt-1 h-10 w-full rounded-md border border-[#cfcfcf] bg-white text-sm focus:border-[#222]"
-            [ngClass]="isInvalid('dateOfBirth') ? '!border-red-400' : ''"
+            class="h-14 w-full rounded-md border bg-white px-4 pt-5 text-sm focus:border-black focus:outline-none"
+            [ngClass]="isInvalid('dateOfBirth') ? '!border-red-500 focus:!border-red-500' : 'border-[#cfcfcf]'"
           />
+          <label
+            hlmLabel
+            for="dateOfBirth"
+            class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
+            [ngClass]="isInvalid('dateOfBirth') ? 'text-red-500' : 'text-[#2a2a2a]'"
+          >
+            Date of Birth <span class="text-red-500">*</span>
+          </label>
           @if (isInvalid('dateOfBirth')) {
-            <p class="mt-1 text-[11px] text-red-500">Please select your date of birth.</p>
+            <hlm-error class="pl-4 text-[11px] !font-normal">Please select your date of birth.</hlm-error>
           }
-        </div>
+        </hlm-form-field>
       </div>
 
-      <!-- Passport -->
       <h3 class="mt-5 text-sm font-bold text-[#1f1f1f]">Passport Information</h3>
 
       <div class="mt-3 space-y-3">
         <div class="grid grid-cols-2 gap-2">
-          <div>
-            <label hlmLabel for="nationality" class="text-xs font-medium text-[#2a2a2a]"
-              >Nationality <span class="text-red-500">*</span></label
-            >
+          <hlm-form-field class="relative pt-2">
             <select
               id="nationality"
+              hlmInput
               formControlName="nationality"
-              class="mt-1 h-10 w-full rounded-md border bg-white px-3 text-sm outline-none focus:border-[#222]"
-              [ngClass]="isInvalid('nationality') ? 'border-red-400' : 'border-[#cfcfcf]'"
+              class="h-14 w-full rounded-md border bg-white px-4 pt-5 pb-2 text-sm outline-none focus:border-black"
+              [ngClass]="isInvalid('nationality') ? '!border-red-500' : 'border-[#cfcfcf]'"
             >
               <option value="">Nationality</option>
-              @for (country of countries; track country) {
-                <option [value]="country">{{ country }}</option>
+              @for (nationality of nationalities; track nationality) {
+                <option [value]="nationality">{{ nationality }}</option>
               }
             </select>
-            @if (isInvalid('nationality')) {
-              <p class="mt-1 text-[11px] text-red-500">Please select.</p>
-            }
-          </div>
-
-          <div>
-            <label hlmLabel for="countryOfResidence" class="text-xs font-medium text-[#2a2a2a]"
-              >Country of residence <span class="text-red-500">*</span></label
+            <label
+              hlmLabel
+              for="nationality"
+              class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
+              [ngClass]="isInvalid('nationality') ? 'text-red-500' : 'text-[#2a2a2a]'"
             >
+              Nationality <span class="text-red-500">*</span>
+            </label>
+            @if (isInvalid('nationality')) {
+              <hlm-error class="pl-2 text-[11px] !font-normal">Please select your nationality.</hlm-error>
+            }
+          </hlm-form-field>
+
+          <hlm-form-field class="relative pt-2">
             <select
               id="countryOfResidence"
+              hlmInput
               formControlName="countryOfResidence"
-              class="mt-1 h-10 w-full rounded-md border bg-white px-3 text-sm outline-none focus:border-[#222]"
-              [ngClass]="isInvalid('countryOfResidence') ? 'border-red-400' : 'border-[#cfcfcf]'"
+              class="h-14 w-full rounded-md border bg-white px-4 pt-5 pb-2 text-sm outline-none focus:border-black"
+              [ngClass]="isInvalid('countryOfResidence') ? '!border-red-500' : 'border-[#cfcfcf]'"
             >
               <option value="">Country</option>
               @for (country of countries; track country) {
                 <option [value]="country">{{ country }}</option>
               }
             </select>
+            <label
+              hlmLabel
+              for="countryOfResidence"
+              class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
+              [ngClass]="isInvalid('countryOfResidence') ? 'text-red-500' : 'text-[#2a2a2a]'"
+            >
+              Country of residence <span class="text-red-500">*</span>
+            </label>
             @if (isInvalid('countryOfResidence')) {
-              <p class="mt-1 text-[11px] text-red-500">Please select.</p>
+              <hlm-error class="pl-2 text-[11px] !font-normal"
+                >Please select your country of residence.</hlm-error
+              >
             }
-          </div>
+          </hlm-form-field>
         </div>
 
-        <div>
-          <label hlmLabel for="passportNumber" class="text-xs font-medium text-[#2a2a2a]"
-            >Passport Number <span class="text-red-500">*</span></label
-          >
+        <hlm-form-field class="relative pt-2">
           <input
             id="passportNumber"
             hlmInput
             formControlName="passportNumber"
-            placeholder="Passport Number"
-            class="mt-1 h-10 w-full rounded-md border border-[#cfcfcf] bg-white text-sm focus:border-[#222]"
-            [ngClass]="isInvalid('passportNumber') ? '!border-red-400' : ''"
+            placeholder=" "
+            class="h-14 w-full rounded-md border bg-white px-4 pt-5 text-sm focus:border-black focus:outline-none"
+            [ngClass]="isInvalid('passportNumber') ? '!border-red-500 focus:!border-red-500' : 'border-[#cfcfcf]'"
           />
-          @if (isInvalid('passportNumber')) {
-            <p class="mt-1 text-[11px] text-red-500">6–12 characters.</p>
-          }
-        </div>
-
-        <div>
-          <label hlmLabel for="issuedBy" class="text-xs font-medium text-[#2a2a2a]"
-            >Issued By <span class="text-red-500">*</span></label
+          <label
+            hlmLabel
+            for="passportNumber"
+            class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
+            [ngClass]="isInvalid('passportNumber') ? 'text-red-500' : 'text-[#2a2a2a]'"
           >
+            Passport Number <span class="text-red-500">*</span>
+          </label>
+          @if (isInvalid('passportNumber')) {
+            <hlm-error class="pl-4 text-[11px] !font-normal"
+              >Passport number must be 6–12 characters.</hlm-error
+            >
+          }
+        </hlm-form-field>
+
+        <hlm-form-field class="relative pt-2">
           <select
             id="issuedBy"
+            hlmInput
             formControlName="issuedBy"
-            class="mt-1 h-10 w-full rounded-md border bg-white px-3 text-sm outline-none focus:border-[#222]"
-            [ngClass]="isInvalid('issuedBy') ? 'border-red-400' : 'border-[#cfcfcf]'"
+            class="h-14 w-full rounded-md border bg-white px-4 pt-5 pb-2 text-sm outline-none focus:border-black"
+            [ngClass]="isInvalid('issuedBy') ? '!border-red-500' : 'border-[#cfcfcf]'"
           >
             <option value="">Issued By</option>
             @for (country of countries; track country) {
               <option [value]="country">{{ country }}</option>
             }
           </select>
-          @if (isInvalid('issuedBy')) {
-            <p class="mt-1 text-[11px] text-red-500">Please select.</p>
-          }
-        </div>
-
-        <div>
-          <label hlmLabel for="passportExpiryDate" class="text-xs font-medium text-[#2a2a2a]"
-            >Passport Expiry Date <span class="text-red-500">*</span></label
+          <label
+            hlmLabel
+            for="issuedBy"
+            class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
+            [ngClass]="isInvalid('issuedBy') ? 'text-red-500' : 'text-[#2a2a2a]'"
           >
+            Issued By <span class="text-red-500">*</span>
+          </label>
+          @if (isInvalid('issuedBy')) {
+            <hlm-error class="pl-4 text-[11px] !font-normal">Please select issuing country.</hlm-error>
+          }
+        </hlm-form-field>
+
+        <hlm-form-field class="relative pt-2">
           <input
             id="passportExpiryDate"
             hlmInput
             type="date"
             formControlName="passportExpiryDate"
-            class="mt-1 h-10 w-full rounded-md border border-[#cfcfcf] bg-white text-sm focus:border-[#222]"
-            [ngClass]="isInvalid('passportExpiryDate') ? '!border-red-400' : ''"
+            class="h-14 w-full rounded-md border bg-white px-4 pt-5 text-sm focus:border-black focus:outline-none"
+            [ngClass]="
+              isInvalid('passportExpiryDate') ? '!border-red-500 focus:!border-red-500' : 'border-[#cfcfcf]'
+            "
           />
+          <label
+            hlmLabel
+            for="passportExpiryDate"
+            class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
+            [ngClass]="isInvalid('passportExpiryDate') ? 'text-red-500' : 'text-[#2a2a2a]'"
+          >
+            Passport Expiry Date <span class="text-red-500">*</span>
+          </label>
           @if (isInvalid('passportExpiryDate')) {
-            <p class="mt-1 text-[11px] text-red-500">Please select a date.</p>
+            <hlm-error class="pl-4 text-[11px] !font-normal"
+              >Please select passport expiry date.</hlm-error
+            >
           }
-        </div>
+        </hlm-form-field>
       </div>
 
-      <!-- Contact -->
       <h3 class="mt-5 text-sm font-bold text-[#1f1f1f]">Contact Information</h3>
 
       <div class="mt-3 space-y-3">
-        <div class="grid grid-cols-[110px_1fr] gap-2">
-          <div>
-            <label hlmLabel for="mobileCountryCode" class="text-xs font-medium text-[#2a2a2a]"
-              >Code</label
-            >
+        <div class="grid grid-cols-[120px_1fr] gap-2">
+          <hlm-form-field class="relative pt-2">
             <select
               id="mobileCountryCode"
+              hlmInput
               formControlName="mobileCountryCode"
-              class="mt-1 h-10 w-full rounded-md border border-[#cfcfcf] bg-white px-2 text-sm outline-none focus:border-[#222]"
+              class="h-14 w-full rounded-md border bg-white px-3 pt-5 pb-2 text-sm outline-none focus:border-black"
+              [ngClass]="isInvalid('mobileCountryCode') ? '!border-red-500' : 'border-[#cfcfcf]'"
             >
-              <option value="+66">+66</option>
-              <option value="+65">+65</option>
-              <option value="+81">+81</option>
-              <option value="+1">+1</option>
+              @for (code of mobileCountryCodes; track code) {
+                <option [value]="code">{{ code }}</option>
+              }
             </select>
-          </div>
-
-          <div>
-            <label hlmLabel for="mobileNumber" class="text-xs font-medium text-[#2a2a2a]"
-              >Mobile Number <span class="text-red-500">*</span></label
+            <label
+              hlmLabel
+              for="mobileCountryCode"
+              class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
+              [ngClass]="isInvalid('mobileCountryCode') ? 'text-red-500' : 'text-[#2a2a2a]'"
+              >Code</label
             >
+          </hlm-form-field>
+
+          <hlm-form-field class="relative pt-2">
             <input
               id="mobileNumber"
               hlmInput
               formControlName="mobileNumber"
-              placeholder="Mobile Number"
-              class="mt-1 h-10 w-full rounded-md border border-[#cfcfcf] bg-white text-sm focus:border-[#222]"
-              [ngClass]="isInvalid('mobileNumber') ? '!border-red-400' : ''"
+              placeholder=" "
+              class="h-14 w-full rounded-md border bg-white px-4 pt-5 text-sm focus:border-black focus:outline-none"
+              [ngClass]="isInvalid('mobileNumber') ? '!border-red-500 focus:!border-red-500' : 'border-[#cfcfcf]'"
             />
+            <label
+              hlmLabel
+              for="mobileNumber"
+              class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
+              [ngClass]="isInvalid('mobileNumber') ? 'text-red-500' : 'text-[#2a2a2a]'"
+            >
+              Mobile Number <span class="text-red-500">*</span>
+            </label>
             @if (isInvalid('mobileNumber')) {
-              <p class="mt-1 text-[11px] text-red-500">8–15 digits.</p>
+              <hlm-error class="pl-4 text-[11px] !font-normal">Please enter 8–15 digits.</hlm-error>
             }
-          </div>
+          </hlm-form-field>
         </div>
 
-        <div>
-          <label hlmLabel for="email" class="text-xs font-medium text-[#2a2a2a]"
-            >Email <span class="text-red-500">*</span></label
-          >
+        <hlm-form-field class="relative pt-2">
           <input
             id="email"
             hlmInput
             formControlName="email"
-            placeholder="Email"
-            class="mt-1 h-10 w-full rounded-md border border-[#cfcfcf] bg-white text-sm focus:border-[#222]"
-            [ngClass]="isInvalid('email') ? '!border-red-400' : ''"
+            placeholder=" "
+            class="h-14 w-full rounded-md border bg-white px-4 pt-5 text-sm focus:border-black focus:outline-none"
+            [ngClass]="isInvalid('email') ? '!border-red-500 focus:!border-red-500' : 'border-[#cfcfcf]'"
           />
+          <label
+            hlmLabel
+            for="email"
+            class="absolute left-3 top-2 -translate-y-1/2 bg-white px-1 text-xs font-medium"
+            [ngClass]="isInvalid('email') ? 'text-red-500' : 'text-[#2a2a2a]'"
+          >
+            Email <span class="text-red-500">*</span>
+          </label>
           @if (isInvalid('email')) {
-            <p class="mt-1 text-[11px] text-red-500">Invalid email format.</p>
+            <hlm-error class="pl-4 text-[11px] !font-normal">Please enter a valid email address.</hlm-error>
           }
-        </div>
+        </hlm-form-field>
       </div>
 
-      <!-- buttons -->
       <div class="mt-5 space-y-3 pb-3">
         <button
           type="submit"

@@ -1,23 +1,48 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HlmButtonImports } from '@ui/button';
+import { HlmFormFieldImports } from '@ui/form-field';
 import { HlmInputImports } from '@ui/input';
 import { HlmLabelImports } from '@ui/label';
+
+interface CountryNationalityPhoneInfo {
+  country_en: string;
+  code: string;
+  phone_code: number | string;
+  nationality_en: string;
+}
+
 @Component({
   selector: 'app-booking',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HlmButtonImports, HlmInputImports, HlmLabelImports],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    HlmButtonImports,
+    HlmFormFieldImports,
+    HlmInputImports,
+    HlmLabelImports,
+  ],
   templateUrl: './booking.component.html',
 })
-export class BookingComponent {
+export class BookingComponent implements OnInit {
   readonly passengerTabs = ['Passenger 1', 'Passenger 2', 'Passenger 3', 'Passenger 4'];
+  readonly titleOptions = ['MR', 'MS', 'MRS', 'MONK', 'MISS'];
   currentPassenger = 1;
   submitted = false;
-  readonly titleOptions = ['MR', 'MS', 'MRS', 'MONK', 'MISS'];
-  readonly countries = ['Thailand', 'Singapore', 'Japan', 'United States', 'United Kingdom'];
+
+  countries: string[] = [];
+  nationalities: string[] = [];
+  mobileCountryCodes: string[] = ['+66'];
+
   readonly bookingForm;
-  constructor(private readonly fb: FormBuilder) {
+
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly http: HttpClient,
+  ) {
     this.bookingForm = this.fb.group({
       title: ['', [Validators.required]],
       firstName: ['', [Validators.required, Validators.pattern(/^[A-Za-z ]+$/)]],
@@ -34,10 +59,24 @@ export class BookingComponent {
       email: ['', [Validators.required, Validators.email]],
     });
   }
+
+  ngOnInit(): void {
+    this.http
+      .get<CountryNationalityPhoneInfo[]>('/assets/country_nationality_phone_info.json')
+      .subscribe((data) => {
+        this.countries = this.uniqueSorted(data.map((item) => item.country_en));
+        this.nationalities = this.uniqueSorted(data.map((item) => item.nationality_en));
+        this.mobileCountryCodes = this.uniqueSorted(
+          data.map((item) => `+${item.phone_code.toString()}`),
+        );
+      });
+  }
+
   isInvalid(controlName: string): boolean {
     const control = this.bookingForm.get(controlName);
     return !!control && control.invalid && (control.touched || this.submitted);
   }
+
   onSubmit(): void {
     this.submitted = true;
     if (this.bookingForm.invalid) {
@@ -45,5 +84,9 @@ export class BookingComponent {
       return;
     }
     this.currentPassenger = 2;
+  }
+
+  private uniqueSorted(values: string[]): string[] {
+    return [...new Set(values.filter(Boolean))].sort((a, b) => a.localeCompare(b));
   }
 }
