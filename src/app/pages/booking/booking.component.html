@@ -76,7 +76,7 @@
     <div class="mt-4 space-y-2">
       <hlm-form-field>
         <brn-select class="inline-block w-full" placeholder="Title *" formControlName="title">
-          <hlm-select-trigger class="w-full text-muted-foreground">
+          <hlm-select-trigger class="w-full">
             <hlm-select-value />
           </hlm-select-trigger>
 
@@ -137,7 +137,7 @@
           formControlName="dateOfBirth"
           class="w-full"
         >
-          <span class="text-muted-foreground text-muted-foreground">Select date</span>
+          <span class=" ">Select date</span>
         </hlm-date-picker>
 
         @if (isInvalid('dateOfBirth')) {
@@ -157,7 +157,7 @@
             formControlName="nationality"
           >
             <hlm-select-trigger
-              class="w-full text-muted-foreground"
+              class="w-full"
               brnSelectBottomSheetTrigger
               [openBottomSheet]="openNationalitySheet"
             >
@@ -183,7 +183,7 @@
             formControlName="countryOfResidence"
           >
             <hlm-select-trigger
-              class="w-full text-muted-foreground"
+              class="w-full"
               brnSelectBottomSheetTrigger
               [openBottomSheet]="openCountryResidenceSheet"
             >
@@ -223,7 +223,7 @@
           formControlName="issuedBy"
         >
           <hlm-select-trigger
-            class="w-full text-muted-foreground"
+            class="w-full"
             brnSelectBottomSheetTrigger
             [openBottomSheet]="openIssuedBySheet"
           >
@@ -263,7 +263,7 @@
           formControlName="passportExpiryDate"
           class="w-full"
         >
-          <span class="text-muted-foreground text-muted-foreground">Select date</span>
+          <span class=" ">Select date</span>
         </hlm-date-picker>
         @if (isInvalid('passportExpiryDate')) {
           <hlm-error>Passport expiry date is required.</hlm-error>
@@ -283,7 +283,7 @@
             formControlName="mobileCountryCode"
           >
             <hlm-select-trigger
-              class="w-full text-muted-foreground"
+              class="w-full"
               brnSelectBottomSheetTrigger
               [openBottomSheet]="openMobileCodeSheet"
             >
