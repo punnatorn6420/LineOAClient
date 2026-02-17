@@ -25,19 +25,19 @@ interface CountryNationalityPhoneInfo {
 }
 
 type PassengerFormData = {
-  title: string;
-  firstName: string;
-  middleName: string;
-  lastName: string;
-  dateOfBirth: string;
-  nationality: string;
-  countryOfResidence: string;
-  passportNumber: string;
-  issuedBy: string;
-  passportExpiryDate: string;
-  mobileCountryCode: string;
-  mobileNumber: string;
-  email: string;
+  title: string | null;
+  firstName: string | null;
+  middleName: string | null;
+  lastName: string | null;
+  dateOfBirth: unknown;
+  nationality: string | null;
+  countryOfResidence: string | null;
+  passportNumber: string | null;
+  issuedBy: string | null;
+  passportExpiryDate: unknown;
+  mobileCountryCode: string | null;
+  mobileNumber: string | null;
+  email: string | null;
 };
 
 @Component({
@@ -85,19 +85,19 @@ export class BookingComponent implements OnInit {
     private readonly router: Router,
   ) {
     this.bookingForm = this.fb.group({
-      title: ['', [Validators.required]],
-      firstName: ['', [Validators.required, Validators.pattern(/^[A-Za-z ]+$/)]],
-      middleName: ['', [Validators.pattern(/^[A-Za-z ]*$/)]],
-      lastName: ['', [Validators.required, Validators.pattern(/^[A-Za-z ]+$/)]],
-      dateOfBirth: ['', [Validators.required]],
-      nationality: ['', [Validators.required]],
-      countryOfResidence: ['', [Validators.required]],
-      passportNumber: ['', [Validators.required, Validators.pattern(/^[A-Za-z0-9]{6,12}$/)]],
-      issuedBy: ['', [Validators.required]],
-      passportExpiryDate: ['', [Validators.required]],
+      title: [null, [Validators.required]],
+      firstName: [null, [Validators.required, Validators.pattern(/^[A-Za-z ]+$/)]],
+      middleName: [null, [Validators.pattern(/^[A-Za-z ]*$/)]],
+      lastName: [null, [Validators.required, Validators.pattern(/^[A-Za-z ]+$/)]],
+      dateOfBirth: [null, [Validators.required]],
+      nationality: [null, [Validators.required]],
+      countryOfResidence: [null, [Validators.required]],
+      passportNumber: [null, [Validators.required, Validators.pattern(/^[A-Za-z0-9]{6,12}$/)]],
+      issuedBy: [null, [Validators.required]],
+      passportExpiryDate: [null, [Validators.required]],
       mobileCountryCode: ['+66', [Validators.required]],
-      mobileNumber: ['', [Validators.required, Validators.pattern(/^[0-9]{8,15}$/)]],
-      email: ['', [Validators.required, Validators.email]],
+      mobileNumber: [null, [Validators.required, Validators.pattern(/^[0-9]{8,15}$/)]],
+      email: [null, [Validators.required, Validators.email]],
     });
   }
 
@@ -151,6 +151,10 @@ export class BookingComponent implements OnInit {
     this.loadPassenger(passengerNumber);
   }
 
+  isPassengerCompleted(passengerNumber: number): boolean {
+    return this.passengerForms[passengerNumber - 1] !== null;
+  }
+
   isPassengerUnlocked(passengerNumber: number): boolean {
     if (passengerNumber === 1) {
       return true;
@@ -188,30 +192,31 @@ export class BookingComponent implements OnInit {
   }
 
   private saveCurrentPassenger(): void {
-    this.passengerForms[this.currentPassenger - 1] =
-      this.bookingForm.getRawValue() as PassengerFormData;
+    this.passengerForms[this.currentPassenger - 1] = structuredClone(
+      this.bookingForm.getRawValue() as PassengerFormData,
+    );
   }
 
   private loadPassenger(passengerNumber: number): void {
     const passengerData = this.passengerForms[passengerNumber - 1];
     if (passengerData) {
-      this.bookingForm.reset(passengerData);
+      this.bookingForm.reset(passengerData as any);
     } else {
       this.bookingForm.reset({
-        title: '',
-        firstName: '',
-        middleName: '',
-        lastName: '',
-        dateOfBirth: '',
-        nationality: '',
-        countryOfResidence: '',
-        passportNumber: '',
-        issuedBy: '',
-        passportExpiryDate: '',
+        title: null,
+        firstName: null,
+        middleName: null,
+        lastName: null,
+        dateOfBirth: null,
+        nationality: null,
+        countryOfResidence: null,
+        passportNumber: null,
+        issuedBy: null,
+        passportExpiryDate: null,
         mobileCountryCode: '+66',
-        mobileNumber: '',
-        email: '',
-      });
+        mobileNumber: null,
+        email: null,
+      } as any);
     }
 
     this.submitted = false;
