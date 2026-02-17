@@ -58,11 +58,15 @@
       <button
         type="button"
         class="min-w-[110px] rounded border px-3 py-2 text-sm"
+        [disabled]="!isPassengerUnlocked(idx + 1)"
         [ngClass]="
           idx + 1 === currentPassenger
             ? 'border-[#ffd400] bg-[#fff7cf] text-[#1f1f1f]'
-            : 'border-[#dcdcdc] bg-white text-[#a7a7a7]'
+            : isPassengerUnlocked(idx + 1)
+              ? 'border-[#dcdcdc] bg-white text-[#575757]'
+              : 'border-[#ececec] bg-[#f8f8f8] text-[#a7a7a7]'
         "
+        (click)="onSelectPassenger(idx + 1)"
       >
         {{ tab }}
       </button>
@@ -70,7 +74,7 @@
   </div>
 
   <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()" class="px-4 py-4">
-    <h2 class="font-bold">Passenger 1 (Primary passenger)</h2>
+    <h2 class="font-bold">Passenger {{ currentPassenger }} (Primary passenger)</h2>
     <h3 class="font-medium">General Information</h3>
 
     <div class="mt-4 space-y-2">
@@ -331,16 +335,54 @@
         hlmBtn
         class="w-full !bg-transparent !border-0 !shadow-none !px-0 py-2 text-sm font-semibold text-[#1c1c1c] flex items-center justify-center gap-2"
       >
-        <span class="underline decoration-2 underline-offset-4">Continue to Next Passenger</span>
+        <span class="underline decoration-2 underline-offset-4">{{ continueButtonText }}</span>
         <ng-icon name="lucideArrowRight" class="flex-none" size="18" aria-hidden="true"></ng-icon>
       </button>
+
+      <hlm-dialog #confirmDialog>
+        <hlm-dialog-content
+          *brnDialogContent="let _ctx"
+          [showCloseButton]="true"
+          class="max-w-[360px] p-4"
+        >
+          <div hlmDialogHeader class="space-y-2">
+            <h3 hlmDialogTitle class="text-left text-2xl font-bold text-[#1f1f1f]">
+              Review Passenger Details
+            </h3>
+            <p hlmDialogDescription class="text-left text-base text-[#5b5b5b]">
+              Before proceeding, please ensure all passenger information is correct.
+            </p>
+          </div>
+
+          <div class="mt-4 grid grid-cols-2 gap-3">
+            <button
+              type="button"
+              hlmBtn
+              variant="outline"
+              class="w-full border-[#d9d9d9] bg-[#f0f0f0] text-[#6e6e6e]"
+              (click)="onReviewAgain(confirmDialog)"
+            >
+              Review Again
+            </button>
+
+            <button
+              type="button"
+              hlmBtn
+              class="w-full bg-[#ffd400] text-[#1f1f1f] hover:bg-[#ffd400]"
+              (click)="onConfirmPassengers(confirmDialog)"
+            >
+              Confirm
+            </button>
+          </div>
+        </hlm-dialog-content>
+      </hlm-dialog>
 
       <button
         type="button"
         hlmBtn
-        variant="secondary"
-        class="w-full rounded-[4px] bg-[#d4d4d4] py-3 text-sm font-semibold text-[#666]"
-        [disabled]="bookingForm.invalid"
+        class="w-full rounded-[4px] bg-[#ffd400] py-3 text-sm font-semibold text-[#1f1f1f] disabled:bg-[#d4d4d4] disabled:text-[#666]"
+        [disabled]="!canConfirm"
+        (click)="onOpenConfirmDialog(confirmDialog)"
       >
         Confirm
       </button>
