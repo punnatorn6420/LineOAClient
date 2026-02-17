@@ -331,46 +331,179 @@
       </hlm-form-field>
     </div>
 
-    <div class="mt-2 space-y-2 pb-2">
-      <button
-        type="submit"
-        hlmBtn
-        class="w-full !bg-transparent !border-0 !shadow-none !px-0 py-2 text-sm font-semibold text-[#1c1c1c] flex items-center justify-center gap-2"
-      >
-        <span class="underline decoration-2 underline-offset-4">{{ continueButtonText }}</span>
-        <ng-icon name="lucideArrowRight" class="flex-none" size="18" aria-hidden="true"></ng-icon>
-      </button>
+    <!-- ✅ Bundle selection (ตามดีไซน์) -->
+    <div class="mt-4 space-y-4">
+      @for (section of bundleSections; track section.direction) {
+        <div>
+          <div class="flex items-baseline gap-2">
+            <h3 class="text-lg font-bold text-[#1f1f1f]">
+              {{ section.titleTh }}
+            </h3>
+            <span class="text-lg text-[#9b9b9b]">| {{ section.subtitleEn }}</span>
+          </div>
 
+          <div class="mt-2 space-y-2 bg-white">
+            @for (b of section.bundles; track b.code) {
+              <button
+                type="button"
+                class="w-full rounded-lg border bg-white px-3 py-3 text-left transition"
+                [ngClass]="
+                  isBundleSelected(section.direction, b.code)
+                    ? 'border-2 border-yellow-400 bg-yellow-50'
+                    : 'border-gray-300'
+                "
+                (click)="selectBundle(section.direction, b.code)"
+              >
+                <div class="flex items-center gap-3">
+                  <img [src]="b.iconUrl" [alt]="b.titleTh" class="h-9 w-9 flex-none" />
+
+                  <div class="min-w-0 flex-1">
+                    <div class="text-lg font-semibold text-[#1f1f1f] leading-tight">
+                      {{ b.titleTh }}
+                    </div>
+                  </div>
+
+                  <div class="text-right">
+                    <div class="text-md font-bold text-[#1f1f1f]">{{ formatTHB(b.sale) }} THB</div>
+                    <div class="flex items-center justify-end gap-1">
+                      <span class="text-sm text-[#9b9b9b] line-through">
+                        {{ formatTHB(b.original) }} THB
+                      </span>
+                      <span class="rounded bg-[#ffe7a3] px-1 text-sm font-semibold text-[#7a5a00]">
+                        -{{ b.discountPercent }}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                @if (isBundleSelected(section.direction, b.code) && b.descriptions.length) {
+                  <div class="mt-2 border-t border-[#e9e9e9] pt-2">
+                    <ul class="space-y-1 text-xs text-[#6b6b6b]">
+                      @for (d of b.descriptions; track d) {
+                        <li class="flex gap-2 items-center">
+                          <ng-icon
+                            name="lucideCheckCircle2"
+                            class="flex-none"
+                            size="20"
+                            aria-hidden="true"
+                          ></ng-icon>
+                          <span class="leading-5 text-sm">{{ d }}</span>
+                        </li>
+                      }
+                    </ul>
+                  </div>
+                }
+              </button>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="mt-4">
+      <label class="flex items-center gap-3 text-[18px] text-[#1f1f1f]">
+        <hlm-checkbox formControlName="specialAssistEnabled"></hlm-checkbox>
+        <span class="font-medium">ผู้โดยสารต้องการความช่วยเหลือพิเศษ</span>
+      </label>
+      @if (specialAssistEnabled) {
+        <div class="space-y-2 p-2 text-[18px] text-[#3a3a3a]" formGroupName="specialAssist">
+          <label class="flex items-center gap-4">
+            <hlm-checkbox formControlName="visualImpairment"></hlm-checkbox>
+            <span>ผู้บกพร่องทางสายตา/ตาบอด</span>
+          </label>
+
+          <label class="flex items-center gap-4">
+            <hlm-checkbox formControlName="hearingImpairment"></hlm-checkbox>
+            <span>ผู้บกพร่องทางการได้ยิน/หูหนวก</span>
+          </label>
+
+          <label class="flex items-center gap-4">
+            <hlm-checkbox formControlName="monk"></hlm-checkbox>
+            <span>พระภิกษุ</span>
+          </label>
+
+          <label class="flex items-center gap-4">
+            <hlm-checkbox formControlName="nun"></hlm-checkbox>
+            <span>แม่ชี</span>
+          </label>
+
+          <label class="flex items-center gap-4">
+            <hlm-checkbox formControlName="pregnant"></hlm-checkbox>
+            <span>สตรีตั้งครรภ์</span>
+          </label>
+
+          <label class="flex items-center gap-4">
+            <hlm-checkbox formControlName="wheelchair"></hlm-checkbox>
+            <span>รถเข็น วีลแชร์</span>
+          </label>
+
+          <label class="flex items-center gap-4">
+            <hlm-checkbox formControlName="unaccompaniedMinor"></hlm-checkbox>
+            <span>เด็กเดินทางคนเดียว</span>
+          </label>
+
+          <!-- ✅ Row: other checkbox -->
+          <div class="flex items-center gap-4">
+            <label class="flex items-center gap-4">
+              <hlm-checkbox formControlName="other"></hlm-checkbox>
+              <span>อื่นๆ</span>
+            </label>
+
+            <!-- ✅ input ต้องอยู่นอก formGroupName="specialAssist" -->
+            <input
+              hlmInput
+              formControlName="specialAssistOther"
+              placeholder="โปรดระบุ"
+              class="flex-1 border-0 border-b !border-b-gray-800 !bg-white text-[18px] focus-visible:ring-0 focus-visible:outline-none"
+              [class.opacity-50]="!otherAssistChecked"
+            />
+          </div>
+
+          <div class="text-[18px] text-red-600">สามารถติดต่อเจ้าหน้าที่เพื่อสอบถาม โทร 1318</div>
+        </div>
+      }
+    </div>
+
+    <div class="mt-2 space-y-2 pb-2">
+      @if (currentPassenger < passengerTabs.length) {
+        <button
+          type="submit"
+          hlmBtn
+          class="w-full !bg-transparent !border-0 !shadow-none !px-0 py-2 text-sm font-semibold text-[#1c1c1c] flex items-center justify-center gap-2"
+        >
+          <span class="underline decoration-2 underline-offset-4">{{ continueButtonText }}</span>
+          <ng-icon name="lucideArrowRight" class="flex-none" size="18" aria-hidden="true"></ng-icon>
+        </button>
+      }
       <hlm-dialog #confirmDialog>
         <hlm-dialog-content
           *brnDialogContent="let _ctx"
           [showCloseButton]="true"
-          class="max-w-[360px] p-4"
+          class="max-w-[320px] p-4"
         >
-          <div hlmDialogHeader class="space-y-2">
-            <h3 hlmDialogTitle class="text-left text-2xl font-bold text-[#1f1f1f]">
+          <div hlmDialogHeader>
+            <h3 hlmDialogTitle class="text-left text-xl font-bold text-[#1f1f1f]">
               Review Passenger Details
             </h3>
             <p hlmDialogDescription class="text-left text-base text-[#5b5b5b]">
               Before proceeding, please ensure all passenger information is correct.
             </p>
           </div>
-
-          <div class="mt-4 grid grid-cols-2 gap-3">
+          <div class="grid grid-cols-2 gap-3">
             <button
               type="button"
               hlmBtn
               variant="outline"
-              class="w-full border-[#d9d9d9] bg-[#f0f0f0] text-[#6e6e6e]"
+              class="w-full !bg-gray-300 !text-gray-600 rounded-[4px]"
               (click)="onReviewAgain(confirmDialog)"
             >
               Review Again
             </button>
-
             <button
               type="button"
               hlmBtn
-              class="w-full bg-[#ffd400] text-[#1f1f1f] hover:bg-[#ffd400]"
+              variant="outline"
+              class="w-full !bg-[#ffd400] !border-black !text-[#1f1f1f] !hover:bg-[#ffd400] rounded-[4px]"
               (click)="onConfirmPassengers(confirmDialog)"
             >
               Confirm
