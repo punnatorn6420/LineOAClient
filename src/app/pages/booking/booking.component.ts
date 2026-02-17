@@ -72,6 +72,10 @@ export class BookingComponent implements OnInit {
     { length: this.passengerTabs.length },
     () => null,
   );
+  private readonly completedPassengers: boolean[] = Array.from(
+    { length: this.passengerTabs.length },
+    () => false,
+  );
 
   countries: string[] = [];
   nationalities: string[] = [];
@@ -111,6 +115,10 @@ export class BookingComponent implements OnInit {
           data.map((item) => `+${item.phone_code.toString()}`),
         );
       });
+
+    this.bookingForm.valueChanges.subscribe(() => {
+      this.syncCurrentPassengerState();
+    });
   }
 
   isInvalid(controlName: string): boolean {
@@ -139,7 +147,7 @@ export class BookingComponent implements OnInit {
   }
 
   get canConfirm(): boolean {
-    return this.passengerForms.every((passenger) => passenger !== null);
+    return this.completedPassengers.every(Boolean);
   }
 
   onSelectPassenger(passengerNumber: number): void {
@@ -147,12 +155,13 @@ export class BookingComponent implements OnInit {
       return;
     }
 
+    this.saveCurrentPassenger();
     this.currentPassenger = passengerNumber;
     this.loadPassenger(passengerNumber);
   }
 
   isPassengerCompleted(passengerNumber: number): boolean {
-    return this.passengerForms[passengerNumber - 1] !== null;
+    return this.completedPassengers[passengerNumber - 1];
   }
 
   isPassengerUnlocked(passengerNumber: number): boolean {
@@ -160,7 +169,7 @@ export class BookingComponent implements OnInit {
       return true;
     }
 
-    return this.passengerForms[passengerNumber - 2] !== null;
+    return this.completedPassengers[passengerNumber - 2];
   }
 
   onOpenConfirmDialog(dialog: HlmDialog): void {
@@ -192,9 +201,11 @@ export class BookingComponent implements OnInit {
   }
 
   private saveCurrentPassenger(): void {
-    this.passengerForms[this.currentPassenger - 1] = structuredClone(
+    const index = this.currentPassenger - 1;
+    this.passengerForms[index] = structuredClone(
       this.bookingForm.getRawValue() as PassengerFormData,
     );
+    this.completedPassengers[index] = this.bookingForm.valid;
   }
 
   private loadPassenger(passengerNumber: number): void {
@@ -221,6 +232,15 @@ export class BookingComponent implements OnInit {
 
     this.submitted = false;
     this.bookingForm.markAsUntouched();
+    this.syncCurrentPassengerState();
+  }
+
+  private syncCurrentPassengerState(): void {
+    const index = this.currentPassenger - 1;
+    this.passengerForms[index] = structuredClone(
+      this.bookingForm.getRawValue() as PassengerFormData,
+    );
+    this.completedPassengers[index] = this.bookingForm.valid;
   }
 
   openNationalitySheet = () => {

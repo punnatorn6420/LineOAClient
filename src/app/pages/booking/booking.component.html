@@ -60,10 +60,10 @@
         class="min-w-[110px] rounded border px-3 py-2 text-sm"
         [disabled]="!isPassengerUnlocked(idx + 1)"
         [ngClass]="
-          idx + 1 === currentPassenger && !canConfirm
-            ? 'border-[#ffd400] bg-[#fff7cf] text-[#1f1f1f]'
-            : isPassengerCompleted(idx + 1)
-              ? 'border-[#95d5a8] bg-[#e8f9ee] text-[#157a33]'
+          isPassengerCompleted(idx + 1)
+            ? 'border-[#95d5a8] bg-[#e8f9ee] text-[#157a33]'
+            : idx + 1 === currentPassenger
+              ? 'border-[#ffd400] bg-[#fff7cf] text-[#1f1f1f]'
               : isPassengerUnlocked(idx + 1)
                 ? 'border-[#dcdcdc] bg-white text-[#575757]'
                 : 'border-[#ececec] bg-[#f8f8f8] text-[#a7a7a7]'
